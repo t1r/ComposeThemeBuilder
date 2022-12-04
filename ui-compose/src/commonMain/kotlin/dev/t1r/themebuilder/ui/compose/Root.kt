@@ -5,18 +5,20 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.arkivanov.decompose.Child
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
+import dev.t1r.themebuilder.feature.root.RootComponent
+import dev.t1r.themebuilder.feature.root.RootComponent.Child
 
 @Composable
 fun RootContent(
     component: RootComponent,
 ) {
-    Children(component.routerState) { state ->
-        state.instance { child ->
-            when (child) {
-                is Child.ThemeColors -> ThemeColorsContent(child.component)
-            }
+    Children(
+        stack = component.childStack,
+    ) {
+        when (val child = it.instance) {
+//            is Child.ColorsFlow -> ThemeColorsContent(child.component)
+            is Child.ColorsFlow -> Text("TEXT!")
         }
     }
 }

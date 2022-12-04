@@ -13,6 +13,7 @@ import com.arkivanov.essenty.parcelable.Parcelize
 
 class RootComponentImpl internal constructor(
     componentContext: ComponentContext,
+    todoString: String = "TODO!",
 ) : RootComponent, ComponentContext by componentContext {
     private val navigation = StackNavigation<Configuration>()
     private val stack = childStack(
@@ -23,6 +24,13 @@ class RootComponentImpl internal constructor(
     )
 
     override val childStack: Value<ChildStack<*, Child>> = stack
+
+    constructor(
+        componentContext: ComponentContext,
+    ) : this(
+        componentContext = componentContext,
+        todoString = "TODO!",
+    )
 
     private fun createChild(
         configuration: Configuration,

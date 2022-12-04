@@ -12,6 +12,8 @@ kotlin {
                 implementation(compose.material)
                 implementation(Deps.Decompose.decompose)
                 implementation(Deps.Decompose.extensionsComposeJetbrains)
+
+                implementation(project(Module.Feature.root))
             }
         }
         val androidMain by getting {
