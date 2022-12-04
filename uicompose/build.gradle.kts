@@ -1,3 +1,4 @@
+import org.jetbrains.compose.ComposeBuildConfig.composeVersion
 import org.jetbrains.compose.compose
 
 plugins {
@@ -18,15 +19,21 @@ kotlin {
     }
     sourceSets {
         val commonMain by getting {
+            val decomposeVersion = "1.0.0-beta-01"
+            val mviKotlinVersion = "3.0.2"
             dependencies {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
-            }
-        }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
+
+                api("com.arkivanov.decompose:decompose:$decomposeVersion")
+                api("com.arkivanov.decompose:extensions-compose-jetbrains:$decomposeVersion")
+//                api("com.arkivanov.mvikotlin:mvikotlin:$mviKotlinVersion")
+//                api("com.arkivanov.mvikotlin:mvikotlin-main:$mviKotlinVersion")
+//                api("com.arkivanov.mvikotlin:mvikotlin-logging:$mviKotlinVersion")
+//                api("com.arkivanov.mvikotlin:mvikotlin-timetravel:$mviKotlinVersion")
+//                api("com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:$mviKotlinVersion")
+
             }
         }
         val androidMain by getting {
@@ -35,26 +42,20 @@ kotlin {
                 api("androidx.core:core-ktx:1.3.1")
             }
         }
-        val androidTest by getting {
-            dependencies {
-                implementation("junit:junit:4.13")
-            }
-        }
         val desktopMain by getting {
             dependencies {
                 api(compose.preview)
             }
         }
-        val desktopTest by getting
     }
 }
 
 android {
-    compileSdkVersion(32)
+    compileSdk = 32
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(24)
-        targetSdkVersion(32)
+        minSdk = 24
+        targetSdk = 32
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

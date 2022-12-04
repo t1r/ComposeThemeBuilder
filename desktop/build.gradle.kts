@@ -22,6 +22,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(project(":common"))
+                implementation(project(":uicompose"))
                 implementation(compose.desktop.currentOs)
             }
         }
@@ -34,7 +35,7 @@ compose.desktop {
         mainClass = "MainKt"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "ComposeThemeBuilderV2"
+            packageName = "ComposeThemeBuilder"
             packageVersion = "1.0.0"
         }
     }
