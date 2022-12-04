@@ -14,6 +14,10 @@ import dev.t1r.themebuilder.ui.compose.RootContent
 
 fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
-        MaterialTheme { RootContent() }
+        MaterialTheme {
+            RootContent(
+
+            )
+        }
     }
 }

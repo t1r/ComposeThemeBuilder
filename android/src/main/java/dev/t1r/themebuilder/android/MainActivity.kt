@@ -11,7 +11,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MaterialTheme { RootContent() }
+            MaterialTheme {
+                RootContent(
+
+                )
+            }
         }
     }
 }

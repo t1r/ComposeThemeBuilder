@@ -22,4 +22,6 @@ include(
     ":desktop",
     ":common",
     ":ui-compose",
+
+    ":feature-root",
 )

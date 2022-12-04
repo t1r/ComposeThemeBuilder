@@ -10,18 +10,13 @@ import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
 
 @Composable
 fun RootContent(
-//    component: RootComponent,
+    component: RootComponent,
 ) {
-//    Children(component.routerState) { state ->
-//        state.instance { child ->
-//            when (child) {
-//                is Child.ThemeColors -> ThemeColorsContent(child.component)
-//            }
-//        }
-//    }
-    Scaffold(
-        content = {
-            Text("TEXT")
-        },
-    )
+    Children(component.routerState) { state ->
+        state.instance { child ->
+            when (child) {
+                is Child.ThemeColors -> ThemeColorsContent(child.component)
+            }
+        }
+    }
 }
