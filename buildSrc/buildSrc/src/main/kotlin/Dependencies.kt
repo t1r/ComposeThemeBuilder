@@ -20,6 +20,12 @@ object Deps {
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
     }
 
+    object AndroidX {
+        object Compose {
+            const val version = "1.2.0"
+        }
+    }
+
     object Decompose {
         const val decompose = "com.arkivanov.decompose:decompose:${Versions.decompose}"
         const val extensionsComposeJetbrains =
