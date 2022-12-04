@@ -21,5 +21,5 @@ include(
     ":android",
     ":desktop",
     ":common",
-    ":uicompose",
+    ":ui-compose",
 )
