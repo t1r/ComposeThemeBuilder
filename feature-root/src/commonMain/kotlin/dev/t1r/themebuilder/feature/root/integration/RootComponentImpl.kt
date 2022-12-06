@@ -4,20 +4,21 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
-import com.arkivanov.decompose.router.stack.*
 import com.arkivanov.decompose.value.Value
 import dev.t1r.themebuilder.feature.root.RootComponent
 import dev.t1r.themebuilder.feature.root.RootComponent.*
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
+import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorComponent
+import dev.t1r.themebuilder.feature.baselinecolor.integration.BaselineColorComponentImpl
 
 class RootComponentImpl internal constructor(
     componentContext: ComponentContext,
-    todoString: String = "TODO!",
+    private val baselineColor: (ComponentContext) -> BaselineColorComponent,
 ) : RootComponent, ComponentContext by componentContext {
     private val navigation = StackNavigation<Configuration>()
     private val stack = childStack(
-        initialConfiguration = Configuration.Main,
+        initialConfiguration = Configuration.BaselineColor,
         source = navigation,
         handleBackButton = true,
         childFactory = ::createChild
@@ -29,18 +30,24 @@ class RootComponentImpl internal constructor(
         componentContext: ComponentContext,
     ) : this(
         componentContext = componentContext,
-        todoString = "TODO!",
+        baselineColor = { childContext ->
+            BaselineColorComponentImpl(
+                componentContext = childContext,
+            )
+        },
     )
 
     private fun createChild(
         configuration: Configuration,
         componentContext: ComponentContext,
     ): Child = when (configuration) {
-        Configuration.Main -> Child.ColorsFlow
+        Configuration.BaselineColor -> Child.BaselineColor(
+            baselineColor(componentContext)
+        )
     }
 
     private sealed class Configuration : Parcelable {
         @Parcelize
-        object Main : Configuration()
+        object BaselineColor : Configuration()
     }
 }

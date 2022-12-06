@@ -24,4 +24,5 @@ include(
     ":ui-compose",
 
     ":feature-root",
+    ":feature-baseline-color",
 )

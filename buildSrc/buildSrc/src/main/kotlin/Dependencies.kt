@@ -48,6 +48,7 @@ object Deps {
 object Module {
     object Feature {
         const val root = ":feature-root"
+        const val baselineColor = ":feature-baseline-color"
     }
 
     object UI {

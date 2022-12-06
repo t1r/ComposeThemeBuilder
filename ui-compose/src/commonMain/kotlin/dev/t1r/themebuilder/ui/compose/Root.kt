@@ -1,8 +1,10 @@
 package dev.t1r.themebuilder.ui.compose
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
@@ -17,8 +19,10 @@ fun RootContent(
         stack = component.childStack,
     ) {
         when (val child = it.instance) {
-//            is Child.ColorsFlow -> ThemeColorsContent(child.component)
-            is Child.ColorsFlow -> Text("TEXT!")
+            is Child.BaselineColor -> BaselineColorContent(
+                child.component,
+                modifier = Modifier.fillMaxSize(),
+            )
         }
     }
 }

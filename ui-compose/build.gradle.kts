@@ -14,6 +14,7 @@ kotlin {
                 implementation(Deps.Decompose.extensionsComposeJetbrains)
 
                 implementation(project(Module.Feature.root))
+                implementation(project(Module.Feature.baselineColor))
             }
         }
         val androidMain by getting {
