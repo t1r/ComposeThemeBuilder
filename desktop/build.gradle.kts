@@ -10,7 +10,6 @@ plugins {
 group = "dev.t1r.themebuilder"
 version = "1.0-SNAPSHOT"
 
-
 kotlin {
     jvm {
         compilations.all {
@@ -21,8 +20,13 @@ kotlin {
     sourceSets {
         val jvmMain by getting {
             dependencies {
-                implementation(project(":common"))
                 implementation(compose.desktop.currentOs)
+
+                implementation(project(Module.Feature.root))
+                implementation(project(Module.UI.compose))
+
+                implementation(Deps.Decompose.decompose)
+                implementation(Deps.Decompose.extensionsComposeJetbrains)
             }
         }
         val jvmTest by getting
@@ -31,11 +35,11 @@ kotlin {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
-        nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "ComposeThemeBuilderV2"
-            packageVersion = "1.0.0"
-        }
+        mainClass = "dev.t1r.themebuilder.MainKt"
+//        nativeDistributions {
+//            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+//            packageName = "ComposeThemeBuilder"
+//            packageVersion = "1.0.0"
+//        }
     }
 }

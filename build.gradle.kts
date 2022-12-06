@@ -1,5 +1,5 @@
 group "dev.t1r.themebuilder"
-version "0.1-SNAPSHOT"
+version "1.0-SNAPSHOT"
 
 allprojects {
     repositories {

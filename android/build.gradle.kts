@@ -12,18 +12,25 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":common"))
-    implementation("androidx.activity:activity-compose:1.3.0")
+    implementation(compose.runtime)
+    implementation(Deps.AndroidX.appCompat)
+    implementation(Deps.AndroidX.Compose.activity)
+
+    implementation(project(Module.Feature.root))
+    implementation(project(Module.UI.compose))
+
+    implementation(Deps.Decompose.decompose)
+    implementation(Deps.Decompose.extensionsComposeJetbrains)
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdk = Versions.androidCompileSdk
     defaultConfig {
-        applicationId = "dev.t1r.themebuilder.android"
-        minSdkVersion(24)
-        targetSdkVersion(31)
-        versionCode = 1
-        versionName = "1.0-SNAPSHOT"
+        applicationId = App.id
+        minSdk = Versions.androidMinSdk
+        targetSdk = Versions.androidTargetSdk
+        versionCode = App.versionCode
+        versionName = App.versionName
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
