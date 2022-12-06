@@ -15,7 +15,7 @@ fun RootContent(
         stack = component.childStack,
     ) {
         when (val child = it.instance) {
-            is Child.BaselineColor -> BaselineColorsContent(
+            is Child.BaselineColors -> BaselineColorsContent(
                 child.component,
                 modifier = Modifier.fillMaxSize(),
             )

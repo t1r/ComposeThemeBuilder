@@ -8,6 +8,6 @@ interface RootComponent {
     val childStack: Value<ChildStack<*, Child>>
 
     sealed class Child {
-        data class BaselineColor(val component: BaselineColorsComponent) : Child()
+        data class BaselineColors(val component: BaselineColorsComponent) : Child()
     }
 }

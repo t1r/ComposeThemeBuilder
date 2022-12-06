@@ -41,7 +41,7 @@ class RootComponentImpl internal constructor(
         configuration: Configuration,
         componentContext: ComponentContext,
     ): Child = when (configuration) {
-        Configuration.BaselineColor -> Child.BaselineColor(
+        Configuration.BaselineColor -> Child.BaselineColors(
             baselineColor(componentContext)
         )
     }
