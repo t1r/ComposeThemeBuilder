@@ -16,11 +16,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorComponent
+import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 
 @Composable
-internal fun BaselineColorContent(
-    component: BaselineColorComponent,
+internal fun BaselineColorsContent(
+    component: BaselineColorsComponent,
     modifier: Modifier = Modifier,
 ) {
     val primaryColor by animateColorAsState(Color(0xFF6200EE))
