@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import com.arkivanov.decompose.defaultComponentContext
+import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
+import com.arkivanov.mvikotlin.timetravel.store.TimeTravelStoreFactory
+import dev.t1r.themebuilder.data.colors.ThemeColorsDataSourceImpl
 import dev.t1r.themebuilder.feature.root.integration.RootComponentImpl
 import dev.t1r.themebuilder.ui.compose.DefaultAppTheme
 import dev.t1r.themebuilder.ui.compose.RootContent
@@ -12,11 +15,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            DefaultAppTheme {
-                RootContent(
-                    RootComponentImpl(defaultComponentContext())
+            RootContent(
+                RootComponentImpl(
+                    componentContext = defaultComponentContext(),
+                    storeFactory = LoggingStoreFactory(TimeTravelStoreFactory()),
+                    colorsDataSource = ThemeColorsDataSourceImpl(),
                 )
-            }
+            )
         }
     }
 }

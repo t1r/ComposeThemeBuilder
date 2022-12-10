@@ -20,8 +20,10 @@ rootProject.name = "ComposeThemeBuilder"
 include(
     ":android",
     ":desktop",
+
     ":common",
     ":ui-compose",
+    ":data",
 
     ":feature-root",
     ":feature-baseline-colors",

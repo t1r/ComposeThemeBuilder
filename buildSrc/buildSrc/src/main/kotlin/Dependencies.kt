@@ -18,6 +18,7 @@ object Deps {
 
     object Kotlin {
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
     }
 
     object AndroidX {
@@ -43,6 +44,8 @@ object Deps {
         const val mvikotlinExtensionsCoroutines =
             "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:${Versions.mviKotlin}"
     }
+
+    const val multiplatformSettings = "com.russhwolf:multiplatform-settings:1.0.0-RC"
 }
 
 object Module {
@@ -53,5 +56,9 @@ object Module {
 
     object UI {
         const val compose = ":ui-compose"
+    }
+
+    object Data {
+        const val data = ":data"
     }
 }
