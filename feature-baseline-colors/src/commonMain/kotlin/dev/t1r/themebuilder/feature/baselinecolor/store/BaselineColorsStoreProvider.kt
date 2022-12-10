@@ -1,4 +1,4 @@
-package dev.t1r.themebuilder.feature.root.store
+package dev.t1r.themebuilder.feature.baselinecolor.store
 
 import com.arkivanov.mvikotlin.core.store.Reducer
 import com.arkivanov.mvikotlin.core.store.StoreFactory
@@ -7,23 +7,24 @@ import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import dev.t1r.themebuilder.data.colors.ThemeColorsModel
 import dev.t1r.themebuilder.data.colors.ThemeColorsDataSource
-import  dev.t1r.themebuilder.feature.root.store.RootStore.*
+import  dev.t1r.themebuilder.feature.baselinecolor.store.BaselineColorsStore.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-internal class RootStoreProvider constructor(
+internal class BaselineColorsStoreProvider constructor(
     private val storeFactory: StoreFactory,
     private val colorsDataSource: ThemeColorsDataSource,
 ) {
 
-    fun provide(): RootStore = object : RootStore, Store<Intent, State, Label> by storeFactory.create(
-        name = "RootStore",
-        initialState = State(),
-        bootstrapper = BootstrapperImpl(colorsDataSource),
-        executorFactory = ::ExecutorImpl,
-        reducer = ReducerImpl,
-    ) {}
+    fun provide(): BaselineColorsStore =
+        object : BaselineColorsStore, Store<Intent, State, Label> by storeFactory.create(
+            name = "BaselineColorsStore",
+            initialState = State(),
+            bootstrapper = BootstrapperImpl(colorsDataSource),
+            executorFactory = ::ExecutorImpl,
+            reducer = ReducerImpl,
+        ) {}
 
     private sealed class Message {
         data class UpdateColors(val model: ThemeColorsModel) : Message()

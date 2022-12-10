@@ -5,7 +5,6 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.mvikotlin.extensions.coroutines.labels
 import com.arkivanov.mvikotlin.extensions.coroutines.states
 import dev.t1r.themebuilder.feature.root.RootComponent
 import dev.t1r.themebuilder.feature.root.RootComponent.*
@@ -15,6 +14,7 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 import dev.t1r.themebuilder.data.colors.ThemeColorsDataSource
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.integration.BaselineColorsComponentImpl
+import dev.t1r.themebuilder.feature.root.store.RootStore
 import dev.t1r.themebuilder.feature.root.store.RootStoreProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -52,6 +52,8 @@ class RootComponentImpl internal constructor(
         baselineColor = { childContext ->
             BaselineColorsComponentImpl(
                 componentContext = childContext,
+                storeFactory = storeFactory,
+                colorsDataSource = colorsDataSource,
             )
         },
     )

@@ -6,10 +6,10 @@ import kotlinx.coroutines.flow.StateFlow
 class ThemeColorsDataSourceImpl : ThemeColorsDataSource {
     private val themeColors = MutableStateFlow(provideDefaultColors())
 
-    override fun themeColorsState(): StateFlow<ThemeColors> = themeColors
+    override fun themeColorsState(): StateFlow<ThemeColorsModel> = themeColors
 
-    private fun provideDefaultColors(): ThemeColors {
-        return ThemeColors(
+    private fun provideDefaultColors(): ThemeColorsModel {
+        return ThemeColorsModel(
             primary = 0xFF6200EE,
             primaryVariant = 0xFF3700B3,
             secondary = 0xFF03DAC6,

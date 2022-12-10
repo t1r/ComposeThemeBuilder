@@ -25,6 +25,7 @@ include(
     ":ui-compose",
     ":data",
 
+    ":entity",
     ":feature-root",
     ":feature-baseline-colors",
 )

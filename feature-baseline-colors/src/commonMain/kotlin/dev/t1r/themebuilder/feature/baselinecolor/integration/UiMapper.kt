@@ -1,13 +1,13 @@
-package dev.t1r.themebuilder.feature.root.integration
+package dev.t1r.themebuilder.feature.baselinecolor.integration
 
 import dev.t1r.themebuilder.data.colors.ThemeColorsModel
 import dev.t1r.themebuilder.entity.colors.ThemeColors
-import dev.t1r.themebuilder.feature.root.RootComponent
-import dev.t1r.themebuilder.feature.root.store.RootStore
+import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
+import dev.t1r.themebuilder.feature.baselinecolor.store.BaselineColorsStore
 
-internal val stateToModel: RootStore.State.() -> RootComponent.Model =
+internal val stateToModel: BaselineColorsStore.State.() -> BaselineColorsComponent.Model =
     {
-        RootComponent.Model(
+        BaselineColorsComponent.Model(
             colors = map(model),
         )
     }

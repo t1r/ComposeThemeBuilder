@@ -1,10 +1,10 @@
-package dev.t1r.themebuilder.feature.root.store
+package dev.t1r.themebuilder.feature.baselinecolor.store
 
 import com.arkivanov.mvikotlin.core.store.Store
 import dev.t1r.themebuilder.data.colors.ThemeColorsModel
-import  dev.t1r.themebuilder.feature.root.store.RootStore.*
+import  dev.t1r.themebuilder.feature.baselinecolor.store.BaselineColorsStore.*
 
-interface RootStore : Store<Intent, State, Label> {
+interface BaselineColorsStore : Store<Intent, State, Label> {
     data class State(
         val model: ThemeColorsModel? = null,
     )

@@ -7,7 +7,11 @@ plugins {
 kotlin {
     sourceSets {
         val commonMain by getting {
-            dependencies {}
+            dependencies {
+                implementation(project(Module.entity))
+                implementation(project(Module.entity))
+                implementation(project(Module.Data.data))
+            }
         }
     }
 }

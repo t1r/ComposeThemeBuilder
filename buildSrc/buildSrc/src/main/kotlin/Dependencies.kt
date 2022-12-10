@@ -49,6 +49,8 @@ object Deps {
 }
 
 object Module {
+    const val entity = ":entity"
+
     object Feature {
         const val root = ":feature-root"
         const val baselineColor = ":feature-baseline-colors"
