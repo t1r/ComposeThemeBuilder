@@ -16,11 +16,15 @@ dependencies {
     implementation(Deps.AndroidX.appCompat)
     implementation(Deps.AndroidX.Compose.activity)
 
-    implementation(project(Module.Feature.root))
     implementation(project(Module.UI.compose))
+    implementation(project(Module.Feature.root))
+    implementation(project(Module.Data.data))
 
     implementation(Deps.Decompose.decompose)
     implementation(Deps.Decompose.extensionsComposeJetbrains)
+    implementation(Deps.MviKotlin.mvikotlin)
+    implementation(Deps.MviKotlin.mvikotlinLogging)
+    implementation(Deps.MviKotlin.mvikotlinTimetravel)
 }
 
 android {

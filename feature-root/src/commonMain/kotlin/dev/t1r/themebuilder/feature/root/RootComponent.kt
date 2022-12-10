@@ -2,11 +2,19 @@ package dev.t1r.themebuilder.feature.root
 
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
+import dev.t1r.themebuilder.entity.colors.ThemeColors
+import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
+import kotlinx.coroutines.flow.Flow
 
 interface RootComponent {
     val childStack: Value<ChildStack<*, Child>>
+    val models: Flow<Model>
 
     sealed class Child {
-        object ColorsFlow : Child()
+        data class BaselineColors(val component: BaselineColorsComponent) : Child()
     }
+
+    data class Model(
+        val colors: ThemeColors = ThemeColors(),
+    )
 }
