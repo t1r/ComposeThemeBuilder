@@ -8,6 +8,8 @@ kotlin {
             dependencies {
                 implementation(Deps.Kotlin.coroutines)
                 implementation(Deps.Kotlin.coroutinesSwing)
+
+                implementation(project(Module.entity))
             }
         }
     }

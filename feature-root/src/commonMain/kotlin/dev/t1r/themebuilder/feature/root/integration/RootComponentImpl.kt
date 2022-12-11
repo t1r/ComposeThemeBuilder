@@ -11,10 +11,9 @@ import dev.t1r.themebuilder.feature.root.RootComponent.*
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
 import com.arkivanov.mvikotlin.core.store.StoreFactory
-import dev.t1r.themebuilder.data.colors.ThemeColorsDataSource
+import dev.t1r.themebuilder.data.colors.ThemeColorsRepository
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.integration.BaselineColorsComponentImpl
-import dev.t1r.themebuilder.feature.root.store.RootStore
 import dev.t1r.themebuilder.feature.root.store.RootStoreProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -22,7 +21,7 @@ import kotlinx.coroutines.flow.map
 class RootComponentImpl internal constructor(
     componentContext: ComponentContext,
     storeFactory: StoreFactory,
-    colorsDataSource: ThemeColorsDataSource,
+    colorsDataSource: ThemeColorsRepository,
     private val baselineColor: (ComponentContext) -> BaselineColorsComponent,
 ) : RootComponent, ComponentContext by componentContext {
     private val navigation = StackNavigation<Configuration>()
@@ -44,7 +43,7 @@ class RootComponentImpl internal constructor(
     constructor(
         componentContext: ComponentContext,
         storeFactory: StoreFactory,
-        colorsDataSource: ThemeColorsDataSource,
+        colorsDataSource: ThemeColorsRepository,
     ) : this(
         componentContext = componentContext,
         storeFactory = storeFactory,

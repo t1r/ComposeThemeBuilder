@@ -1,6 +1,6 @@
 package dev.t1r.themebuilder.data.colors
 
-data class ThemeColorsModel(
+internal data class ThemeColorsModel(
     val primary: Long,
     val primaryVariant: Long,
     val secondary: Long,
