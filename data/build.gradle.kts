@@ -7,6 +7,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(Deps.Kotlin.coroutines)
+                implementation(Deps.Kotlin.coroutinesSwing)
             }
         }
     }
