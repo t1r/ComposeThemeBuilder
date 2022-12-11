@@ -1,4 +1,4 @@
-package dev.t1r.themebuilder.data.colors
+package dev.t1r.themebuilder.data.colors.theme
 
 import dev.t1r.themebuilder.entity.colors.ThemeColors
 

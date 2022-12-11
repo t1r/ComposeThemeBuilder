@@ -5,7 +5,7 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
-import dev.t1r.themebuilder.data.colors.ThemeColorsRepository
+import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.entity.colors.ThemeColors
 import  dev.t1r.themebuilder.feature.root.store.RootStore.*
 import kotlinx.coroutines.flow.launchIn

@@ -1,4 +1,4 @@
-package dev.t1r.themebuilder.data.colors
+package dev.t1r.themebuilder.data.colors.theme
 
 class ThemeColorsDataSource {
     internal fun provideDefaultColors(): ThemeColorsModel {

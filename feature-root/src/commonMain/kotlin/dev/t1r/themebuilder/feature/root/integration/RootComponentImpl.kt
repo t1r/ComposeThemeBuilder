@@ -11,7 +11,7 @@ import dev.t1r.themebuilder.feature.root.RootComponent.*
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
 import com.arkivanov.mvikotlin.core.store.StoreFactory
-import dev.t1r.themebuilder.data.colors.ThemeColorsRepository
+import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.integration.BaselineColorsComponentImpl
 import dev.t1r.themebuilder.feature.root.store.RootStoreProvider

@@ -3,7 +3,7 @@ package dev.t1r.themebuilder.feature.baselinecolor.integration
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.states
-import dev.t1r.themebuilder.data.colors.ThemeColorsRepository
+import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent.Model
 import dev.t1r.themebuilder.feature.baselinecolor.store.BaselineColorsStoreProvider
