@@ -5,6 +5,7 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.states
 import dev.t1r.themebuilder.data.colors.material.MaterialColorsRepository
 import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
+import dev.t1r.themebuilder.entity.colors.ColorModel
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
 import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent.Model
@@ -27,7 +28,11 @@ class MaterialColorsPalletComponentImpl constructor(
 
     override val models: Flow<Model> = store.states.map { stateToModel(it) }
 
-    override fun onSelectColorToChange(color: ThemeColorsEnum) {
+    override fun onThemeColorToChangeSelected(color: ThemeColorsEnum) {
         store.accept(Intent.SelectThemeColorToChange(color))
+    }
+
+    override fun onColorSelected(item: ColorModel) {
+//        store.accept(Intent.SelectThemeColorToChange(color))
     }
 }

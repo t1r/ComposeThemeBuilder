@@ -1,7 +1,7 @@
 package dev.t1r.themebuilder.data.colors.material
 
-import dev.t1r.themebuilder.entity.colors.Color
 import dev.t1r.themebuilder.entity.colors.ColorGroup
+import dev.t1r.themebuilder.entity.colors.ColorModel
 
 class MaterialColorsDataSource {
 
@@ -9,59 +9,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Red",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Red 50",
                     color = 0xFFFFEBEE,
                 ),
-                Color(
+                ColorModel(
                     title = "Red 100",
                     color = 0xFFFFCDD2,
                 ),
-                Color(
+                ColorModel(
                     title = "Red 200",
                     color = 0xFFEF9A9A,
                 ),
-                Color(
+                ColorModel(
                     title = "Red 300",
                     color = 0xFFE57373,
                 ),
-                Color(
+                ColorModel(
                     title = "Red 400",
                     color = 0xFFEF5350,
                 ),
-                Color(
+                ColorModel(
                     title = "Red 500",
                     color = 0xFFF44336,
                 ),
-                Color(
+                ColorModel(
                     title = "Red 600",
                     color = 0xFFE53935,
                 ),
-                Color(
+                ColorModel(
                     title = "Red 700",
                     color = 0xFFD32F2F,
                 ),
-                Color(
+                ColorModel(
                     title = "Red 800",
                     color = 0xFFC62828,
                 ),
-                Color(
+                ColorModel(
                     title = "Red 900",
                     color = 0xFFB71C1C,
                 ),
-                Color(
+                ColorModel(
                     title = "Red A100",
                     color = 0xFFFF8A80,
                 ),
-                Color(
+                ColorModel(
                     title = "Red A200",
                     color = 0xFFFF5252,
                 ),
-                Color(
+                ColorModel(
                     title = "Red A400",
                     color = 0xFFFF1744,
                 ),
-                Color(
+                ColorModel(
                     title = "Red A700",
                     color = 0xFFD50000,
                 ),
@@ -70,59 +70,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Pink",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Pink 50",
                     color = 0xFFFCE4EC,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink 100",
                     color = 0xFFF8BBD0,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink 200",
                     color = 0xFFF48FB1,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink 300",
                     color = 0xFFF06292,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink 400",
                     color = 0xFFEC407A,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink 500",
                     color = 0xFFE91E63,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink 600",
                     color = 0xFFD81B60,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink 700",
                     color = 0xFFC2185B,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink 800",
                     color = 0xFFAD1457,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink 900",
                     color = 0xFF880E4F,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink A100",
                     color = 0xFFFF80AB,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink A200",
                     color = 0xFFFF4081,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink A400",
                     color = 0xFFF50057,
                 ),
-                Color(
+                ColorModel(
                     title = "Pink A700",
                     color = 0xFFC51162,
                 ),
@@ -131,59 +131,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Purple",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Purple 50",
                     color = 0xFFF3E5F5,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple 100",
                     color = 0xFFE1BEE7,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple 200",
                     color = 0xFFCE93D8,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple 300",
                     color = 0xFFBA68C8,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple 400",
                     color = 0xFFAB47BC,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple 500",
                     color = 0xFF9C27B0,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple 600",
                     color = 0xFF8E24AA,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple 700",
                     color = 0xFF7B1FA2,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple 800",
                     color = 0xFF6A1B9A,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple 900",
                     color = 0xFF4A148C,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple A100",
                     color = 0xFFEA80FC,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple A200",
                     color = 0xFFE040FB,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple A400",
                     color = 0xFFD500F9,
                 ),
-                Color(
+                ColorModel(
                     title = "Purple A700",
                     color = 0xFFAA00FF,
                 ),
@@ -192,59 +192,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Deep Purple",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Deep Purple 50",
                     color = 0xFFEDE7F6,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple 100",
                     color = 0xFFD1C4E9,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple 200",
                     color = 0xFFB39DDB,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple 300",
                     color = 0xFF9575CD,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple 400",
                     color = 0xFF7E57C2,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple 500",
                     color = 0xFF673AB7,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple 600",
                     color = 0xFF5E35B1,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple 700",
                     color = 0xFF512DA8,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple 800",
                     color = 0xFF4527A0,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple 900",
                     color = 0xFF311B92,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple A100",
                     color = 0xFFB388FF,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple A200",
                     color = 0xFF7C4DFF,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple A400",
                     color = 0xFF651FFF,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Purple A700",
                     color = 0xFF6200EA,
                 ),
@@ -253,59 +253,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Indigo",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Indigo 50",
                     color = 0xFFE8EAF6,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo 100",
                     color = 0xFFC5CAE9,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo 200",
                     color = 0xFF9FA8DA,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo 300",
                     color = 0xFF7986CB,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo 400",
                     color = 0xFF5C6BC0,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo 500",
                     color = 0xFF3F51B5,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo 600",
                     color = 0xFF3949AB,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo 700",
                     color = 0xFF303F9F,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo 800",
                     color = 0xFF283593,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo 900",
                     color = 0xFF1A237E,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo A100",
                     color = 0xFF8C9EFF,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo A200",
                     color = 0xFF536DFE,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo A400",
                     color = 0xFF3D5AFE,
                 ),
-                Color(
+                ColorModel(
                     title = "Indigo A700",
                     color = 0xFF304FFE,
                 ),
@@ -314,59 +314,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Blue",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Blue 50",
                     color = 0xFFE3F2FD,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue 100",
                     color = 0xFFBBDEFB,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue 200",
                     color = 0xFF90CAF9,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue 300",
                     color = 0xFF64B5F6,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue 400",
                     color = 0xFF42A5F5,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue 500",
                     color = 0xFF2196F3,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue 600",
                     color = 0xFF1E88E5,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue 700",
                     color = 0xFF1976D2,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue 800",
                     color = 0xFF1565C0,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue 900",
                     color = 0xFF0D47A1,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue A100",
                     color = 0xFF82B1FF,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue A200",
                     color = 0xFF448AFF,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue A400",
                     color = 0xFF2979FF,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue A700",
                     color = 0xFF2962FF,
                 ),
@@ -375,59 +375,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Light Blue",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Light Blue 50",
                     color = 0xFFE1F5FE,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue 100",
                     color = 0xFFB3E5FC,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue 200",
                     color = 0xFF81D4FA,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue 300",
                     color = 0xFF4FC3F7,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue 400",
                     color = 0xFF29B6F6,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue 500",
                     color = 0xFF03A9F4,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue 600",
                     color = 0xFF039BE5,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue 700",
                     color = 0xFF0288D1,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue 800",
                     color = 0xFF0277BD,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue 900",
                     color = 0xFF01579B,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue A100",
                     color = 0xFF80D8FF,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue A200",
                     color = 0xFF40C4FF,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue A400",
                     color = 0xFF00B0FF,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Blue A700",
                     color = 0xFF0091EA,
                 ),
@@ -436,59 +436,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Cyan",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Cyan 50",
                     color = 0xFFE0F7FA,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan 100",
                     color = 0xFFB2EBF2,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan 200",
                     color = 0xFF80DEEA,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan 300",
                     color = 0xFF4DD0E1,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan 400",
                     color = 0xFF26C6DA,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan 500",
                     color = 0xFF00BCD4,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan 600",
                     color = 0xFF00ACC1,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan 700",
                     color = 0xFF0097A7,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan 800",
                     color = 0xFF00838F,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan 900",
                     color = 0xFF006064,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan A100",
                     color = 0xFF84FFFF,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan A200",
                     color = 0xFF18FFFF,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan A400",
                     color = 0xFF00E5FF,
                 ),
-                Color(
+                ColorModel(
                     title = "Cyan A700",
                     color = 0xFF00B8D4,
                 ),
@@ -497,59 +497,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Teal",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Teal 50",
                     color = 0xFFE0F2F1,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal 100",
                     color = 0xFFB2DFDB,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal 200",
                     color = 0xFF80CBC4,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal 300",
                     color = 0xFF4DB6AC,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal 400",
                     color = 0xFF26A69A,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal 500",
                     color = 0xFF009688,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal 600",
                     color = 0xFF00897B,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal 700",
                     color = 0xFF00796B,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal 800",
                     color = 0xFF00695C,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal 900",
                     color = 0xFF004D40,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal A100",
                     color = 0xFFA7FFEB,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal A200",
                     color = 0xFF64FFDA,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal A400",
                     color = 0xFF1DE9B6,
                 ),
-                Color(
+                ColorModel(
                     title = "Teal A700",
                     color = 0xFF00BFA5,
                 ),
@@ -558,59 +558,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Green",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Green 50",
                     color = 0xFFE8F5E9,
                 ),
-                Color(
+                ColorModel(
                     title = "Green 100",
                     color = 0xFFC8E6C9,
                 ),
-                Color(
+                ColorModel(
                     title = "Green 200",
                     color = 0xFFA5D6A7,
                 ),
-                Color(
+                ColorModel(
                     title = "Green 300",
                     color = 0xFF81C784,
                 ),
-                Color(
+                ColorModel(
                     title = "Green 400",
                     color = 0xFF66BB6A,
                 ),
-                Color(
+                ColorModel(
                     title = "Green 500",
                     color = 0xFF4CAF50,
                 ),
-                Color(
+                ColorModel(
                     title = "Green 600",
                     color = 0xFF43A047,
                 ),
-                Color(
+                ColorModel(
                     title = "Green 700",
                     color = 0xFF388E3C,
                 ),
-                Color(
+                ColorModel(
                     title = "Green 800",
                     color = 0xFF2E7D32,
                 ),
-                Color(
+                ColorModel(
                     title = "Green 900",
                     color = 0xFF1B5E20,
                 ),
-                Color(
+                ColorModel(
                     title = "Green A100",
                     color = 0xFFB9F6CA,
                 ),
-                Color(
+                ColorModel(
                     title = "Green A200",
                     color = 0xFF69F0AE,
                 ),
-                Color(
+                ColorModel(
                     title = "Green A400",
                     color = 0xFF00E676,
                 ),
-                Color(
+                ColorModel(
                     title = "Green A700",
                     color = 0xFF00C853,
                 ),
@@ -619,59 +619,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Light Green",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Light Green 50",
                     color = 0xFFF1F8E9,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green 100",
                     color = 0xFFDCEDC8,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green 200",
                     color = 0xFFC5E1A5,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green 300",
                     color = 0xFFAED581,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green 400",
                     color = 0xFF9CCC65,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green 500",
                     color = 0xFF8BC34A,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green 600",
                     color = 0xFF7CB342,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green 700",
                     color = 0xFF689F38,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green 800",
                     color = 0xFF558B2F,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green 900",
                     color = 0xFF33691E,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green A100",
                     color = 0xFFCCFF90,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green A200",
                     color = 0xFFB2FF59,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green A400",
                     color = 0xFF76FF03,
                 ),
-                Color(
+                ColorModel(
                     title = "Light Green A700",
                     color = 0xFF64DD17,
                 ),
@@ -680,59 +680,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Lime",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Lime 50",
                     color = 0xFFF9FBE7,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime 100",
                     color = 0xFFF0F4C3,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime 200",
                     color = 0xFFE6EE9C,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime 300",
                     color = 0xFFDCE775,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime 400",
                     color = 0xFFD4E157,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime 500",
                     color = 0xFFCDDC39,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime 600",
                     color = 0xFFC0CA33,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime 700",
                     color = 0xFFAFB42B,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime 800",
                     color = 0xFF9E9D24,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime 900",
                     color = 0xFF827717,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime A100",
                     color = 0xFFF4FF81,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime A200",
                     color = 0xFFEEFF41,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime A400",
                     color = 0xFFC6FF00,
                 ),
-                Color(
+                ColorModel(
                     title = "Lime A700",
                     color = 0xFFAEEA00,
                 ),
@@ -741,59 +741,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Yellow",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Yellow 50",
                     color = 0xFFFFFDE7,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow 100",
                     color = 0xFFFFF9C4,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow 200",
                     color = 0xFFFFF59D,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow 300",
                     color = 0xFFFFF176,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow 400",
                     color = 0xFFFFEE58,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow 500",
                     color = 0xFFFFEB3B,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow 600",
                     color = 0xFFFDD835,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow 700",
                     color = 0xFFFBC02D,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow 800",
                     color = 0xFFF9A825,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow 900",
                     color = 0xFFF57F17,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow A100",
                     color = 0xFFFFFF8D,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow A200",
                     color = 0xFFFFFF00,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow A400",
                     color = 0xFFFFEA00,
                 ),
-                Color(
+                ColorModel(
                     title = "Yellow A700",
                     color = 0xFFFFD600,
                 ),
@@ -802,59 +802,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Amber",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Amber 50",
                     color = 0xFFFFF8E1,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber 100",
                     color = 0xFFFFECB3,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber 200",
                     color = 0xFFFFE082,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber 300",
                     color = 0xFFFFD54F,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber 400",
                     color = 0xFFFFCA28,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber 500",
                     color = 0xFFFFC107,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber 600",
                     color = 0xFFFFB300,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber 700",
                     color = 0xFFFFA000,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber 800",
                     color = 0xFFFF8F00,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber 900",
                     color = 0xFFFF6F00,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber A100",
                     color = 0xFFFFE57F,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber A200",
                     color = 0xFFFFD740,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber A400",
                     color = 0xFFFFC400,
                 ),
-                Color(
+                ColorModel(
                     title = "Amber A700",
                     color = 0xFFFFAB00,
                 ),
@@ -863,59 +863,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Orange",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Orange 50",
                     color = 0xFFFFF3E0,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange 100",
                     color = 0xFFFFE0B2,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange 200",
                     color = 0xFFFFCC80,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange 300",
                     color = 0xFFFFB74D,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange 400",
                     color = 0xFFFFA726,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange 500",
                     color = 0xFFFF9800,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange 600",
                     color = 0xFFFB8C00,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange 700",
                     color = 0xFFF57C00,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange 800",
                     color = 0xFFEF6C00,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange 900",
                     color = 0xFFE65100,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange A100",
                     color = 0xFFFFD180,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange A200",
                     color = 0xFFFFAB40,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange A400",
                     color = 0xFFFF9100,
                 ),
-                Color(
+                ColorModel(
                     title = "Orange A700",
                     color = 0xFFFF6D00,
                 ),
@@ -924,59 +924,59 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Deep Orange",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Deep Orange 50",
                     color = 0xFFFBE9E7,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange 100",
                     color = 0xFFFFCCBC,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange 200",
                     color = 0xFFFFAB91,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange 300",
                     color = 0xFFFF8A65,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange 400",
                     color = 0xFFFF7043,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange 500",
                     color = 0xFFFF5722,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange 600",
                     color = 0xFFF4511E,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange 700",
                     color = 0xFFE64A19,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange 800",
                     color = 0xFFD84315,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange 900",
                     color = 0xFFBF360C,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange A100",
                     color = 0xFFFF9E80,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange A200",
                     color = 0xFFFF6E40,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange A400",
                     color = 0xFFFF3D00,
                 ),
-                Color(
+                ColorModel(
                     title = "Deep Orange A700",
                     color = 0xFFDD2C00,
                 ),
@@ -985,43 +985,43 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Brown",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Brown 50",
                     color = 0xFFEFEBE9,
                 ),
-                Color(
+                ColorModel(
                     title = "Brown 100",
                     color = 0xFFD7CCC8,
                 ),
-                Color(
+                ColorModel(
                     title = "Brown 200",
                     color = 0xFFBCAAA4,
                 ),
-                Color(
+                ColorModel(
                     title = "Brown 300",
                     color = 0xFFA1887F,
                 ),
-                Color(
+                ColorModel(
                     title = "Brown 400",
                     color = 0xFF8D6E63,
                 ),
-                Color(
+                ColorModel(
                     title = "Brown 500",
                     color = 0xFF795548,
                 ),
-                Color(
+                ColorModel(
                     title = "Brown 600",
                     color = 0xFF6D4C41,
                 ),
-                Color(
+                ColorModel(
                     title = "Brown 700",
                     color = 0xFF5D4037,
                 ),
-                Color(
+                ColorModel(
                     title = "Brown 800",
                     color = 0xFF4E342E,
                 ),
-                Color(
+                ColorModel(
                     title = "Brown 900",
                     color = 0xFF3E2723,
                 ),
@@ -1030,43 +1030,43 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Grey",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Grey 50",
                     color = 0xFFFAFAFA,
                 ),
-                Color(
+                ColorModel(
                     title = "Grey 100",
                     color = 0xFFF5F5F5,
                 ),
-                Color(
+                ColorModel(
                     title = "Grey 200",
                     color = 0xFFEEEEEE,
                 ),
-                Color(
+                ColorModel(
                     title = "Grey 300",
                     color = 0xFFE0E0E0,
                 ),
-                Color(
+                ColorModel(
                     title = "Grey 400",
                     color = 0xFFBDBDBD,
                 ),
-                Color(
+                ColorModel(
                     title = "Grey 500",
                     color = 0xFF9E9E9E,
                 ),
-                Color(
+                ColorModel(
                     title = "Grey 600",
                     color = 0xFF757575,
                 ),
-                Color(
+                ColorModel(
                     title = "Grey 700",
                     color = 0xFF616161,
                 ),
-                Color(
+                ColorModel(
                     title = "Grey 800",
                     color = 0xFF424242,
                 ),
-                Color(
+                ColorModel(
                     title = "Grey 900",
                     color = 0xFF212121,
                 ),
@@ -1075,43 +1075,43 @@ class MaterialColorsDataSource {
         ColorGroup(
             title = "Blue Grey",
             items = listOf(
-                Color(
+                ColorModel(
                     title = "Blue Grey 50",
                     color = 0xFFECEFF1,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue Grey 100",
                     color = 0xFFCFD8DC,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue Grey 200",
                     color = 0xFFB0BEC5,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue Grey 300",
                     color = 0xFF90A4AE,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue Grey 400",
                     color = 0xFF78909C,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue Grey 500",
                     color = 0xFF607D8B,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue Grey 600",
                     color = 0xFF546E7A,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue Grey 700",
                     color = 0xFF455A64,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue Grey 800",
                     color = 0xFF37474F,
                 ),
-                Color(
+                ColorModel(
                     title = "Blue Grey 900",
                     color = 0xFF263238,
                 ),

@@ -1,6 +1,7 @@
 package dev.t1r.themebuilder.feature.materialcolorspallet
 
 import dev.t1r.themebuilder.entity.colors.ColorGroup
+import dev.t1r.themebuilder.entity.colors.ColorModel
 import dev.t1r.themebuilder.entity.colors.ThemeColors
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 import kotlinx.coroutines.flow.Flow
@@ -11,9 +12,14 @@ interface MaterialColorsPalletComponent {
     data class Model(
         val colors: ThemeColors = ThemeColors(),
         val materialColors: List<ColorGroup> = emptyList(),
+        val contentState: ContentState = ContentState.Normal,
     )
 
-    fun onSelectColorToChange(
-        color: ThemeColorsEnum,
-    )
+    sealed class ContentState {
+        object Normal : ContentState()
+        object SelectedMode : ContentState()
+    }
+
+    fun onThemeColorToChangeSelected(color: ThemeColorsEnum)
+    fun onColorSelected(item: ColorModel)
 }

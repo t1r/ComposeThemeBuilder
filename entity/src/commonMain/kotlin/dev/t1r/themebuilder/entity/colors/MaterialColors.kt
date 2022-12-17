@@ -2,10 +2,10 @@ package dev.t1r.themebuilder.entity.colors
 
 data class ColorGroup(
     val title: String,
-    val items: List<Color>,
+    val items: List<ColorModel>,
 )
 
-data class Color(
+data class ColorModel(
     val title: String,
     val color: Long,
 )
