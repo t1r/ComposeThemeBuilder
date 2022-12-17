@@ -5,15 +5,16 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.mvikotlin.extensions.coroutines.states
-import dev.t1r.themebuilder.feature.root.RootComponent
-import dev.t1r.themebuilder.feature.root.RootComponent.*
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
 import com.arkivanov.mvikotlin.core.store.StoreFactory
+import com.arkivanov.mvikotlin.extensions.coroutines.states
 import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.integration.BaselineColorsComponentImpl
+import dev.t1r.themebuilder.feature.root.RootComponent
+import dev.t1r.themebuilder.feature.root.RootComponent.Child
+import dev.t1r.themebuilder.feature.root.RootComponent.Model
 import dev.t1r.themebuilder.feature.root.store.RootStoreProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -21,7 +22,7 @@ import kotlinx.coroutines.flow.map
 class RootComponentImpl internal constructor(
     componentContext: ComponentContext,
     storeFactory: StoreFactory,
-    colorsDataSource: ThemeColorsRepository,
+    themeColorsRepository: ThemeColorsRepository,
     private val baselineColor: (ComponentContext) -> BaselineColorsComponent,
 ) : RootComponent, ComponentContext by componentContext {
     private val navigation = StackNavigation<Configuration>()
@@ -34,7 +35,7 @@ class RootComponentImpl internal constructor(
 
     private val store = RootStoreProvider(
         storeFactory = storeFactory,
-        colorsDataSource = colorsDataSource,
+        themeColorsRepository = themeColorsRepository,
     ).provide()
 
     override val childStack: Value<ChildStack<*, Child>> = stack
@@ -43,16 +44,16 @@ class RootComponentImpl internal constructor(
     constructor(
         componentContext: ComponentContext,
         storeFactory: StoreFactory,
-        colorsDataSource: ThemeColorsRepository,
+        themeColorsRepository: ThemeColorsRepository,
     ) : this(
         componentContext = componentContext,
         storeFactory = storeFactory,
-        colorsDataSource = colorsDataSource,
+        themeColorsRepository = themeColorsRepository,
         baselineColor = { childContext ->
             BaselineColorsComponentImpl(
                 componentContext = childContext,
                 storeFactory = storeFactory,
-                colorsDataSource = colorsDataSource,
+                themeColorsRepository = themeColorsRepository,
             )
         },
     )

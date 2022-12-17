@@ -55,6 +55,7 @@ object Module {
     object Feature {
         const val root = ":feature-root"
         const val baselineColor = ":feature-baseline-colors"
+        const val materialColorsPallet = ":feature-material-colors-pallet"
     }
 
     object UI {

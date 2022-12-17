@@ -24,6 +24,7 @@ kotlin {
 
                 implementation(project(Module.UI.compose))
                 implementation(project(Module.Feature.root))
+                implementation(project(Module.Feature.materialColorsPallet))
                 implementation(project(Module.Data.data))
 
                 implementation(Deps.Decompose.decompose)
