@@ -32,7 +32,7 @@ class MaterialColorsPalletComponentImpl constructor(
         store.accept(Intent.SelectThemeColorToChange(color))
     }
 
-    override fun onColorSelected(item: ColorModel) {
-//        store.accept(Intent.SelectThemeColorToChange(color))
+    override fun onColorSelected(themeColor: ThemeColorsEnum, color: ColorModel) {
+        store.accept(Intent.ChangeThemeColor(themeColor, color.color))
     }
 }

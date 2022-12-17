@@ -33,7 +33,7 @@ internal class MaterialColorsPalletStoreProvider constructor(
     private sealed class Message {
         data class UpdateThemeColors(val model: ThemeColors) : Message()
         data class UpdateMaterialColors(val list: List<ColorGroup>) : Message()
-        data class SelectThemeColorToChange(val color: ThemeColorsEnum) : Message()
+        data class SelectThemeColorToChange(val color: ThemeColorsEnum?) : Message()
     }
 
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Message, Label>() {
@@ -50,6 +50,12 @@ internal class MaterialColorsPalletStoreProvider constructor(
             getState: () -> State,
         ): Unit = when (intent) {
             is Intent.SelectThemeColorToChange -> dispatch(Message.SelectThemeColorToChange(intent.color))
+            is Intent.ChangeThemeColor -> resolveChangeThemeColor(intent)
+        }
+
+        private fun resolveChangeThemeColor(intent: Intent.ChangeThemeColor) {
+            themeColorsDataSource.changeThemeColor(intent.themeColor, intent.color)
+            dispatch(Message.SelectThemeColorToChange(null))
         }
     }
 

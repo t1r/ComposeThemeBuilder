@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
+import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent.ContentState
 import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent.Model
 
 @Composable
@@ -42,68 +43,89 @@ fun MaterialColorsPalletContent(
                 .background(Color.White)
         ),
     ) {
-        MaterialColorsPalletElementWidget(
-            modifier = Modifier.fillMaxWidth(),
-            colorTitle = "Primary",
-            onColorTitle = "On Primary",
-            color = primaryColor,
-            onColor = onPrimaryColor,
-            onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.Primary) },
-            onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnPrimary) },
-        )
-        MaterialColorsPalletElementWidget(
-            modifier = Modifier.fillMaxWidth(),
-            colorTitle = "Primary Variant",
-            onColorTitle = "On Primary Variant",
-            color = primaryVariantColor,
-            onColor = onPrimaryColor,
-            onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.PrimaryVariant) },
-            onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnPrimary) },
-        )
-        MaterialColorsPalletElementWidget(
-            modifier = Modifier.fillMaxWidth(),
-            colorTitle = "Secondary",
-            onColorTitle = "On Secondary",
-            color = secondaryColor,
-            onColor = onSecondaryColor,
-            onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.Secondary) },
-            onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnSecondary) },
-        )
-        MaterialColorsPalletElementWidget(
-            modifier = Modifier.fillMaxWidth(),
-            colorTitle = "Secondary Variant",
-            onColorTitle = "On Secondary Variant",
-            color = secondaryVariantColor,
-            onColor = onSecondaryColor,
-            onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.SecondaryVariant) },
-            onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnSecondary) },
-        )
-        MaterialColorsPalletElementWidget(
-            modifier = Modifier.fillMaxWidth(),
-            colorTitle = "Background",
-            onColorTitle = "On Background",
-            color = backgroundColor,
-            onColor = onBackgroundColor,
-            onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.Background) },
-            onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnBackground) },
-        )
-        MaterialColorsPalletElementWidget(
-            modifier = Modifier.fillMaxWidth(),
-            colorTitle = "Surface",
-            onColorTitle = "On Surface",
-            color = surfaceColor,
-            onColor = onSurfaceColor,
-            onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.Surface) },
-            onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnSurface) },
-        )
-        MaterialColorsPalletElementWidget(
-            modifier = Modifier.fillMaxWidth(),
-            colorTitle = "Error",
-            onColorTitle = "On Error",
-            color = errorColor,
-            onColor = onErrorColor,
-            onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.Error) },
-            onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnError) },
-        )
+        when (val contentState = model.contentState) {
+            is ContentState.Normal -> {
+                MaterialColorsPalletElementWidget(
+                    modifier = Modifier.fillMaxWidth(),
+                    colorTitle = "Primary",
+                    onColorTitle = "On Primary",
+                    color = primaryColor,
+                    onColor = onPrimaryColor,
+                    onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.Primary) },
+                    onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnPrimary) },
+                )
+                MaterialColorsPalletElementWidget(
+                    modifier = Modifier.fillMaxWidth(),
+                    colorTitle = "Primary Variant",
+                    onColorTitle = "On Primary Variant",
+                    color = primaryVariantColor,
+                    onColor = onPrimaryColor,
+                    onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.PrimaryVariant) },
+                    onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnPrimary) },
+                )
+                MaterialColorsPalletElementWidget(
+                    modifier = Modifier.fillMaxWidth(),
+                    colorTitle = "Secondary",
+                    onColorTitle = "On Secondary",
+                    color = secondaryColor,
+                    onColor = onSecondaryColor,
+                    onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.Secondary) },
+                    onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnSecondary) },
+                )
+                MaterialColorsPalletElementWidget(
+                    modifier = Modifier.fillMaxWidth(),
+                    colorTitle = "Secondary Variant",
+                    onColorTitle = "On Secondary Variant",
+                    color = secondaryVariantColor,
+                    onColor = onSecondaryColor,
+                    onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.SecondaryVariant) },
+                    onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnSecondary) },
+                )
+                MaterialColorsPalletElementWidget(
+                    modifier = Modifier.fillMaxWidth(),
+                    colorTitle = "Background",
+                    onColorTitle = "On Background",
+                    color = backgroundColor,
+                    onColor = onBackgroundColor,
+                    onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.Background) },
+                    onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnBackground) },
+                )
+                MaterialColorsPalletElementWidget(
+                    modifier = Modifier.fillMaxWidth(),
+                    colorTitle = "Surface",
+                    onColorTitle = "On Surface",
+                    color = surfaceColor,
+                    onColor = onSurfaceColor,
+                    onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.Surface) },
+                    onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnSurface) },
+                )
+                MaterialColorsPalletElementWidget(
+                    modifier = Modifier.fillMaxWidth(),
+                    colorTitle = "Error",
+                    onColorTitle = "On Error",
+                    color = errorColor,
+                    onColor = onErrorColor,
+                    onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.Error) },
+                    onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnError) },
+                )
+            }
+
+            is ContentState.SelectedMode -> {
+//                MaterialColorsPalletElementWidget(
+//                    modifier = Modifier.fillMaxWidth(),
+//                    colorTitle = "Error",
+//                    onColorTitle = "On Error",
+//                    color = errorColor,
+//                    onColor = onErrorColor,
+//                    onColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.Error) },
+//                    onOnColorClicked = { component.onThemeColorToChangeSelected(ThemeColorsEnum.OnError) },
+//                )
+                MaterialPalletWidget(
+                    materialColors = model.materialColors,
+                    onColorSelected = { component.onColorSelected(contentState.model, it) },
+                    columnScope = this,
+                )
+            }
+        }
     }
 }
