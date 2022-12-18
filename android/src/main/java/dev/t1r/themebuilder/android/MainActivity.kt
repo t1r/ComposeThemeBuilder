@@ -19,16 +19,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val defaultComponentContext = defaultComponentContext()
+            val loggingStoreFactory = LoggingStoreFactory(TimeTravelStoreFactory())
+            val themeColorsRepository = ThemeColorsRepositoryImpl(ThemeColorsDataSource())
             RootContent(
                 component = RootComponentImpl(
                     componentContext = defaultComponentContext,
-                    storeFactory = LoggingStoreFactory(TimeTravelStoreFactory()),
-                    themeColorsRepository = ThemeColorsRepositoryImpl(ThemeColorsDataSource()),
+                    storeFactory = loggingStoreFactory,
+                    themeColorsRepository = themeColorsRepository,
                 ),
                 materialColorsPalletComponent = MaterialColorsPalletComponentImpl(
                     componentContext = defaultComponentContext,
-                    storeFactory = LoggingStoreFactory(TimeTravelStoreFactory()),
-                    themeColorsDataSource = ThemeColorsRepositoryImpl(ThemeColorsDataSource()),
+                    storeFactory = loggingStoreFactory,
+                    themeColorsDataSource = themeColorsRepository,
                     materialColorsDataSource = MaterialColorsRepositoryImpl(MaterialColorsDataSource()),
                 ),
             )

@@ -16,16 +16,19 @@ import dev.t1r.themebuilder.ui.compose.RootContent
 
 fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
+        val defaultComponentContext = DefaultComponentContext(LifecycleRegistry())
+        val loggingStoreFactory = LoggingStoreFactory(TimeTravelStoreFactory())
+        val themeColorsRepository = ThemeColorsRepositoryImpl(ThemeColorsDataSource())
         RootContent(
             RootComponentImpl(
-                componentContext = DefaultComponentContext(LifecycleRegistry()),
-                storeFactory = LoggingStoreFactory(TimeTravelStoreFactory()),
-                themeColorsRepository = ThemeColorsRepositoryImpl(ThemeColorsDataSource()),
+                componentContext = defaultComponentContext,
+                storeFactory = loggingStoreFactory,
+                themeColorsRepository = themeColorsRepository,
             ),
             materialColorsPalletComponent = MaterialColorsPalletComponentImpl(
-                componentContext = DefaultComponentContext(LifecycleRegistry()),
-                storeFactory = LoggingStoreFactory(TimeTravelStoreFactory()),
-                themeColorsDataSource = ThemeColorsRepositoryImpl(ThemeColorsDataSource()),
+                componentContext = defaultComponentContext,
+                storeFactory = loggingStoreFactory,
+                themeColorsDataSource = themeColorsRepository,
                 materialColorsDataSource = MaterialColorsRepositoryImpl(MaterialColorsDataSource()),
             ),
         )
