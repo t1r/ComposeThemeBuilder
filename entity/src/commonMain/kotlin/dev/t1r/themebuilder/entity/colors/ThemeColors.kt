@@ -16,17 +16,17 @@ data class ThemeColors(
     val isLight: Boolean = true,
 )
 
-sealed class ThemeColorsEnum {
-    object Primary : ThemeColorsEnum()
-    object PrimaryVariant : ThemeColorsEnum()
-    object Secondary : ThemeColorsEnum()
-    object SecondaryVariant : ThemeColorsEnum()
-    object Background : ThemeColorsEnum()
-    object Surface : ThemeColorsEnum()
-    object Error : ThemeColorsEnum()
-    object OnPrimary : ThemeColorsEnum()
-    object OnSecondary : ThemeColorsEnum()
-    object OnBackground : ThemeColorsEnum()
-    object OnSurface : ThemeColorsEnum()
-    object OnError : ThemeColorsEnum()
+sealed class ThemeColorsEnum(val title: String) {
+    object Primary : ThemeColorsEnum("Primary")
+    object PrimaryVariant : ThemeColorsEnum("Primary Variant")
+    object Secondary : ThemeColorsEnum("Secondary")
+    object SecondaryVariant : ThemeColorsEnum("Secondary Variant")
+    object Background : ThemeColorsEnum("Background")
+    object Surface : ThemeColorsEnum("Surface")
+    object Error : ThemeColorsEnum("Error")
+    object OnPrimary : ThemeColorsEnum("On Primary")
+    object OnSecondary : ThemeColorsEnum("On Secondary")
+    object OnBackground : ThemeColorsEnum("On Background")
+    object OnSurface : ThemeColorsEnum("On Surface")
+    object OnError : ThemeColorsEnum("On Error")
 }
