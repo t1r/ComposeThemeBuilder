@@ -69,7 +69,6 @@ internal class MaterialColorsPalletStoreProvider constructor(
 
         private fun resolveSelectColorCandidate(intent: Intent.SelectColorCandidate) {
             themeColorsDataSource.changeThemeColor(intent.themeColor, intent.color)
-            dispatch(Message.SelectThemeColorToChange(null))
         }
 
         private fun resolveCancelSelectColor(state: State) {

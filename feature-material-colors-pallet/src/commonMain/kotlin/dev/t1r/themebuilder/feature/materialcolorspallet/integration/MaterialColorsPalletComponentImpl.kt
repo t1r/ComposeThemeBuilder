@@ -40,7 +40,7 @@ class MaterialColorsPalletComponentImpl constructor(
         store.accept(Intent.CancelSelectColor)
     }
 
-    override fun onConfirmSelectedClicked(themeColor: ThemeColorsEnum, color: ColorModel) {
+    override fun onConfirmSelectedClicked() {
         store.accept(Intent.ConfirmSelectedColor)
     }
 }

@@ -162,14 +162,14 @@ fun MaterialColorsPalletContent(
                             modifier = Modifier.padding(end = 16.dp),
                             content = {
                                 Text(
-                                    text = "Confirm",
+                                    text = "Cancel",
                                     style = TextStyle(
                                         fontWeight = FontWeight.Bold,
                                         color = Color(contentState.oppositeColor),
                                     )
                                 )
                             },
-                            onClick = {},
+                            onClick = { component.onCancelSelectClicked() },
                         )
                         OutlinedButton(
                             content = {
@@ -181,7 +181,7 @@ fun MaterialColorsPalletContent(
                                     )
                                 )
                             },
-                            onClick = {},
+                            onClick = { component.onConfirmSelectedClicked() },
                         )
                     }
                 }
@@ -206,12 +206,9 @@ fun MaterialColorsPalletContent(
                             row.items.forEach { item ->
                                 Box(
                                     modifier = Modifier
-                                        .clickable(onClick = {
-                                            component.onColorCandidateSelected(
-                                                contentState.model,
-                                                item
-                                            )
-                                        })
+                                        .clickable(
+                                            onClick = { component.onColorCandidateSelected(contentState.model, item) },
+                                        )
                                         .background(Color(item.color))
                                         .padding(16.dp),
                                 ) {
