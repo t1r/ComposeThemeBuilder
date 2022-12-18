@@ -1117,5 +1117,18 @@ class MaterialColorsDataSource {
                 ),
             ),
         ),
+        ColorGroup(
+            title = "Base",
+            items = listOf(
+                ColorModel(
+                    title = "White",
+                    color = 0xFFFFFFFF,
+                ),
+                ColorModel(
+                    title = "Black",
+                    color = 0xFF000000,
+                ),
+            ),
+        ),
     )
 }
