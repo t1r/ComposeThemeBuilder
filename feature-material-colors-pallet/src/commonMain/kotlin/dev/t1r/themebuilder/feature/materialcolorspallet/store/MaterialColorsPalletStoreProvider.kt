@@ -33,7 +33,7 @@ internal class MaterialColorsPalletStoreProvider constructor(
     private sealed class Message {
         data class UpdateThemeColors(val model: ThemeColors) : Message()
         data class UpdateMaterialColors(val list: List<ColorGroup>) : Message()
-        data class SelectThemeColorToChange(val color: ThemeColorsEnum?) : Message()
+        data class SelectThemeColorToChange(val model: Pair<ThemeColorsEnum, Long>?) : Message()
     }
 
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Message, Label>() {
@@ -49,8 +49,26 @@ internal class MaterialColorsPalletStoreProvider constructor(
             intent: Intent,
             getState: () -> State,
         ): Unit = when (intent) {
-            is Intent.SelectThemeColorToChange -> dispatch(Message.SelectThemeColorToChange(intent.color))
+            is Intent.SelectThemeColorToChange -> resolveSelectThemeColorToChange(getState(), intent.color)
             is Intent.ChangeThemeColor -> resolveChangeThemeColor(intent)
+        }
+
+        private fun resolveSelectThemeColorToChange(state: State, color: ThemeColorsEnum) {
+            val previousColor = when (color) {
+                ThemeColorsEnum.Background -> state.themeColorsModel.background
+                ThemeColorsEnum.Error -> state.themeColorsModel.error
+                ThemeColorsEnum.OnBackground -> state.themeColorsModel.onBackground
+                ThemeColorsEnum.OnError -> state.themeColorsModel.onError
+                ThemeColorsEnum.OnPrimary -> state.themeColorsModel.onPrimary
+                ThemeColorsEnum.OnSecondary -> state.themeColorsModel.onSecondary
+                ThemeColorsEnum.OnSurface -> state.themeColorsModel.onSurface
+                ThemeColorsEnum.Primary -> state.themeColorsModel.primary
+                ThemeColorsEnum.PrimaryVariant -> state.themeColorsModel.primaryVariant
+                ThemeColorsEnum.Secondary -> state.themeColorsModel.secondary
+                ThemeColorsEnum.SecondaryVariant -> state.themeColorsModel.secondaryVariant
+                ThemeColorsEnum.Surface -> state.themeColorsModel.surface
+            }
+            dispatch(Message.SelectThemeColorToChange(color to previousColor))
         }
 
         private fun resolveChangeThemeColor(intent: Intent.ChangeThemeColor) {
@@ -70,7 +88,7 @@ internal class MaterialColorsPalletStoreProvider constructor(
             )
 
             is Message.SelectThemeColorToChange -> copy(
-                themeColorToChange = msg.color,
+                themeColorToChange = msg.model,
             )
         }
     }

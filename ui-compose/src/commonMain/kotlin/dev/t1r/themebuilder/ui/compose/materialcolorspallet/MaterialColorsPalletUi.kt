@@ -148,8 +148,8 @@ fun MaterialColorsPalletContent(
                     key = "title_key"
                 ) {
                     Text(
-                        modifier = Modifier.fillMaxWidth().padding(16.dp),
-                        text = contentState.model.title,
+                        modifier = Modifier.background(Color(contentState.model.second)).fillMaxWidth().padding(16.dp),
+                        text = contentState.model.first.title,
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = Color.Black,
@@ -177,7 +177,7 @@ fun MaterialColorsPalletContent(
                             row.items.forEach { item ->
                                 Box(
                                     modifier = Modifier
-                                        .clickable(onClick = { component.onColorSelected(contentState.model, item) })
+                                        .clickable(onClick = { component.onColorSelected(contentState.model.first, item) })
                                         .background(Color(item.color))
                                         .padding(16.dp),
                                 ) {

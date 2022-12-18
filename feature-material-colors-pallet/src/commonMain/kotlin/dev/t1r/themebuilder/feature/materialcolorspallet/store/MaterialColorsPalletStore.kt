@@ -10,7 +10,7 @@ interface MaterialColorsPalletStore : Store<Intent, State, Label> {
     data class State(
         val themeColorsModel: ThemeColors = ThemeColors(),
         val materialColors: List<ColorGroup> = emptyList(),
-        val themeColorToChange: ThemeColorsEnum? = null,
+        val themeColorToChange: Pair<ThemeColorsEnum, Long>? = null,
     )
 
     sealed class Action {
