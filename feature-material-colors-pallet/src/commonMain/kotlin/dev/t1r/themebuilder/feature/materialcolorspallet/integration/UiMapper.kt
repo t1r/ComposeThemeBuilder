@@ -9,7 +9,11 @@ internal val stateToModel: MaterialColorsPalletStore.State.() -> MaterialColorsP
         MaterialColorsPalletComponent.Model(
             colors = themeColorsModel,
             materialColors = materialColors,
-            contentState = if (themeColorToChange != null) ContentState.SelectedMode(themeColorToChange)
+            contentState = if (themeColorToChange != null) ContentState.SelectedMode(
+                themeColorToChange.marker,
+                themeColorToChange.previousColor,
+                themeColorToChange.oppositeColor,
+            )
             else ContentState.Normal
         )
     }

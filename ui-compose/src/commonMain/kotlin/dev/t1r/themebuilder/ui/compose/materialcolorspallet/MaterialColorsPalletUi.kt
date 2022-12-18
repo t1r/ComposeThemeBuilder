@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -147,14 +149,41 @@ fun MaterialColorsPalletContent(
                 item(
                     key = "title_key"
                 ) {
-                    Text(
-                        modifier = Modifier.background(Color(contentState.model.second)).fillMaxWidth().padding(16.dp),
-                        text = contentState.model.first.title,
-                        style = TextStyle(
-                            fontWeight = FontWeight.Bold,
-                            color = Color.Black,
+                    Row(modifier = Modifier.background(Color(contentState.color)).fillMaxWidth()) {
+                        Text(
+                            modifier = Modifier.weight(1F).padding(16.dp),
+                            text = contentState.model.title,
+                            style = TextStyle(
+                                fontWeight = FontWeight.Bold,
+                                color = Color(contentState.oppositeColor),
+                            )
                         )
-                    )
+                        TextButton(
+                            modifier = Modifier.padding(end = 16.dp),
+                            content = {
+                                Text(
+                                    text = "Confirm",
+                                    style = TextStyle(
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color(contentState.oppositeColor),
+                                    )
+                                )
+                            },
+                            onClick = {},
+                        )
+                        OutlinedButton(
+                            content = {
+                                Text(
+                                    text = "Confirm",
+                                    style = TextStyle(
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color(contentState.oppositeColor),
+                                    )
+                                )
+                            },
+                            onClick = {},
+                        )
+                    }
                 }
                 items(
                     items = model.materialColors,
@@ -177,7 +206,12 @@ fun MaterialColorsPalletContent(
                             row.items.forEach { item ->
                                 Box(
                                     modifier = Modifier
-                                        .clickable(onClick = { component.onColorSelected(contentState.model.first, item) })
+                                        .clickable(onClick = {
+                                            component.onColorCandidateSelected(
+                                                contentState.model,
+                                                item
+                                            )
+                                        })
                                         .background(Color(item.color))
                                         .padding(16.dp),
                                 ) {

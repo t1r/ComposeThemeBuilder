@@ -30,3 +30,43 @@ sealed class ThemeColorsEnum(val title: String) {
     object OnSurface : ThemeColorsEnum("On Surface")
     object OnError : ThemeColorsEnum("On Error")
 }
+
+fun getColorByThemeColorMarker(
+    marker: ThemeColorsEnum,
+    themeColors: ThemeColors,
+): Long {
+    return when (marker) {
+        ThemeColorsEnum.Background -> themeColors.background
+        ThemeColorsEnum.Error -> themeColors.error
+        ThemeColorsEnum.OnBackground -> themeColors.onBackground
+        ThemeColorsEnum.OnError -> themeColors.onError
+        ThemeColorsEnum.OnPrimary -> themeColors.onPrimary
+        ThemeColorsEnum.OnSecondary -> themeColors.onSecondary
+        ThemeColorsEnum.OnSurface -> themeColors.onSurface
+        ThemeColorsEnum.Primary -> themeColors.primary
+        ThemeColorsEnum.PrimaryVariant -> themeColors.primaryVariant
+        ThemeColorsEnum.Secondary -> themeColors.secondary
+        ThemeColorsEnum.SecondaryVariant -> themeColors.secondaryVariant
+        ThemeColorsEnum.Surface -> themeColors.surface
+    }
+}
+
+fun getOppositeColorByThemeColorMarker(
+    marker: ThemeColorsEnum,
+    themeColors: ThemeColors,
+): Long {
+    return when (marker) {
+        ThemeColorsEnum.Background -> themeColors.onBackground
+        ThemeColorsEnum.Error -> themeColors.onError
+        ThemeColorsEnum.OnBackground -> themeColors.background
+        ThemeColorsEnum.OnError -> themeColors.error
+        ThemeColorsEnum.OnPrimary -> themeColors.primary
+        ThemeColorsEnum.OnSecondary -> themeColors.secondary
+        ThemeColorsEnum.OnSurface -> themeColors.surface
+        ThemeColorsEnum.Primary -> themeColors.onPrimary
+        ThemeColorsEnum.PrimaryVariant -> themeColors.onPrimary
+        ThemeColorsEnum.Secondary -> themeColors.onSecondary
+        ThemeColorsEnum.SecondaryVariant -> themeColors.onSecondary
+        ThemeColorsEnum.Surface -> themeColors.onSurface
+    }
+}

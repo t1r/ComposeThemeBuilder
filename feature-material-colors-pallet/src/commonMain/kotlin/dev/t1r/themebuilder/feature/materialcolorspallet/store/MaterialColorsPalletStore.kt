@@ -10,7 +10,13 @@ interface MaterialColorsPalletStore : Store<Intent, State, Label> {
     data class State(
         val themeColorsModel: ThemeColors = ThemeColors(),
         val materialColors: List<ColorGroup> = emptyList(),
-        val themeColorToChange: Pair<ThemeColorsEnum, Long>? = null,
+        val themeColorToChange: ThemeColorToChange? = null,
+    )
+
+    data class ThemeColorToChange(
+        val marker: ThemeColorsEnum,
+        val previousColor: Long,
+        val oppositeColor: Long,
     )
 
     sealed class Action {
@@ -20,7 +26,9 @@ interface MaterialColorsPalletStore : Store<Intent, State, Label> {
 
     sealed class Intent {
         data class SelectThemeColorToChange(val color: ThemeColorsEnum) : Intent()
-        data class ChangeThemeColor(val themeColor: ThemeColorsEnum, val color: Long) : Intent()
+        data class SelectColorCandidate(val themeColor: ThemeColorsEnum, val color: Long) : Intent()
+        object CancelSelectColor : Intent()
+        object ConfirmSelectedColor : Intent()
     }
 
     sealed class Label
