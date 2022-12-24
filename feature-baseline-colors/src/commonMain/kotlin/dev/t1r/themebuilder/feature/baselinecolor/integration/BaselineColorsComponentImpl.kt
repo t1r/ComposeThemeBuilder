@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.map
 class BaselineColorsComponentImpl constructor(
     componentContext: ComponentContext,
     storeFactory: StoreFactory,
+    params: BaselineColorsComponent.Params,
     themeColorsRepository: ThemeColorsRepository,
 ) : BaselineColorsComponent, ComponentContext by componentContext {
     private val store = BaselineColorsStoreProvider(
@@ -21,4 +22,5 @@ class BaselineColorsComponentImpl constructor(
     ).provide()
 
     override val models: Flow<Model> = store.states.map { stateToModel(it) }
+    override val navigationModel = params.navigationModel
 }
