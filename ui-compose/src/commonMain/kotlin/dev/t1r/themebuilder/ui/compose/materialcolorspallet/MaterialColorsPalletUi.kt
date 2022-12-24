@@ -8,12 +8,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.Divider
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -149,41 +151,77 @@ fun MaterialColorsPalletContent(
                 item(
                     key = "title_key"
                 ) {
-                    Row(modifier = Modifier.background(Color(contentState.color)).fillMaxWidth()) {
+                    Row(modifier = Modifier.fillMaxWidth().background(Color.Red)) {
+                        Box(
+                            modifier = Modifier
+                                .background(Color(contentState.previousColor))
+                                .weight(1F),
+                        ) {
+                            Text(
+                                modifier = Modifier.fillMaxWidth().padding(16.dp),
+                                text = "New ${contentState.model.title}",
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color(contentState.oppositeColor),
+                                )
+                            )
+                        }
+                        Box(
+                            modifier = Modifier
+                                .background(Color(contentState.newColor))
+                                .weight(1F),
+                        ) {
+                            Text(
+                                modifier = Modifier.fillMaxWidth().padding(16.dp),
+                                text = "Old ${contentState.model.title}",
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color(contentState.oppositeColor),
+                                )
+                            )
+                        }
+                    }
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
                         Text(
-                            modifier = Modifier.weight(1F).padding(16.dp),
-                            text = contentState.model.title,
+                            modifier = Modifier.weight(1F).padding(start = 16.dp),
+                            text = "Confirm new selected ${contentState.model.title} color",
                             style = TextStyle(
-                                fontWeight = FontWeight.Bold,
-                                color = Color(contentState.oppositeColor),
+                                fontWeight = FontWeight.Medium,
+                                color = Color.Black,
                             )
                         )
                         TextButton(
-                            modifier = Modifier.padding(end = 16.dp),
+                            modifier = Modifier.padding(end = 8.dp),
                             content = {
                                 Text(
                                     text = "Cancel",
                                     style = TextStyle(
-                                        fontWeight = FontWeight.Bold,
-                                        color = Color(contentState.oppositeColor),
+                                        fontWeight = FontWeight.Medium,
+                                        color = Color.Black,
                                     )
                                 )
                             },
                             onClick = { component.onCancelSelectClicked() },
                         )
                         OutlinedButton(
+                            modifier = Modifier.padding(end = 16.dp),
                             content = {
                                 Text(
                                     text = "Confirm",
                                     style = TextStyle(
-                                        fontWeight = FontWeight.Bold,
-                                        color = Color(contentState.oppositeColor),
+                                        fontWeight = FontWeight.Medium,
+                                        color = Color.Black,
                                     )
                                 )
                             },
                             onClick = { component.onConfirmSelectedClicked() },
                         )
                     }
+                    Divider(modifier = Modifier.fillMaxWidth())
                 }
                 items(
                     items = model.materialColors,

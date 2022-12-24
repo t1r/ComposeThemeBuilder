@@ -19,7 +19,8 @@ interface MaterialColorsPalletComponent {
         object Normal : ContentState()
         data class SelectedMode(
             val model: ThemeColorsEnum,
-            val color: Long,
+            val newColor: Long,
+            val previousColor: Long,
             val oppositeColor: Long,
         ) : ContentState()
     }
