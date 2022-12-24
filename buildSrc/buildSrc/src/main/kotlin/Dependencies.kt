@@ -19,6 +19,7 @@ object Deps {
     object Kotlin {
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+        const val coroutinesSwing = "org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.6.4"
     }
 
     object AndroidX {
@@ -54,6 +55,7 @@ object Module {
     object Feature {
         const val root = ":feature-root"
         const val baselineColor = ":feature-baseline-colors"
+        const val materialColorsPallet = ":feature-material-colors-pallet"
     }
 
     object UI {

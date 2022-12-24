@@ -1,14 +1,7 @@
-package dev.t1r.themebuilder.data.colors
+package dev.t1r.themebuilder.data.colors.theme
 
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-
-class ThemeColorsDataSourceImpl : ThemeColorsDataSource {
-    private val themeColors = MutableStateFlow(provideDefaultColors())
-
-    override fun themeColorsState(): StateFlow<ThemeColorsModel> = themeColors
-
-    private fun provideDefaultColors(): ThemeColorsModel {
+class ThemeColorsDataSource {
+    internal fun provideDefaultColors(): ThemeColorsModel {
         return ThemeColorsModel(
             primary = 0xFF6200EE,
             primaryVariant = 0xFF3700B3,

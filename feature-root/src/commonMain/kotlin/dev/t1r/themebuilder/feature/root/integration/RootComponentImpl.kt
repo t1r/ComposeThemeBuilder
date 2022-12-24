@@ -3,18 +3,20 @@ package dev.t1r.themebuilder.feature.root.integration
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
+import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.mvikotlin.extensions.coroutines.states
-import dev.t1r.themebuilder.feature.root.RootComponent
-import dev.t1r.themebuilder.feature.root.RootComponent.*
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
 import com.arkivanov.mvikotlin.core.store.StoreFactory
-import dev.t1r.themebuilder.data.colors.ThemeColorsDataSource
+import com.arkivanov.mvikotlin.extensions.coroutines.states
+import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
+import dev.t1r.themebuilder.entity.navigation.DrawerNavigation
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.integration.BaselineColorsComponentImpl
-import dev.t1r.themebuilder.feature.root.store.RootStore
+import dev.t1r.themebuilder.feature.root.RootComponent
+import dev.t1r.themebuilder.feature.root.RootComponent.Child
+import dev.t1r.themebuilder.feature.root.RootComponent.Model
 import dev.t1r.themebuilder.feature.root.store.RootStoreProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -22,8 +24,8 @@ import kotlinx.coroutines.flow.map
 class RootComponentImpl internal constructor(
     componentContext: ComponentContext,
     storeFactory: StoreFactory,
-    colorsDataSource: ThemeColorsDataSource,
-    private val baselineColor: (ComponentContext) -> BaselineColorsComponent,
+    themeColorsRepository: ThemeColorsRepository,
+    private val baselineColor: (ComponentContext, BaselineColorsComponent.Params) -> BaselineColorsComponent,
 ) : RootComponent, ComponentContext by componentContext {
     private val navigation = StackNavigation<Configuration>()
     private val stack = childStack(
@@ -35,7 +37,7 @@ class RootComponentImpl internal constructor(
 
     private val store = RootStoreProvider(
         storeFactory = storeFactory,
-        colorsDataSource = colorsDataSource,
+        themeColorsRepository = themeColorsRepository,
     ).provide()
 
     override val childStack: Value<ChildStack<*, Child>> = stack
@@ -44,16 +46,17 @@ class RootComponentImpl internal constructor(
     constructor(
         componentContext: ComponentContext,
         storeFactory: StoreFactory,
-        colorsDataSource: ThemeColorsDataSource,
+        themeColorsRepository: ThemeColorsRepository,
     ) : this(
         componentContext = componentContext,
         storeFactory = storeFactory,
-        colorsDataSource = colorsDataSource,
-        baselineColor = { childContext ->
+        themeColorsRepository = themeColorsRepository,
+        baselineColor = { childContext, params ->
             BaselineColorsComponentImpl(
                 componentContext = childContext,
                 storeFactory = storeFactory,
-                colorsDataSource = colorsDataSource,
+                themeColorsRepository = themeColorsRepository,
+                params = params,
             )
         },
     )
@@ -63,7 +66,15 @@ class RootComponentImpl internal constructor(
         componentContext: ComponentContext,
     ): Child = when (configuration) {
         Configuration.BaselineColor -> Child.BaselineColors(
-            baselineColor(componentContext)
+            baselineColor(
+                componentContext,
+                BaselineColorsComponent.Params(
+                    DrawerNavigation(
+                        navigateToBaselineColors = { navigation.bringToFront(Configuration.BaselineColor) },
+                        navigateToInputForms = {},
+                    )
+                )
+            )
         )
     }
 

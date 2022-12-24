@@ -28,4 +28,5 @@ include(
     ":entity",
     ":feature-root",
     ":feature-baseline-colors",
+    ":feature-material-colors-pallet",
 )
