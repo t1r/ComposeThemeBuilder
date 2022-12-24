@@ -11,7 +11,7 @@ import com.arkivanov.essenty.parcelable.Parcelize
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.states
 import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
-import dev.t1r.themebuilder.entity.navigation.DrawerNavigation
+import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.integration.BaselineColorsComponentImpl
 import dev.t1r.themebuilder.feature.root.RootComponent
@@ -68,18 +68,23 @@ class RootComponentImpl internal constructor(
         Configuration.BaselineColor -> Child.BaselineColors(
             baselineColor(
                 componentContext,
-                BaselineColorsComponent.Params(
-                    DrawerNavigation(
-                        navigateToBaselineColors = { navigation.bringToFront(Configuration.BaselineColor) },
-                        navigateToInputForms = {},
-                    )
-                )
+                BaselineColorsComponent.Params(getDrawerNavigationModel())
             )
         )
+
+        Configuration.InputForms -> Child.InputForms(getDrawerNavigationModel())
     }
+
+    private fun getDrawerNavigationModel(): DrawerNavigationModel = DrawerNavigationModel(
+        navigateToBaselineColors = { navigation.bringToFront(Configuration.BaselineColor) },
+        navigateToInputForms = { navigation.bringToFront(Configuration.InputForms) },
+    )
 
     private sealed class Configuration : Parcelable {
         @Parcelize
         object BaselineColor : Configuration()
+
+        @Parcelize
+        object InputForms : Configuration()
     }
 }
