@@ -128,7 +128,7 @@ fun InputFormsContent(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Switch(
-                        modifier = Modifier.padding(start = 2.dp),
+                        modifier = Modifier.padding(start = 10.dp),
                         checked = isSwitchChecked,
                         onCheckedChange = { isSwitchChecked = it },
                     )
