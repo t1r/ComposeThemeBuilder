@@ -11,11 +11,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import dev.t1r.themebuilder.entity.navigation.DrawerNavigation
+import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 
 @Composable
 internal fun AppMenuWidget(
-    navigationModel: DrawerNavigation,
+    navigationModel: DrawerNavigationModel,
     onNavigationAction: () -> Unit,
     modifier: Modifier = Modifier,
 ) {

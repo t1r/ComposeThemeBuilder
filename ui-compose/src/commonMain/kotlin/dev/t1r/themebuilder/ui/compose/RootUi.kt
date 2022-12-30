@@ -67,7 +67,12 @@ fun RootContent(
                     ) {
                         when (val child = it.instance) {
                             is Child.BaselineColors -> BaselineColorsContent(
-                                child.component,
+                                component = child.component,
+                                modifier = Modifier.fillMaxSize(),
+                            )
+
+                            is Child.InputForms -> InputFormsContent(
+                                navigationModel = child.model,
                                 modifier = Modifier.fillMaxSize(),
                             )
                         }
