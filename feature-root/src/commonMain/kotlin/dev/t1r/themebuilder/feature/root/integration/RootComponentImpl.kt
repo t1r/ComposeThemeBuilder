@@ -3,8 +3,8 @@ package dev.t1r.themebuilder.feature.root.integration
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
-import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.replaceCurrent
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
@@ -76,8 +76,8 @@ class RootComponentImpl internal constructor(
     }
 
     private fun getDrawerNavigationModel(): DrawerNavigationModel = DrawerNavigationModel(
-        navigateToBaselineColors = { navigation.bringToFront(Configuration.BaselineColor) },
-        navigateToInputForms = { navigation.bringToFront(Configuration.InputForms) },
+        navigateToBaselineColors = { navigation.replaceCurrent(Configuration.BaselineColor) },
+        navigateToInputForms = { navigation.replaceCurrent(Configuration.InputForms) },
     )
 
     private sealed class Configuration : Parcelable {
