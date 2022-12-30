@@ -33,6 +33,7 @@ fun InputFormsContent(
     var isSwitchChecked by remember { mutableStateOf(false) }
     var outlinedTextFieldText by remember { mutableStateOf("") }
     var textFieldText by remember { mutableStateOf("") }
+    var sliderPosition by remember { mutableStateOf(0F) }
 
     Scaffold(
         modifier = modifier,
@@ -136,6 +137,11 @@ fun InputFormsContent(
                         text = "Switch",
                     )
                 }
+                Slider(
+                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
+                    value = sliderPosition,
+                    onValueChange = { sliderPosition = it },
+                )
             }
         },
     )
