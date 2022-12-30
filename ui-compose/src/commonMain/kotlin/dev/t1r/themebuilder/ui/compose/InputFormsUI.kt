@@ -1,16 +1,14 @@
 package dev.t1r.themebuilder.ui.compose
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -29,6 +27,12 @@ fun InputFormsContent(
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scaffoldState = rememberScaffoldState(drawerState)
     val keyboardController = LocalSoftwareKeyboardController.current
+
+    var isRadioButtonSelected by remember { mutableStateOf(false) }
+    var isCheckBoxChecked by remember { mutableStateOf(false) }
+    var isSwitchChecked by remember { mutableStateOf(false) }
+    var outlinedTextFieldText by remember { mutableStateOf("") }
+    var textFieldText by remember { mutableStateOf("") }
 
     Scaffold(
         modifier = modifier,
@@ -66,22 +70,72 @@ fun InputFormsContent(
             ) {
                 OutlinedTextField(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp, horizontal = 16.dp),
-                    value = "Text",
-                    onValueChange = {},
+                    value = outlinedTextFieldText,
+                    onValueChange = { outlinedTextFieldText = it },
+                    placeholder = { Text("OutlinedTextField") },
+                    label = { Text("Label") },
+                    trailingIcon = {
+                        IconButton(
+                            content = { Icon(Icons.Filled.Clear, "Clear") },
+                            onClick = { outlinedTextFieldText = "" },
+                        )
+                    },
                 )
                 TextField(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp, horizontal = 16.dp),
-                    value = "Text",
-                    onValueChange = {},
+                    value = textFieldText,
+                    onValueChange = { textFieldText = it },
+                    placeholder = { Text("OutlinedTextField") },
+                    label = { Text("Label") },
+                    trailingIcon = {
+                        IconButton(
+                            content = { Icon(Icons.Filled.Clear, "Clear") },
+                            onClick = { textFieldText = "" },
+                        )
+                    },
                 )
-                RadioButton(
-                    selected = false,
-                    onClick = {},
-                )
-                Checkbox(
-                    checked = false,
-                    onCheckedChange = {},
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    RadioButton(
+                        modifier = Modifier.padding(start = 2.dp),
+                        selected = isRadioButtonSelected,
+                        onClick = { isRadioButtonSelected = !isRadioButtonSelected },
+                    )
+                    Text(
+                        modifier = Modifier.weight(1F).padding(horizontal = 16.dp),
+                        text = "RadioButton",
+                    )
+                }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Checkbox(
+                        modifier = Modifier.padding(start = 2.dp),
+                        checked = isCheckBoxChecked,
+                        onCheckedChange = { isCheckBoxChecked = it },
+                    )
+                    Text(
+                        modifier = Modifier.weight(1F).padding(horizontal = 16.dp),
+                        text = "Checkbox",
+                    )
+                }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Switch(
+                        modifier = Modifier.padding(start = 2.dp),
+                        checked = isSwitchChecked,
+                        onCheckedChange = { isSwitchChecked = it },
+                    )
+                    Text(
+                        modifier = Modifier.weight(1F).padding(horizontal = 16.dp),
+                        text = "Switch",
+                    )
+                }
             }
         },
     )
