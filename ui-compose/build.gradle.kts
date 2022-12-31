@@ -15,6 +15,7 @@ kotlin {
                 implementation(project(Module.Feature.root))
                 implementation(project(Module.Feature.baselineColor))
                 implementation(project(Module.Feature.materialColorsPallet))
+                implementation(project(Module.Feature.export))
             }
         }
         val androidMain by getting {

@@ -29,4 +29,5 @@ include(
     ":feature-root",
     ":feature-baseline-colors",
     ":feature-material-colors-pallet",
+    ":feature-export",
 )

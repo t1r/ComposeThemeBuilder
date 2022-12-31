@@ -14,6 +14,8 @@ import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.integration.BaselineColorsComponentImpl
+import dev.t1r.themebuilder.feature.export.ExportComponent
+import dev.t1r.themebuilder.feature.export.integration.ExportComponentImpl
 import dev.t1r.themebuilder.feature.root.RootComponent
 import dev.t1r.themebuilder.feature.root.RootComponent.Child
 import dev.t1r.themebuilder.feature.root.RootComponent.Model
@@ -26,6 +28,7 @@ class RootComponentImpl internal constructor(
     storeFactory: StoreFactory,
     themeColorsRepository: ThemeColorsRepository,
     private val baselineColor: (ComponentContext, BaselineColorsComponent.Params) -> BaselineColorsComponent,
+    private val export: (ComponentContext, ExportComponent.Params) -> ExportComponent,
 ) : RootComponent, ComponentContext by componentContext {
     private val navigation = StackNavigation<Configuration>()
     private val stack = childStack(
@@ -59,6 +62,14 @@ class RootComponentImpl internal constructor(
                 params = params,
             )
         },
+        export = { childContext, params ->
+            ExportComponentImpl(
+                componentContext = childContext,
+                storeFactory = storeFactory,
+                themeColorsRepository = themeColorsRepository,
+                params = params,
+            )
+        },
     )
 
     private fun createChild(
@@ -73,11 +84,19 @@ class RootComponentImpl internal constructor(
         )
 
         Configuration.InputForms -> Child.InputForms(getDrawerNavigationModel())
+
+        Configuration.Export -> Child.Export(
+            export(
+                componentContext,
+                ExportComponent.Params(getDrawerNavigationModel())
+            )
+        )
     }
 
     private fun getDrawerNavigationModel(): DrawerNavigationModel = DrawerNavigationModel(
         navigateToBaselineColors = { navigation.replaceCurrent(Configuration.BaselineColor) },
         navigateToInputForms = { navigation.replaceCurrent(Configuration.InputForms) },
+        navigateToExport = { navigation.replaceCurrent(Configuration.Export) },
     )
 
     private sealed class Configuration : Parcelable {
@@ -86,5 +105,8 @@ class RootComponentImpl internal constructor(
 
         @Parcelize
         object InputForms : Configuration()
+
+        @Parcelize
+        object Export : Configuration()
     }
 }
