@@ -14,11 +14,16 @@ import dev.t1r.themebuilder.feature.materialcolorspallet.integration.MaterialCol
 import dev.t1r.themebuilder.feature.root.integration.RootComponentImpl
 import dev.t1r.themebuilder.ui.compose.RootContent
 
+private val loggingStoreFactory = LoggingStoreFactory(TimeTravelStoreFactory())
+private val themeColorsRepository = ThemeColorsRepositoryImpl(ThemeColorsDataSource())
+private val defaultComponentContext = DefaultComponentContext(LifecycleRegistry())
+
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
-        val defaultComponentContext = DefaultComponentContext(LifecycleRegistry())
-        val loggingStoreFactory = LoggingStoreFactory(TimeTravelStoreFactory())
-        val themeColorsRepository = ThemeColorsRepositoryImpl(ThemeColorsDataSource())
+    Window(
+        onCloseRequest = ::exitApplication,
+        title = "Compose Theme Builder",
+//        icon = rememberVectorPainter(), //TODO
+    ) {
         RootContent(
             RootComponentImpl(
                 componentContext = defaultComponentContext,
