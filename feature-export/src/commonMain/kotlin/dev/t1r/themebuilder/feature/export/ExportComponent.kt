@@ -1,6 +1,5 @@
 package dev.t1r.themebuilder.feature.export
 
-import dev.t1r.themebuilder.entity.colors.ThemeColors
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import kotlinx.coroutines.flow.Flow
 
@@ -9,7 +8,7 @@ interface ExportComponent {
     val navigationModel: DrawerNavigationModel
 
     data class Model(
-        val colors: ThemeColors = ThemeColors(),
+        val exportString: String = "",
     )
 
     data class Params(

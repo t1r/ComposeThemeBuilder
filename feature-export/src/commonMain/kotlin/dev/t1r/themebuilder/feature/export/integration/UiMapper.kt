@@ -6,6 +6,6 @@ import dev.t1r.themebuilder.feature.export.store.ExportStore
 internal val stateToModel: ExportStore.State.() -> ExportComponent.Model =
     {
         ExportComponent.Model(
-            colors = model,
+            exportString = exportString,
         )
     }

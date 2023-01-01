@@ -26,7 +26,7 @@ internal class ExportStoreProvider constructor(
     ) {}
 
     private sealed class Message {
-        data class UpdateColors(val model: ThemeColors) : Message()
+        data class UpdateExportString(val exportString: String) : Message()
     }
 
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Message, Label>() {
@@ -34,14 +34,38 @@ internal class ExportStoreProvider constructor(
             action: Action,
             getState: () -> State,
         ): Unit = when (action) {
-            is Action.UpdateColors -> dispatch(Message.UpdateColors(action.model))
+            is Action.UpdateColors -> handleUpdateColors(action.model)
+        }
+
+        private fun handleUpdateColors(model: ThemeColors) {
+            val exportString = """
+MaterialTheme(
+  colors = Colors(
+    primary = ${model.primary},
+    primaryVariant = primaryVariant,
+    secondary = secondary,
+    secondaryVariant = secondaryVariant,
+    background = background,
+    surface = surface,
+    error = error,
+    onPrimary = onPrimary,
+    onSecondary = onSecondary,
+    onBackground = onBackground,
+    onSurface = onSurface,
+    onError = onError,
+    isLight = isSystemInDarkTheme(),
+  ),
+  content = {},
+)
+""".trimIndent()
+            dispatch(Message.UpdateExportString(exportString))
         }
     }
 
     private object ReducerImpl : Reducer<State, Message> {
         override fun State.reduce(msg: Message): State = when (msg) {
-            is Message.UpdateColors -> copy(
-                model = msg.model,
+            is Message.UpdateExportString -> copy(
+                exportString = msg.exportString,
             )
         }
     }

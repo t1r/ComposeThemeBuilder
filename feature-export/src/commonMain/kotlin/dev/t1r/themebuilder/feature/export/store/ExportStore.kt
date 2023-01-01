@@ -6,7 +6,7 @@ import  dev.t1r.themebuilder.feature.export.store.ExportStore.*
 
 interface ExportStore : Store<Intent, State, Label> {
     data class State(
-        val model: ThemeColors = ThemeColors(),
+        val exportString: String = "",
     )
 
     sealed class Action {
