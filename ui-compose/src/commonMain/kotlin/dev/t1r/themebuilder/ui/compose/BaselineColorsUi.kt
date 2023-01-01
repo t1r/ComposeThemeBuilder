@@ -6,13 +6,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -21,8 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent.Model
-import dev.t1r.themebuilder.ui.compose.appmenu.AppMenuWidget
-import kotlinx.coroutines.launch
+import dev.t1r.themebuilder.ui.compose.common.ScreenContainerWidget
 
 @Composable
 internal fun BaselineColorsContent(
@@ -45,35 +41,9 @@ internal fun BaselineColorsContent(
     val onSurfaceColor by animateColorAsState(Color(model.colors.onSurface))
     val onErrorColor by animateColorAsState(Color(model.colors.onError))
 
-    val coroutineScope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState(DrawerValue.Closed)
-    val scaffoldState = rememberScaffoldState(drawerState)
-
-    Scaffold(
-        modifier = modifier,
-        scaffoldState = scaffoldState,
-        drawerContent = {
-            AppMenuWidget(
-                navigationModel = component.navigationModel,
-                onNavigationAction = { coroutineScope.launch { drawerState.close() } },
-                modifier = Modifier.fillMaxSize(),
-            )
-        },
-        topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    IconButton(
-                        content = {
-                            Icon(Icons.Filled.Menu, "Drawer")
-                        },
-                        onClick = { coroutineScope.launch { drawerState.open() } },
-                    )
-                },
-                title = {
-                    Text("Theme Colors")
-                },
-            )
-        },
+    ScreenContainerWidget(
+        navigationModel = component.navigationModel,
+        title = "Theme Colors",
         content = { pv ->
             Column(
                 modifier = Modifier.fillMaxSize()
@@ -124,6 +94,7 @@ internal fun BaselineColorsContent(
                 )
             }
         },
+        modifier = modifier,
     )
 }
 

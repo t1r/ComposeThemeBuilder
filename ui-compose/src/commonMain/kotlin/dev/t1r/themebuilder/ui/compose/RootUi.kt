@@ -75,6 +75,11 @@ fun RootContent(
                                 navigationModel = child.model,
                                 modifier = Modifier.fillMaxSize(),
                             )
+
+                            is Child.Export -> ExportContent(
+                                component = child.component,
+                                modifier = Modifier.fillMaxSize(),
+                            )
                         }
                     }
                     FloatingActionButton(

@@ -6,28 +6,18 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
-import dev.t1r.themebuilder.ui.compose.appmenu.AppMenuWidget
-import kotlinx.coroutines.launch
+import dev.t1r.themebuilder.ui.compose.common.ScreenContainerWidget
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun InputFormsContent(
     navigationModel: DrawerNavigationModel,
     modifier: Modifier = Modifier,
 ) {
-    val coroutineScope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState(DrawerValue.Closed)
-    val scaffoldState = rememberScaffoldState(drawerState)
-    val keyboardController = LocalSoftwareKeyboardController.current
-
     var isRadioButtonSelected by remember { mutableStateOf(false) }
     var isCheckBoxChecked by remember { mutableStateOf(false) }
     var isSwitchChecked by remember { mutableStateOf(false) }
@@ -35,34 +25,9 @@ fun InputFormsContent(
     var textFieldText by remember { mutableStateOf("") }
     var sliderPosition by remember { mutableStateOf(0F) }
 
-    Scaffold(
-        modifier = modifier,
-        scaffoldState = scaffoldState,
-        drawerContent = {
-            AppMenuWidget(
-                navigationModel = navigationModel,
-                onNavigationAction = { coroutineScope.launch { drawerState.close() } },
-                modifier = Modifier.fillMaxSize(),
-            )
-        },
-        topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    IconButton(
-                        content = {
-                            Icon(Icons.Filled.Menu, "Drawer")
-                        },
-                        onClick = {
-                            keyboardController?.hide()
-                            coroutineScope.launch { drawerState.open() }
-                        },
-                    )
-                },
-                title = {
-                    Text("Input Forms")
-                },
-            )
-        },
+    ScreenContainerWidget(
+        navigationModel = navigationModel,
+        title = "Input Forms",
         content = { pv ->
             Column(
                 modifier = Modifier.fillMaxSize()
@@ -144,5 +109,6 @@ fun InputFormsContent(
                 )
             }
         },
+        modifier = modifier,
     )
 }

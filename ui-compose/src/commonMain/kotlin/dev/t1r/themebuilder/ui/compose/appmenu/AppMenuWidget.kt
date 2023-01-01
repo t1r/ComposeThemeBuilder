@@ -56,5 +56,22 @@ internal fun AppMenuWidget(
                 onNavigationAction()
             },
         )
+        TextButton(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp),
+            content = {
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "Export",
+                    style = TextStyle(
+                        fontWeight = FontWeight.Medium,
+                        color = Color.Black,
+                    )
+                )
+            },
+            onClick = {
+                navigationModel.navigateToExport()
+                onNavigationAction()
+            },
+        )
     }
 }
