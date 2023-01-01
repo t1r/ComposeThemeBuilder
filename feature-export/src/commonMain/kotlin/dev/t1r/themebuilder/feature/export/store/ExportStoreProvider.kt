@@ -41,25 +41,27 @@ internal class ExportStoreProvider constructor(
             val exportString = """
 MaterialTheme(
   colors = Colors(
-    primary = ${model.primary},
-    primaryVariant = primaryVariant,
-    secondary = secondary,
-    secondaryVariant = secondaryVariant,
-    background = background,
-    surface = surface,
-    error = error,
-    onPrimary = onPrimary,
-    onSecondary = onSecondary,
-    onBackground = onBackground,
-    onSurface = onSurface,
-    onError = onError,
-    isLight = isSystemInDarkTheme(),
+    primary = ${mapToColorString(model.primary)},
+    primaryVariant = ${mapToColorString(model.primaryVariant)},
+    secondary = ${mapToColorString(model.secondary)},
+    secondaryVariant = ${mapToColorString(model.secondaryVariant)},
+    background = ${mapToColorString(model.background)},
+    surface = ${mapToColorString(model.surface)},
+    error = ${mapToColorString(model.error)},
+    onPrimary = ${mapToColorString(model.onPrimary)},
+    onSecondary = ${mapToColorString(model.onSecondary)},
+    onBackground = ${mapToColorString(model.onBackground)} ,
+    onSurface = ${mapToColorString(model.onSurface)},
+    onError = ${mapToColorString(model.onError)},
   ),
   content = {},
 )
 """.trimIndent()
             dispatch(Message.UpdateExportString(exportString))
         }
+
+        private fun mapToColorString(from: Long): String =
+            "Color(0x${from.toString(16)})"
     }
 
     private object ReducerImpl : Reducer<State, Message> {
