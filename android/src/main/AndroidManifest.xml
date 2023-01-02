@@ -4,6 +4,7 @@
             android:label="Material Theme Builder"
             android:allowBackup="false"
             android:supportsRtl="true"
+            android:icon="@mipmap/ic_launcher"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
