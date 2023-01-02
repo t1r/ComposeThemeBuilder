@@ -4,6 +4,10 @@ plugins {
     kotlin("android")
 }
 
+apply {
+    from("signingcreds/signing.gradle")
+}
+
 group "dev.t1r.themebuilder"
 version "1.0-SNAPSHOT"
 
