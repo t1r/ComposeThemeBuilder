@@ -25,6 +25,7 @@ import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
 import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent.ContentState
 import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent.Model
+import dev.t1r.themebuilder.ui.compose.common.getContrastColor
 
 @Composable
 fun MaterialColorsPalletContent(
@@ -254,7 +255,7 @@ fun MaterialColorsPalletContent(
                                         text = item.title,
                                         style = TextStyle(
                                             fontWeight = FontWeight.Normal,
-                                            color = Color.Black,
+                                            color = getContrastColor(Color(item.color)),
                                         )
                                     )
                                 }

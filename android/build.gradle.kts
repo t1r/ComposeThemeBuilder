@@ -15,11 +15,13 @@ dependencies {
     implementation(compose.runtime)
     implementation(Deps.AndroidX.appCompat)
     implementation(Deps.AndroidX.Compose.activity)
+    implementation(Deps.AndroidX.Compose.lifecycleRuntime)
 
     implementation(project(Module.UI.compose))
     implementation(project(Module.Feature.root))
     implementation(project(Module.Feature.materialColorsPallet))
     implementation(project(Module.Data.data))
+    implementation(project(Module.entity))
 
     implementation(Deps.Decompose.decompose)
     implementation(Deps.Decompose.extensionsComposeJetbrains)
