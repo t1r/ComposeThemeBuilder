@@ -43,4 +43,8 @@ class MaterialColorsPalletComponentImpl constructor(
     override fun onConfirmSelectedClicked() {
         store.accept(Intent.ConfirmSelectedColor)
     }
+
+    override fun onTextColorChanged(themeColor: ThemeColorsEnum, text: String) {
+        store.accept(Intent.ChangeTextColor(themeColor, text))
+    }
 }
