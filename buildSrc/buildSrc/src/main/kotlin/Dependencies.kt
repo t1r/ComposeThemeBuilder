@@ -46,8 +46,6 @@ object Deps {
         const val mvikotlinExtensionsCoroutines =
             "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:${Versions.mviKotlin}"
     }
-
-    const val multiplatformSettings = "com.russhwolf:multiplatform-settings:1.0.0-RC"
 }
 
 object Module {

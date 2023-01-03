@@ -35,7 +35,7 @@ fun ExportContent(
 
     ScreenContainerWidget(
         navigationModel = component.navigationModel,
-        title = "Input Forms",
+        title = "Export",
         content = { pv ->
             Column(
                 modifier = Modifier

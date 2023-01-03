@@ -17,6 +17,7 @@ interface RootComponent {
         data class InputForms(val model: DrawerNavigationModel) : Child()
         data class ColorsShowcaseComponents(val model: DrawerNavigationModel) : Child()
         data class Export(val component: ExportComponent) : Child()
+        data class About(val model: DrawerNavigationModel) : Child()
     }
 
     data class Model(

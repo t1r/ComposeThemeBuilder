@@ -92,6 +92,8 @@ class RootComponentImpl internal constructor(
                 ExportComponent.Params(getDrawerNavigationModel())
             )
         )
+
+        is Configuration.About -> Child.About(getDrawerNavigationModel())
     }
 
     private fun getDrawerNavigationModel(): DrawerNavigationModel = DrawerNavigationModel(
@@ -99,6 +101,7 @@ class RootComponentImpl internal constructor(
         navigateToInputForms = { navigation.replaceCurrent(Configuration.InputForms) },
         navigateToColorsShowcaseComponents = { navigation.replaceCurrent(Configuration.ColorsShowcaseComponents) },
         navigateToExport = { navigation.replaceCurrent(Configuration.Export) },
+        navigateToAbout = { navigation.replaceCurrent(Configuration.About) },
     )
 
     private sealed class Configuration : Parcelable {
@@ -113,5 +116,8 @@ class RootComponentImpl internal constructor(
 
         @Parcelize
         object Export : Configuration()
+
+        @Parcelize
+        object About : Configuration()
     }
 }

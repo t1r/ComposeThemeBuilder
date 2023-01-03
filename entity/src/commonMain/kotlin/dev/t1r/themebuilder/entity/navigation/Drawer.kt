@@ -5,4 +5,5 @@ data class DrawerNavigationModel(
     val navigateToInputForms: () -> Unit,
     val navigateToColorsShowcaseComponents: () -> Unit,
     val navigateToExport: () -> Unit,
+    val navigateToAbout: () -> Unit,
 )
