@@ -63,6 +63,7 @@ fun MaterialColorsPalletContent(
                 onColorCandidateSelected = component::onColorCandidateSelected,
                 onCancelSelectClicked = component::onCancelSelectClicked,
                 onConfirmSelectedClicked = component::onConfirmSelectedClicked,
+                onTextColorChanged = component::onTextColorChanged,
             )
         }
     }

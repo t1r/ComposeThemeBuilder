@@ -7,16 +7,22 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Divider
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.entity.colors.ColorGroup
 import dev.t1r.themebuilder.entity.colors.ColorModel
@@ -24,6 +30,7 @@ import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
 import dev.t1r.themebuilder.ui.compose.common.getContrastColor
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 internal fun MaterialColorsPalletSelectedModeContent(
     contentState: MaterialColorsPalletComponent.ContentState.SelectedMode,
@@ -31,10 +38,13 @@ internal fun MaterialColorsPalletSelectedModeContent(
     onColorCandidateSelected: (themeColor: ThemeColorsEnum, color: ColorModel) -> Unit,
     onCancelSelectClicked: () -> Unit,
     onConfirmSelectedClicked: () -> Unit,
+    onTextColorChanged: (themeColor: ThemeColorsEnum, text: String) -> Unit,
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     Column(modifier = Modifier.fillMaxWidth()) {
         Column(modifier = Modifier.fillMaxWidth()) {
-            Row(modifier = Modifier.fillMaxWidth().background(Color.Red)) {
+            Row(modifier = Modifier.fillMaxWidth()) {
                 Box(
                     modifier = Modifier
                         .background(Color(contentState.previousColor))
@@ -64,6 +74,34 @@ internal fun MaterialColorsPalletSelectedModeContent(
                     )
                 }
             }
+            Divider(modifier = Modifier.fillMaxWidth())
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    modifier = Modifier.weight(1F).padding(end = 16.dp),
+                    text = "Input custom color",
+                    style = TextStyle(
+                        fontWeight = FontWeight.Medium,
+                        color = Color.Black,
+                    )
+                )
+                BasicTextField(
+                    modifier = Modifier,
+                    value = contentState.newColorText,
+                    onValueChange = {
+                        onTextColorChanged(contentState.model, it)
+                    },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                    keyboardActions = KeyboardActions(onDone = { keyboardController?.hide() })
+                )
+            }
+            Divider(modifier = Modifier.fillMaxWidth())
             Row(
                 modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
                 horizontalArrangement = Arrangement.Center,

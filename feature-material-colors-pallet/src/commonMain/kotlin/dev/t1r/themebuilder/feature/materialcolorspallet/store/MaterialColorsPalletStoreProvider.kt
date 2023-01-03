@@ -32,6 +32,7 @@ internal class MaterialColorsPalletStoreProvider constructor(
         data class UpdateThemeColors(val model: ThemeColors) : Message()
         data class UpdateMaterialColors(val list: List<ColorGroup>) : Message()
         data class SelectThemeColorToChange(val model: ThemeColorToChange?) : Message()
+        data class TextColorChange(val text: String) : Message()
     }
 
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Message, Label>() {
@@ -51,6 +52,7 @@ internal class MaterialColorsPalletStoreProvider constructor(
             is Intent.SelectColorCandidate -> resolveSelectColorCandidate(intent)
             is Intent.CancelSelectColor -> resolveCancelSelectColor(getState())
             is Intent.ConfirmSelectedColor -> dispatch(Message.SelectThemeColorToChange(null))
+            is Intent.ChangeTextColor -> resolveChangeTextColor(intent)
         }
 
         private fun resolveSelectThemeColorToChange(state: State, marker: ThemeColorsEnum) {
@@ -76,12 +78,25 @@ internal class MaterialColorsPalletStoreProvider constructor(
             themeColorsDataSource.changeThemeColor(model.marker, model.previousColor)
             dispatch(Message.SelectThemeColorToChange(null))
         }
+
+        private fun resolveChangeTextColor(
+            intent: Intent.ChangeTextColor,
+        ) {
+            val newText = intent.text.take(8).filter { it.isDigit() || it.isLetter() }
+            try {
+                val newColor = newText.toLong(16)
+                themeColorsDataSource.changeThemeColor(intent.themeColor, newColor)
+            } catch (throwable: Throwable) {
+                dispatch(Message.TextColorChange(newText))
+            }
+        }
     }
 
     private object ReducerImpl : Reducer<State, Message> {
         override fun State.reduce(msg: Message): State = when (msg) {
             is Message.UpdateThemeColors -> copy(
                 themeColorsModel = msg.model,
+                newTextColor = null,
             )
 
             is Message.UpdateMaterialColors -> copy(
@@ -90,6 +105,10 @@ internal class MaterialColorsPalletStoreProvider constructor(
 
             is Message.SelectThemeColorToChange -> copy(
                 themeColorToChange = msg.model,
+            )
+
+            is Message.TextColorChange -> copy(
+                newTextColor = msg.text,
             )
         }
     }

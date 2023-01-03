@@ -7,15 +7,20 @@ import dev.t1r.themebuilder.feature.materialcolorspallet.store.MaterialColorsPal
 
 internal val stateToModel: MaterialColorsPalletStore.State.() -> MaterialColorsPalletComponent.Model =
     {
+        val contentState = if (themeColorToChange != null) {
+            val newColor = getColorByThemeColorMarker(themeColorToChange.marker, themeColorsModel)
+            ContentState.SelectedMode(
+                model = themeColorToChange.marker,
+                newColor = newColor,
+                previousColor = themeColorToChange.previousColor,
+                oppositeColor = themeColorToChange.oppositeColor,
+                newColorText = newTextColor ?: newColor.toString(16),
+            )
+        } else ContentState.Normal
+
         MaterialColorsPalletComponent.Model(
             colors = themeColorsModel,
             materialColors = materialColors,
-            contentState = if (themeColorToChange != null) ContentState.SelectedMode(
-                model = themeColorToChange.marker,
-                newColor = getColorByThemeColorMarker(themeColorToChange.marker, themeColorsModel),
-                previousColor = themeColorToChange.previousColor,
-                oppositeColor = themeColorToChange.oppositeColor,
-            )
-            else ContentState.Normal
+            contentState = contentState,
         )
     }

@@ -22,6 +22,7 @@ interface MaterialColorsPalletComponent {
             val newColor: Long,
             val previousColor: Long,
             val oppositeColor: Long,
+            val newColorText: String = "",
         ) : ContentState()
     }
 
@@ -29,4 +30,5 @@ interface MaterialColorsPalletComponent {
     fun onColorCandidateSelected(themeColor: ThemeColorsEnum, color: ColorModel)
     fun onCancelSelectClicked()
     fun onConfirmSelectedClicked()
+    fun onTextColorChanged(themeColor: ThemeColorsEnum, text: String)
 }
