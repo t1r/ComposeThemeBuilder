@@ -62,6 +62,11 @@ fun RootContent(
                     component = child.component,
                     modifier = Modifier.fillMaxSize(),
                 )
+
+                is Child.About -> AboutContent(
+                    navigationModel = child.model,
+                    modifier = Modifier.fillMaxSize(),
+                )
             }
         }
     }
