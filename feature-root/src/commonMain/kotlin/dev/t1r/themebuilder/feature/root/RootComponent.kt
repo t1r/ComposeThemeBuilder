@@ -15,6 +15,7 @@ interface RootComponent {
     sealed class Child {
         data class BaselineColors(val component: BaselineColorsComponent) : Child()
         data class InputForms(val model: DrawerNavigationModel) : Child()
+        data class ColorsShowcaseComponents(val model: DrawerNavigationModel) : Child()
         data class Export(val component: ExportComponent) : Child()
     }
 

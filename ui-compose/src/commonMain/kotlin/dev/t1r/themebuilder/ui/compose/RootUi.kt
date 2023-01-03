@@ -52,6 +52,12 @@ fun RootContent(
                     modifier = Modifier.fillMaxSize(),
                 )
 
+                is Child.ColorsShowcaseComponents -> ColorsShowcaseComponentsContent(
+                    navigationModel = child.model,
+                    materialColorsPalletComponent = materialColorsPalletComponent,
+                    modifier = Modifier.fillMaxSize(),
+                )
+
                 is Child.Export -> ExportContent(
                     component = child.component,
                     modifier = Modifier.fillMaxSize(),

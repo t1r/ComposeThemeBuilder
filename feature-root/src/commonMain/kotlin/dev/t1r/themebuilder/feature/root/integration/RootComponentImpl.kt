@@ -76,16 +76,17 @@ class RootComponentImpl internal constructor(
         configuration: Configuration,
         componentContext: ComponentContext,
     ): Child = when (configuration) {
-        Configuration.BaselineColor -> Child.BaselineColors(
+        is Configuration.BaselineColor -> Child.BaselineColors(
             baselineColor(
                 componentContext,
                 BaselineColorsComponent.Params(getDrawerNavigationModel())
             )
         )
 
-        Configuration.InputForms -> Child.InputForms(getDrawerNavigationModel())
+        is Configuration.InputForms -> Child.InputForms(getDrawerNavigationModel())
+        is Configuration.ColorsShowcaseComponents -> Child.ColorsShowcaseComponents(getDrawerNavigationModel())
 
-        Configuration.Export -> Child.Export(
+        is Configuration.Export -> Child.Export(
             export(
                 componentContext,
                 ExportComponent.Params(getDrawerNavigationModel())
@@ -96,6 +97,7 @@ class RootComponentImpl internal constructor(
     private fun getDrawerNavigationModel(): DrawerNavigationModel = DrawerNavigationModel(
         navigateToBaselineColors = { navigation.replaceCurrent(Configuration.BaselineColor) },
         navigateToInputForms = { navigation.replaceCurrent(Configuration.InputForms) },
+        navigateToColorsShowcaseComponents = { navigation.replaceCurrent(Configuration.ColorsShowcaseComponents) },
         navigateToExport = { navigation.replaceCurrent(Configuration.Export) },
     )
 
@@ -105,6 +107,9 @@ class RootComponentImpl internal constructor(
 
         @Parcelize
         object InputForms : Configuration()
+
+        @Parcelize
+        object ColorsShowcaseComponents : Configuration()
 
         @Parcelize
         object Export : Configuration()
