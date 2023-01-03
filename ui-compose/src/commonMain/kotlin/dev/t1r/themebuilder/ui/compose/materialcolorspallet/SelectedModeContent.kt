@@ -42,7 +42,7 @@ internal fun MaterialColorsPalletSelectedModeContent(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
-                        text = "New ${contentState.model.title}",
+                        text = "Old ${contentState.model.title}",
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = Color(contentState.oppositeColor),
@@ -56,7 +56,7 @@ internal fun MaterialColorsPalletSelectedModeContent(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
-                        text = "Old ${contentState.model.title}",
+                        text = "New ${contentState.model.title}",
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = Color(contentState.oppositeColor),
