@@ -20,7 +20,6 @@ import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent.Model
 import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
 import dev.t1r.themebuilder.ui.compose.common.ColorsScreenContainerWidget
-import dev.t1r.themebuilder.ui.compose.common.ScreenContainerWidget
 
 @Composable
 internal fun BaselineColorsContent(
@@ -45,65 +44,60 @@ internal fun BaselineColorsContent(
     val onErrorColor by animateColorAsState(Color(model.colors.onError))
 
     ColorsScreenContainerWidget(
+        navigationModel = component.navigationModel,
+        title = "Theme Colors",
         materialColorsPalletComponent = materialColorsPalletComponent,
-        modifier = Modifier.fillMaxSize(),
-        content = {
-            ScreenContainerWidget(
-                navigationModel = component.navigationModel,
-                title = "Theme Colors",
-                content = { pv ->
-                    Column(
-                        modifier = Modifier
-                            .padding(pv)
-                            .fillMaxSize()
-                            .verticalScroll(rememberScrollState()),
-                    ) {
-                        Element(
-                            title = "Primary",
-                            mainColor = primaryColor,
-                            onMainColor = onPrimaryColor,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                        Element(
-                            title = "Primary Variant",
-                            mainColor = primaryVariantColor,
-                            onMainColor = onPrimaryColor,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                        Element(
-                            title = "Secondary",
-                            mainColor = secondaryColor,
-                            onMainColor = onSecondaryColor,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                        Element(
-                            title = "Secondary Variant",
-                            mainColor = secondaryVariantColor,
-                            onMainColor = onSecondaryColor,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                        Element(
-                            title = "Background",
-                            mainColor = backgroundColor,
-                            onMainColor = onBackgroundColor,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                        Element(
-                            title = "Surface",
-                            mainColor = surfaceColor,
-                            onMainColor = onSurfaceColor,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                        Element(
-                            title = "Error",
-                            mainColor = errorColor,
-                            onMainColor = onErrorColor,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    }
-                },
-                modifier = modifier,
-            )
+        modifier = modifier,
+        content = { pv ->
+            Column(
+                modifier = Modifier
+                    .padding(pv)
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState()),
+            ) {
+                Element(
+                    title = "Primary",
+                    mainColor = primaryColor,
+                    onMainColor = onPrimaryColor,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Element(
+                    title = "Primary Variant",
+                    mainColor = primaryVariantColor,
+                    onMainColor = onPrimaryColor,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Element(
+                    title = "Secondary",
+                    mainColor = secondaryColor,
+                    onMainColor = onSecondaryColor,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Element(
+                    title = "Secondary Variant",
+                    mainColor = secondaryVariantColor,
+                    onMainColor = onSecondaryColor,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Element(
+                    title = "Background",
+                    mainColor = backgroundColor,
+                    onMainColor = onBackgroundColor,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Element(
+                    title = "Surface",
+                    mainColor = surfaceColor,
+                    onMainColor = onSurfaceColor,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Element(
+                    title = "Error",
+                    mainColor = errorColor,
+                    onMainColor = onErrorColor,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
         },
     )
 }
