@@ -2,7 +2,8 @@ package dev.t1r.themebuilder.ui.compose.materialcolorspallet
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -33,13 +34,14 @@ fun MaterialColorsPalletContent(
     val onSurfaceColor by animateColorAsState(Color(model.colors.onSurface))
     val onErrorColor by animateColorAsState(Color(model.colors.onError))
 
-    LazyColumn(
+    Box(
         modifier = modifier.then(
             Modifier.background(Color.White)
         ),
     ) {
         when (val contentState = model.contentState) {
-            is ContentState.Normal -> materialColorsPalletNormalContent(
+            is ContentState.Normal -> MaterialColorsPalletNormalContent(
+                modifier = Modifier.fillMaxWidth(),
                 primaryColor = primaryColor,
                 primaryVariantColor = primaryVariantColor,
                 secondaryColor = secondaryColor,
@@ -55,7 +57,7 @@ fun MaterialColorsPalletContent(
                 onThemeColorToChangeSelected = component::onThemeColorToChangeSelected,
             )
 
-            is ContentState.SelectedMode -> materialColorsPalletSelectedModeContent(
+            is ContentState.SelectedMode -> MaterialColorsPalletSelectedModeContent(
                 contentState = contentState,
                 materialColors = model.materialColors,
                 onColorCandidateSelected = component::onColorCandidateSelected,

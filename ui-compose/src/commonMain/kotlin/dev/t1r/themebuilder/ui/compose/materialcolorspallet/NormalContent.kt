@@ -1,12 +1,14 @@
 package dev.t1r.themebuilder.ui.compose.materialcolorspallet
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 
-internal fun LazyListScope.materialColorsPalletNormalContent(
+@Composable
+internal fun MaterialColorsPalletNormalContent(
     primaryColor: Color,
     primaryVariantColor: Color,
     secondaryColor: Color,
@@ -20,10 +22,9 @@ internal fun LazyListScope.materialColorsPalletNormalContent(
     onSurfaceColor: Color,
     onErrorColor: Color,
     onThemeColorToChangeSelected: (ThemeColorsEnum) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    item(
-        key = ThemeColorsEnum.Primary.toString(),
-    ) {
+    Column(modifier = modifier) {
         MaterialColorsPalletElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.Primary.title,
@@ -33,10 +34,6 @@ internal fun LazyListScope.materialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.Primary) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnPrimary) },
         )
-    }
-    item(
-        key = ThemeColorsEnum.PrimaryVariant.toString(),
-    ) {
         MaterialColorsPalletElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.PrimaryVariant.title,
@@ -46,10 +43,6 @@ internal fun LazyListScope.materialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.PrimaryVariant) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnPrimary) },
         )
-    }
-    item(
-        key = ThemeColorsEnum.Secondary.toString(),
-    ) {
         MaterialColorsPalletElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.Secondary.title,
@@ -59,10 +52,6 @@ internal fun LazyListScope.materialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.Secondary) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnSecondary) },
         )
-    }
-    item(
-        key = ThemeColorsEnum.SecondaryVariant.toString(),
-    ) {
         MaterialColorsPalletElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.SecondaryVariant.title,
@@ -72,10 +61,6 @@ internal fun LazyListScope.materialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.SecondaryVariant) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnSecondary) },
         )
-    }
-    item(
-        key = ThemeColorsEnum.Background.toString(),
-    ) {
         MaterialColorsPalletElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.Background.title,
@@ -85,10 +70,6 @@ internal fun LazyListScope.materialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.Background) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnBackground) },
         )
-    }
-    item(
-        key = ThemeColorsEnum.Surface.toString(),
-    ) {
         MaterialColorsPalletElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.Surface.title,
@@ -98,10 +79,6 @@ internal fun LazyListScope.materialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.Surface) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnSurface) },
         )
-    }
-    item(
-        key = ThemeColorsEnum.Error.toString(),
-    ) {
         MaterialColorsPalletElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.Error.title,
