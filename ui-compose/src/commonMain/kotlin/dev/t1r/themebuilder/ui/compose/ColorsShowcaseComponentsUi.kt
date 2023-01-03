@@ -27,6 +27,7 @@ fun ColorsShowcaseComponentsContent(
     var isIconToggleChecked by remember { mutableStateOf(false) }
     var tabPosition by remember { mutableStateOf(0) }
     var isAlertDialogShowing by remember { mutableStateOf(false) }
+    var isProgressAlertDialogShowing by remember { mutableStateOf(false) }
 
     ColorsScreenContainerWidget(
         materialColorsPalletComponent = materialColorsPalletComponent,
@@ -78,10 +79,10 @@ fun ColorsShowcaseComponentsContent(
                                     text = "OutlinedButton component",
                                 )
                                 OutlinedButton(
-                                    onClick = { isAlertDialogShowing = true },
+                                    onClick = { isProgressAlertDialogShowing = true },
                                     content = {
                                         Text(
-                                            text = "Show Alert",
+                                            text = "Show Progress Alert",
                                         )
                                     },
                                 )
@@ -194,6 +195,38 @@ fun ColorsShowcaseComponentsContent(
                 Button(
                     modifier = Modifier.weight(1f),
                     onClick = { isAlertDialogShowing = false }
+                ) {
+                    Text("Ok")
+                }
+            }
+        }
+    )
+
+    if (isProgressAlertDialogShowing) AlertDialog(
+        onDismissRequest = { isProgressAlertDialogShowing = false },
+        title = { Text(text = "Progress Bar Alert") },
+        text = {
+            Box(
+                modifier = Modifier.wrapContentSize(),
+                contentAlignment = Alignment.Center,
+            ) {
+                CircularProgressIndicator()
+            }
+        },
+        buttons = {
+            Row(
+                modifier = Modifier.padding(all = 8.dp),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    modifier = Modifier.weight(1f).padding(end = 16.dp),
+                    onClick = { isProgressAlertDialogShowing = false }
+                ) {
+                    Text("Cancel")
+                }
+                Button(
+                    modifier = Modifier.weight(1f),
+                    onClick = { isProgressAlertDialogShowing = false }
                 ) {
                     Text("Ok")
                 }
