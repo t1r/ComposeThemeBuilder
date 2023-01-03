@@ -4,8 +4,9 @@ plugins {
     kotlin("android")
 }
 
-group "dev.t1r.themebuilder"
-version "1.0-SNAPSHOT"
+apply {
+    from("signingcreds/signing.gradle")
+}
 
 repositories {
     jcenter()
@@ -42,6 +43,14 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    signingConfigs {
+        getByName("debug") {
+            storeFile = rootProject.file("android/signingcreds/debug.keystore")
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+            storePassword = "android"
+        }
     }
     buildTypes {
         getByName("release") {

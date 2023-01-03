@@ -64,6 +64,7 @@ app/prod
 # Built application files
 *.apk
 *.ap_
+*.aab
 
 # Files for the ART/Dalvik VM
 *.dex
@@ -118,3 +119,8 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+
+# Signing
+signing.gradle
+signing.gradle.kts
+ctbkey.jks

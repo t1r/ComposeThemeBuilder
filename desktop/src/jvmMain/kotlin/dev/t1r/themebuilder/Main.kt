@@ -1,5 +1,6 @@
 package dev.t1r.themebuilder
 
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.arkivanov.decompose.DefaultComponentContext
@@ -22,7 +23,7 @@ fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
         title = "Compose Theme Builder",
-//        icon = rememberVectorPainter(), //TODO
+        icon = painterResource("drawable/ic_launcher.png"),
     ) {
         RootContent(
             RootComponentImpl(
