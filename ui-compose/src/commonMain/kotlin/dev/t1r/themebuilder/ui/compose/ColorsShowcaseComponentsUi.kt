@@ -11,6 +11,7 @@ import androidx.compose.material.icons.outlined.Info
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
@@ -28,6 +29,7 @@ fun ColorsShowcaseComponentsContent(
     var tabPosition by remember { mutableStateOf(0) }
     var isAlertDialogShowing by remember { mutableStateOf(false) }
     var isProgressAlertDialogShowing by remember { mutableStateOf(false) }
+    var isLinearProgressBarShowing by remember { mutableStateOf(false) }
 
     ColorsScreenContainerWidget(
         materialColorsPalletComponent = materialColorsPalletComponent,
@@ -47,6 +49,12 @@ fun ColorsShowcaseComponentsContent(
                                 .weight(1F)
                                 .verticalScroll(rememberScrollState()),
                         ) {
+                            LinearProgressIndicator(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp, vertical = 6.dp)
+                                    .alpha(if (isLinearProgressBarShowing) 1F else 0F),
+                            )
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -96,14 +104,12 @@ fun ColorsShowcaseComponentsContent(
                             ) {
                                 Text(
                                     modifier = Modifier.weight(1F),
-                                    text = "TextButton component",
+                                    text = "TextButton component, Show Linear Progress Bar",
                                 )
                                 TextButton(
-                                    onClick = {},
+                                    onClick = { isLinearProgressBarShowing = !isLinearProgressBarShowing },
                                     content = {
-                                        Text(
-                                            text = "Action",
-                                        )
+                                        Text(text = if (isLinearProgressBarShowing) "Hide" else "Show")
                                     },
                                 )
                             }
