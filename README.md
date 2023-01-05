@@ -3,7 +3,7 @@
 With this application you can create compose theme. Application allows creating colors scheme with material and custom
 colors. Then you can export result as Kotlin code.
 
-### 🛠 Road Map
+### 🛠 Roadmap
 
 + Fixing bugs
 + Adding Compose shape customization
