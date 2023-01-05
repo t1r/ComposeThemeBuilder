@@ -5,7 +5,7 @@ colors. Then You can export result as Kotlin code.
 
 ### 📸 Screenshots:
 
-![screenshot 1](docs/screenshot_1.jpg "Title") ![screenshot 2](docs/screenshot_2.jpg "Title")
+![screenshot 1](docs/screenshot_1.jpg "Screenshot 1") ![screenshot 2](docs/screenshot_2.jpg "Screenshot 1")
 
 ### 🛠 Road Map
 
