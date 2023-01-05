@@ -1,7 +1,7 @@
 # 🎨 Compose Theme Builder
 
-With this application You can create compose theme. Application allows to create colors scheme with material and custom
-colors. Then You can export result as Kotlin code.
+With this application you can create compose theme. Application allows creating colors scheme with material and custom
+colors. Then you can export result as Kotlin code.
 
 ### 📸 Screenshots:
 
