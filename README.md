@@ -11,7 +11,7 @@ colors. Then you can export result as Kotlin code.
 + Adding iOS support
 + Adding Compose components customization
 
-### ⚙️ Tech stack
+### ⚙️ Tech Stack
 
 + [Kotlin](https://kotlinlang.org/)
 + [Kotlin Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
