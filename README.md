@@ -22,3 +22,7 @@ colors. Then you can export result as Kotlin code.
 ### 📸 Screenshots:
 
 ![screenshot 1](docs/screenshot_1.jpg "Screenshot 1") ![screenshot 2](docs/screenshot_2.jpg "Screenshot 1")
+
+### 📱 Stores
+
+[![Google Play](docs/google-play-badge.png)](https://play.google.com/store/apps/details?id=dev.t1r.themebuilder)
