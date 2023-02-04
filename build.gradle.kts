@@ -16,3 +16,9 @@ plugins {
     id("com.android.library") apply false
     id("org.jetbrains.compose") apply false
 }
+
+//buildscript {
+//    dependencies {
+//        classpath("com.squareup.sqldelight:gradle-plugin:2.0.0-alpha05")
+//    }
+//}
