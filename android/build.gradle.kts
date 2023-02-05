@@ -29,6 +29,7 @@ dependencies {
     implementation(Deps.MviKotlin.mvikotlin)
     implementation(Deps.MviKotlin.mvikotlinLogging)
     implementation(Deps.MviKotlin.mvikotlinTimetravel)
+    implementation(Deps.russhwolfSettings)
 }
 
 android {

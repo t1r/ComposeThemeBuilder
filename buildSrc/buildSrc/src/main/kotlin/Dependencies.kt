@@ -51,6 +51,7 @@ object Deps {
         private const val version = "2.0.0-alpha05"
         const val coroutines = "app.cash.sqldelight:coroutines-extensions:$version"
         const val runtime = "app.cash.sqldelight:runtime:$version"
+        const val primitiveAdapters = "app.cash.sqldelight:primitive-adapters:$version"
 
         object Driver {
             const val android = "app.cash.sqldelight:android-driver:$version"

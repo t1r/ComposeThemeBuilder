@@ -11,6 +11,7 @@ kotlin {
                 implementation(Deps.Kotlin.coroutinesSwing)
                 implementation(Deps.SqlDelight.coroutines)
                 implementation(Deps.SqlDelight.runtime)
+                implementation(Deps.SqlDelight.primitiveAdapters)
                 implementation(Deps.russhwolfSettings)
 
                 implementation(project(Module.entity))

@@ -1,3 +1,5 @@
+import kotlin.Boolean;
+
 CREATE TABLE themePaletteDbModel(
     primaryColor INTEGER NOT NULL,
     primaryVariant  INTEGER NOT NULL,
@@ -11,9 +13,13 @@ CREATE TABLE themePaletteDbModel(
     onBackground INTEGER NOT NULL,
     onSurface INTEGER NOT NULL,
     onError INTEGER NOT NULL,
-    isLight INTEGER NOT NULL
+    isLight INTEGER AS Boolean NOT NULL
 );
 
 selectAll:
 SELECT *
 FROM themePaletteDbModel;
+
+insertRow:
+INSERT INTO themePaletteDbModel (primaryColor, primaryVariant, secondary, secondaryVariant, background, surface, error, onPrimary, onSecondary, onBackground, onSurface, onError, isLight )
+VALUES (?, ?, ?, ?,?,?,?,?,?,?,?,?,?);
