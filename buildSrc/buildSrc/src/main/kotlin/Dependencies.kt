@@ -57,6 +57,8 @@ object Deps {
             const val sqlite = "app.cash.sqldelight:sqlite-driver:$version"
         }
     }
+
+    const val russhwolfSettings = "com.russhwolf:multiplatform-settings:1.0.0"
 }
 
 object Module {
