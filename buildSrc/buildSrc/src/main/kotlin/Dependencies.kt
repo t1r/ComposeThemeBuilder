@@ -59,7 +59,10 @@ object Deps {
         }
     }
 
-    const val russhwolfSettings = "com.russhwolf:multiplatform-settings:1.0.0"
+    object RusshwolfSettings {
+        const val core = "com.russhwolf:multiplatform-settings:1.0.0"
+        const val coroutines = "com.russhwolf:multiplatform-settings-coroutines:1.0.0"
+    }
 }
 
 object Module {

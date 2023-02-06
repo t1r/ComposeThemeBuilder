@@ -1,6 +1,7 @@
 import kotlin.Boolean;
 
 CREATE TABLE themePaletteDbModel(
+    uid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     primaryColor INTEGER NOT NULL,
     primaryVariant  INTEGER NOT NULL,
     secondary INTEGER NOT NULL,
@@ -16,6 +17,11 @@ CREATE TABLE themePaletteDbModel(
     isLight INTEGER AS Boolean NOT NULL
 );
 
+selectByIndex:
+SELECT *
+FROM themePaletteDbModel
+WHERE uid = :uid;
+
 selectAll:
 SELECT *
 FROM themePaletteDbModel;
@@ -23,3 +29,68 @@ FROM themePaletteDbModel;
 insertRow:
 INSERT INTO themePaletteDbModel (primaryColor, primaryVariant, secondary, secondaryVariant, background, surface, error, onPrimary, onSecondary, onBackground, onSurface, onError, isLight )
 VALUES (?, ?, ?, ?,?,?,?,?,?,?,?,?,?);
+
+updatePrimaryColor:
+UPDATE themePaletteDbModel
+SET primaryColor =: color
+WHERE uid = :uid;
+
+updatePrimaryVariantColor:
+UPDATE themePaletteDbModel
+SET primaryVariant =: color
+WHERE uid = :uid;
+
+updateSecondaryColor:
+UPDATE themePaletteDbModel
+SET secondary =: color
+WHERE uid = :uid;
+
+updateSecondaryVariantColor:
+UPDATE themePaletteDbModel
+SET secondaryVariant =: color
+WHERE uid = :uid;
+
+updateBackgroundColor:
+UPDATE themePaletteDbModel
+SET background =: color
+WHERE uid = :uid;
+
+updateSurfaceColor:
+UPDATE themePaletteDbModel
+SET surface =: color
+WHERE uid = :uid;
+
+updateErrorColor:
+UPDATE themePaletteDbModel
+SET error =: color
+WHERE uid = :uid;
+
+updateOnPrimaryColor:
+UPDATE themePaletteDbModel
+SET onPrimary =: color
+WHERE uid = :uid;
+
+updateOnSecondaryColor:
+UPDATE themePaletteDbModel
+SET onSecondary =: color
+WHERE uid = :uid;
+
+updateOnBackgroundColor:
+UPDATE themePaletteDbModel
+SET onBackground =: color
+WHERE uid = :uid;
+
+updateOnSurfaceColor:
+UPDATE themePaletteDbModel
+SET onSurface =: color
+WHERE uid = :uid;
+
+updateOnErrorColor:
+UPDATE themePaletteDbModel
+SET onError =: color
+WHERE uid = :uid;
+
+updateIsLightColor:
+UPDATE themePaletteDbModel
+SET isLight =: isLight
+WHERE uid = :uid;

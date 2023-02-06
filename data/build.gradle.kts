@@ -12,7 +12,8 @@ kotlin {
                 implementation(Deps.SqlDelight.coroutines)
                 implementation(Deps.SqlDelight.runtime)
                 implementation(Deps.SqlDelight.primitiveAdapters)
-                implementation(Deps.russhwolfSettings)
+                implementation(Deps.RusshwolfSettings.core)
+                implementation(Deps.RusshwolfSettings.coroutines)
 
                 implementation(project(Module.entity))
             }

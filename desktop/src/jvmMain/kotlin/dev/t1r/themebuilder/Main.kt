@@ -7,16 +7,24 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
 import com.arkivanov.mvikotlin.timetravel.store.TimeTravelStoreFactory
+import dev.t1r.themebuilder.data.ThemeBuilderDb
 import dev.t1r.themebuilder.data.colors.material.MaterialColorsDataSource
 import dev.t1r.themebuilder.data.colors.material.MaterialColorsRepositoryImpl
 import dev.t1r.themebuilder.data.colors.theme.ThemeColorsDataSource
 import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepositoryImpl
+import dev.t1r.themebuilder.data.db.DriverFactory
+import dev.t1r.themebuilder.data.kvs.SettingsFactory
 import dev.t1r.themebuilder.feature.materialcolorspallet.integration.MaterialColorsPalletComponentImpl
 import dev.t1r.themebuilder.feature.root.integration.RootComponentImpl
 import dev.t1r.themebuilder.ui.compose.RootContent
+import java.util.prefs.Preferences
 
 private val loggingStoreFactory = LoggingStoreFactory(TimeTravelStoreFactory())
-private val themeColorsRepository = ThemeColorsRepositoryImpl(ThemeColorsDataSource())
+private val themeColorsRepository = ThemeColorsRepositoryImpl(
+    dataSource = ThemeColorsDataSource(),
+    db = ThemeBuilderDb(DriverFactory().create()),
+    settings = SettingsFactory(Preferences.userRoot().node("userDataPreferences")).createSettings(),
+)
 private val defaultComponentContext = DefaultComponentContext(LifecycleRegistry())
 
 fun main() = application {
