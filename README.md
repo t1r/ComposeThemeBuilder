@@ -10,7 +10,6 @@ colors. Then you can export result as Kotlin code.
 + Improving UX
 + Adding iOS support
 + Adding Compose components customization
-+ Persistence store
 + Import theme
 + Parallel build dark and light theme
 
