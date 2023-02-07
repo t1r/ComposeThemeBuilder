@@ -10,7 +10,6 @@ colors. Then you can export result as Kotlin code.
 + Improving UX
 + Adding iOS support
 + Adding Compose components customization
-+ Persistence store
 + Import theme
 + Parallel build dark and light theme
 
@@ -21,6 +20,8 @@ colors. Then you can export result as Kotlin code.
 + [Compose Multiplatform, by JetBrains](https://github.com/JetBrains/compose-jb)
 + [Decompose](https://github.com/arkivanov/Decompose)
 + [MVIKotlin](https://github.com/arkivanov/MVIKotlin)
++ [SQLDelight](https://github.com/cashapp/sqldelight)
++ [Multiplatform Settings](https://github.com/russhwolf/multiplatform-settings)
 
 ### 📸 Screenshots:
 

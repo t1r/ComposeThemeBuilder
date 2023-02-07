@@ -46,6 +46,23 @@ object Deps {
         const val mvikotlinExtensionsCoroutines =
             "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:${Versions.mviKotlin}"
     }
+
+    object SqlDelight {
+        private const val version = "2.0.0-alpha05"
+        const val coroutines = "app.cash.sqldelight:coroutines-extensions:$version"
+        const val runtime = "app.cash.sqldelight:runtime:$version"
+        const val primitiveAdapters = "app.cash.sqldelight:primitive-adapters:$version"
+
+        object Driver {
+            const val android = "app.cash.sqldelight:android-driver:$version"
+            const val sqlite = "app.cash.sqldelight:sqlite-driver:$version"
+        }
+    }
+
+    object RusshwolfSettings {
+        const val core = "com.russhwolf:multiplatform-settings:1.0.0"
+        const val coroutines = "com.russhwolf:multiplatform-settings-coroutines:1.0.0"
+    }
 }
 
 object Module {

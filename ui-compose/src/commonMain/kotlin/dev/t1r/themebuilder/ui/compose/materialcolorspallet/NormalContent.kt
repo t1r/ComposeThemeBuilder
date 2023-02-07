@@ -25,7 +25,7 @@ internal fun MaterialColorsPalletNormalContent(
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
-        MaterialColorsPalletElementWidget(
+        MaterialColorsPaletteElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.Primary.title,
             onColorTitle = ThemeColorsEnum.OnPrimary.title,
@@ -34,7 +34,7 @@ internal fun MaterialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.Primary) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnPrimary) },
         )
-        MaterialColorsPalletElementWidget(
+        MaterialColorsPaletteElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.PrimaryVariant.title,
             onColorTitle = ThemeColorsEnum.OnPrimary.title,
@@ -43,7 +43,7 @@ internal fun MaterialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.PrimaryVariant) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnPrimary) },
         )
-        MaterialColorsPalletElementWidget(
+        MaterialColorsPaletteElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.Secondary.title,
             onColorTitle = ThemeColorsEnum.OnSecondary.title,
@@ -52,7 +52,7 @@ internal fun MaterialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.Secondary) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnSecondary) },
         )
-        MaterialColorsPalletElementWidget(
+        MaterialColorsPaletteElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.SecondaryVariant.title,
             onColorTitle = ThemeColorsEnum.OnSecondary.title,
@@ -61,7 +61,7 @@ internal fun MaterialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.SecondaryVariant) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnSecondary) },
         )
-        MaterialColorsPalletElementWidget(
+        MaterialColorsPaletteElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.Background.title,
             onColorTitle = ThemeColorsEnum.OnBackground.title,
@@ -70,7 +70,7 @@ internal fun MaterialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.Background) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnBackground) },
         )
-        MaterialColorsPalletElementWidget(
+        MaterialColorsPaletteElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.Surface.title,
             onColorTitle = ThemeColorsEnum.OnSurface.title,
@@ -79,7 +79,7 @@ internal fun MaterialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.Surface) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnSurface) },
         )
-        MaterialColorsPalletElementWidget(
+        MaterialColorsPaletteElementWidget(
             modifier = Modifier.fillMaxWidth(),
             colorTitle = ThemeColorsEnum.Error.title,
             onColorTitle = ThemeColorsEnum.OnError.title,

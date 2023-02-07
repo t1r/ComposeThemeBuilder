@@ -1,5 +1,6 @@
 plugins {
     id("mpp-setup")
+    id("app.cash.sqldelight")
 }
 
 kotlin {
@@ -8,9 +9,33 @@ kotlin {
             dependencies {
                 implementation(Deps.Kotlin.coroutines)
                 implementation(Deps.Kotlin.coroutinesSwing)
+                implementation(Deps.SqlDelight.coroutines)
+                implementation(Deps.SqlDelight.runtime)
+                implementation(Deps.SqlDelight.primitiveAdapters)
+                implementation(Deps.RusshwolfSettings.core)
+                implementation(Deps.RusshwolfSettings.coroutines)
 
                 implementation(project(Module.entity))
             }
+        }
+        val androidMain by getting {
+            dependencies {
+                implementation(Deps.SqlDelight.Driver.android)
+            }
+        }
+        val desktopMain by getting {
+            dependencies {
+                implementation(Deps.SqlDelight.Driver.sqlite)
+            }
+        }
+    }
+}
+
+sqldelight {
+    databases {
+        create("ThemeBuilderDb") {
+            packageName.set("dev.t1r.themebuilder.data")
+            sourceFolders.set(listOf("sqldelight"))
         }
     }
 }
