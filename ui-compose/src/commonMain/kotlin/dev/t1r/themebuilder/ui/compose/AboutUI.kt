@@ -97,6 +97,28 @@ fun AboutContent(
                         color = Color.Black,
                     ),
                 )
+                Text(
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp, vertical = 6.dp)
+                        .fillMaxWidth(),
+                    text = "SQLDelight",
+                    style = TextStyle(
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = FontFamily.Monospace,
+                        color = Color.Black,
+                    ),
+                )
+                Text(
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp, vertical = 6.dp)
+                        .fillMaxWidth(),
+                    text = "Russell Wolf's Multiplatform Settings",
+                    style = TextStyle(
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = FontFamily.Monospace,
+                        color = Color.Black,
+                    ),
+                )
             }
         },
         modifier = modifier,
