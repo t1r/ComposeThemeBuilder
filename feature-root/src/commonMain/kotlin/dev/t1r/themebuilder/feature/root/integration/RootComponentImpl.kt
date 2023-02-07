@@ -10,7 +10,6 @@ import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.states
-import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.integration.BaselineColorsComponentImpl
@@ -20,6 +19,7 @@ import dev.t1r.themebuilder.feature.root.RootComponent
 import dev.t1r.themebuilder.feature.root.RootComponent.Child
 import dev.t1r.themebuilder.feature.root.RootComponent.Model
 import dev.t1r.themebuilder.feature.root.store.RootStoreProvider
+import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

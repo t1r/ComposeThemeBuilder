@@ -3,10 +3,10 @@ package dev.t1r.themebuilder.feature.export.integration
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.states
-import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.feature.export.ExportComponent
 import dev.t1r.themebuilder.feature.export.ExportComponent.Model
 import dev.t1r.themebuilder.feature.export.store.ExportStoreProvider
+import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
