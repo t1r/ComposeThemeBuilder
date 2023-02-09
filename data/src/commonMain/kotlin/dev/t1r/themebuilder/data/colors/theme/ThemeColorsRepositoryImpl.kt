@@ -12,32 +12,17 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 
 class ThemeColorsRepositoryImpl(
-    dataSource: ThemeColorsDataSource,
+    private val dataSource: ThemeColorsDataSource,
     private val db: ThemeBuilderDb,
     private val settings: ObservableSettings,
 ) : ThemeColorsRepository {
 
     init {
         if (settings.getLongOrNull(THEME_PALETTE_KEY) == null) {
-            settings.putLong(THEME_PALETTE_KEY, 1)
+            settings.putLong(THEME_PALETTE_KEY, THEME_PALETTE_DEFAULT_KEY)
         }
-        if (db.themePaletteQueries.selectByIndex(1).executeAsOneOrNull() == null) {
-            val from = dataSource.provideDefaultColors()
-            db.themePaletteQueries.insertRow(
-                primaryColor = from.primary,
-                primaryVariant = from.primaryVariant,
-                secondary = from.secondary,
-                secondaryVariant = from.secondaryVariant,
-                background = from.background,
-                surface = from.surface,
-                error = from.error,
-                onPrimary = from.onPrimary,
-                onSecondary = from.onSecondary,
-                onBackground = from.onBackground,
-                onSurface = from.onSurface,
-                onError = from.onError,
-                isLight = from.isLight,
-            )
+        if (db.themePaletteQueries.selectByIndex(THEME_PALETTE_DEFAULT_KEY).executeAsOneOrNull() == null) {
+            addPalette()
         }
     }
 
@@ -123,7 +108,39 @@ class ThemeColorsRepositoryImpl(
         )
     }
 
+    fun deletePalette(id: Long) {
+        val key = settings.getLongOrNull(THEME_PALETTE_KEY) ?: throw RuntimeException()
+        if (id == THEME_PALETTE_DEFAULT_KEY || key == id) return
+        db.themePaletteQueries.deleteRowById(
+            uid = key
+        )
+    }
+
+    fun addPalette() {
+        val from = dataSource.provideDefaultColors()
+        db.themePaletteQueries.insertRow(
+            primaryColor = from.primary,
+            primaryVariant = from.primaryVariant,
+            secondary = from.secondary,
+            secondaryVariant = from.secondaryVariant,
+            background = from.background,
+            surface = from.surface,
+            error = from.error,
+            onPrimary = from.onPrimary,
+            onSecondary = from.onSecondary,
+            onBackground = from.onBackground,
+            onSurface = from.onSurface,
+            onError = from.onError,
+            isLight = from.isLight,
+        )
+    }
+
+    fun selectPalette(id: Long) {
+        settings.putLong(THEME_PALETTE_KEY, id)
+    }
+
     companion object {
         private const val THEME_PALETTE_KEY = "THEME_PALETTE_KEY"
+        private const val THEME_PALETTE_DEFAULT_KEY = 1L
     }
 }

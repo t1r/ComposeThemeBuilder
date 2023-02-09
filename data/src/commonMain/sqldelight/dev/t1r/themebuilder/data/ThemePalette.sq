@@ -94,3 +94,7 @@ updateIsLightColor:
 UPDATE themePaletteDbModel
 SET isLight =: isLight
 WHERE uid = :uid;
+
+deleteRowById:
+DELETE FROM themePaletteDbModel
+WHERE uid = :uid;
