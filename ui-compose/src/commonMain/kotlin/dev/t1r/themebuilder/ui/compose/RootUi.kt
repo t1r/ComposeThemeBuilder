@@ -34,6 +34,7 @@ fun RootContent(
         onBackgroundColor = model.colors.onBackground,
         onSurfaceColor = model.colors.onSurface,
         onErrorColor = model.colors.onError,
+        isLight = model.colors.isLight,
     ) {
         Children(
             modifier = Modifier.fillMaxSize(),

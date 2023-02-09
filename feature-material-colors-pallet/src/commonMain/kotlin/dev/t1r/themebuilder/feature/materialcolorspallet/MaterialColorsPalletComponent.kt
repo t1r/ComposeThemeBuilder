@@ -27,6 +27,7 @@ interface MaterialColorsPalletComponent {
     }
 
     fun onThemeColorToChangeSelected(color: ThemeColorsEnum)
+    fun onChangeThemeModeClicked()
     fun onColorCandidateSelected(themeColor: ThemeColorsEnum, color: ColorModel)
     fun onCancelSelectClicked()
     fun onConfirmSelectedClicked()

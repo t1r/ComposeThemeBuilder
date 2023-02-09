@@ -21,7 +21,9 @@ internal fun MaterialColorsPalletNormalContent(
     onBackgroundColor: Color,
     onSurfaceColor: Color,
     onErrorColor: Color,
+    isLight: Boolean,
     onThemeColorToChangeSelected: (ThemeColorsEnum) -> Unit,
+    onChangeThemeModeClicked: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
@@ -87,6 +89,11 @@ internal fun MaterialColorsPalletNormalContent(
             onColor = onErrorColor,
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.Error) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnError) },
+        )
+        MaterialColorsPaletteTypeThemeWidget(
+            isLight = isLight,
+            modifier = Modifier.fillMaxWidth(),
+            onClicked = onChangeThemeModeClicked,
         )
     }
 }

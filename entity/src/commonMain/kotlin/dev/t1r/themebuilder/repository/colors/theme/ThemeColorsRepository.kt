@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface ThemeColorsRepository {
     fun themeColorsState(): Flow<ThemeColors>
     fun changeThemeColor(themeColor: ThemeColorsEnum, color: Long)
+    fun changeThemeMode(isLight: Boolean)
 }

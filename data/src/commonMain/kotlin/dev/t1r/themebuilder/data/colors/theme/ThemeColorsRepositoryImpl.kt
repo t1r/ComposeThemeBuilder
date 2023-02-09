@@ -45,7 +45,7 @@ class ThemeColorsRepositoryImpl(
         return settings
             .getLongFlow(THEME_PALETTE_KEY, 1)
             .flatMapLatest {
-                db.themePaletteQueries.selectByIndex(it.toLong()).asFlow()
+                db.themePaletteQueries.selectByIndex(it).asFlow()
             }
             .map { mapDbToThemeColors(it.executeAsOne()) }
     }
@@ -113,6 +113,14 @@ class ThemeColorsRepositoryImpl(
                 uid = key,
             )
         }
+    }
+
+    override fun changeThemeMode(isLight: Boolean) {
+        val key = settings.getLongOrNull(THEME_PALETTE_KEY) ?: throw RuntimeException()
+        db.themePaletteQueries.updateIsLightColor(
+            isLight = isLight,
+            uid = key,
+        )
     }
 
     companion object {

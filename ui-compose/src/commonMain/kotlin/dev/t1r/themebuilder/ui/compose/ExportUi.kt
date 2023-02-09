@@ -59,6 +59,7 @@ fun ExportContent(
                         .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
                         .fillMaxWidth(),
                     content = {
+
                         Icon(Icons.Filled.Share, "")
                         Text("Copy")
                     },

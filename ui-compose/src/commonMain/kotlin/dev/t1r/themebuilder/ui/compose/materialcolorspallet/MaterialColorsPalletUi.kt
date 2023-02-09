@@ -4,9 +4,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
@@ -54,7 +52,9 @@ fun MaterialColorsPalletContent(
                 onBackgroundColor = onBackgroundColor,
                 onSurfaceColor = onSurfaceColor,
                 onErrorColor = onErrorColor,
+                isLight = model.colors.isLight,
                 onThemeColorToChangeSelected = component::onThemeColorToChangeSelected,
+                onChangeThemeModeClicked = component::onChangeThemeModeClicked,
             )
 
             is ContentState.SelectedMode -> MaterialColorsPalletSelectedModeContent(

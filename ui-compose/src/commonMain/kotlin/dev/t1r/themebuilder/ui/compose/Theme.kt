@@ -1,7 +1,6 @@
 package dev.t1r.themebuilder.ui.compose
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -22,6 +21,7 @@ fun DefaultAppTheme(
     onBackgroundColor: Long,
     onSurfaceColor: Long,
     onErrorColor: Long,
+    isLight: Boolean,
     content: @Composable () -> Unit,
 ) {
     val primary by animateColorAsState(Color(primaryColor))
@@ -52,7 +52,7 @@ fun DefaultAppTheme(
             onBackground = onBackground,
             onSurface = onSurface,
             onError = onError,
-            isLight = isSystemInDarkTheme(),
+            isLight = isLight,
         ),
         content = content,
     )

@@ -28,10 +28,13 @@ interface MaterialColorsPalletStore : Store<Intent, State, Label> {
     sealed class Intent {
         data class SelectThemeColorToChange(val color: ThemeColorsEnum) : Intent()
         data class SelectColorCandidate(val themeColor: ThemeColorsEnum, val color: Long) : Intent()
+        object ChangeThemeMode : Intent()
         object CancelSelectColor : Intent()
         object ConfirmSelectedColor : Intent()
         data class ChangeTextColor(val themeColor: ThemeColorsEnum, val text: String) : Intent()
     }
 
-    sealed class Label
+    sealed class Label {
+
+    }
 }

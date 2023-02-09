@@ -53,6 +53,7 @@ internal class MaterialColorsPalletStoreProvider constructor(
             is Intent.CancelSelectColor -> resolveCancelSelectColor(getState())
             is Intent.ConfirmSelectedColor -> dispatch(Message.SelectThemeColorToChange(null))
             is Intent.ChangeTextColor -> resolveChangeTextColor(intent)
+            is Intent.ChangeThemeMode -> resolveThemeMode(getState())
         }
 
         private fun resolveSelectThemeColorToChange(state: State, marker: ThemeColorsEnum) {
@@ -70,13 +71,21 @@ internal class MaterialColorsPalletStoreProvider constructor(
         }
 
         private fun resolveSelectColorCandidate(intent: Intent.SelectColorCandidate) {
-            themeColorsDataSource.changeThemeColor(intent.themeColor, intent.color)
+            try {
+                themeColorsDataSource.changeThemeColor(intent.themeColor, intent.color)
+            } catch (throwable: Throwable) {
+                //TODO
+            }
         }
 
         private fun resolveCancelSelectColor(state: State) {
             val model = state.themeColorToChange ?: return
-            themeColorsDataSource.changeThemeColor(model.marker, model.previousColor)
-            dispatch(Message.SelectThemeColorToChange(null))
+            try {
+                themeColorsDataSource.changeThemeColor(model.marker, model.previousColor)
+                dispatch(Message.SelectThemeColorToChange(null))
+            } catch (throwable: Throwable) {
+                //TODO
+            }
         }
 
         private fun resolveChangeTextColor(
@@ -88,6 +97,14 @@ internal class MaterialColorsPalletStoreProvider constructor(
                 themeColorsDataSource.changeThemeColor(intent.themeColor, newColor)
             } catch (throwable: Throwable) {
                 dispatch(Message.TextColorChange(newText))
+            }
+        }
+
+        private fun resolveThemeMode(state: State) {
+            try {
+                themeColorsDataSource.changeThemeMode(!state.themeColorsModel.isLight)
+            } catch (throwable: Throwable) {
+                //TODO
             }
         }
     }
