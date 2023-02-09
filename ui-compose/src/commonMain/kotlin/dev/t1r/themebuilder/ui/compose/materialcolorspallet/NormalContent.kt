@@ -90,7 +90,7 @@ internal fun MaterialColorsPalletNormalContent(
             onColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.Error) },
             onOnColorClicked = { onThemeColorToChangeSelected(ThemeColorsEnum.OnError) },
         )
-        MaterialColorsPaletteTypeThemeWidget(
+        MaterialColorsPaletteModeThemeWidget(
             isLight = isLight,
             modifier = Modifier.fillMaxWidth(),
             onClicked = onChangeThemeModeClicked,
