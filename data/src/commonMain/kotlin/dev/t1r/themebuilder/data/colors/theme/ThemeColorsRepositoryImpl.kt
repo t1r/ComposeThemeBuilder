@@ -53,62 +53,62 @@ class ThemeColorsRepositoryImpl(
     override fun changeThemeColor(themeColor: ThemeColorsEnum, color: Long) {
         val key = settings.getLongOrNull(THEME_PALETTE_KEY) ?: throw RuntimeException()
         when (themeColor) {
-            ThemeColorsEnum.Background -> db.themePaletteQueries.updateBackgroundColor(
+            is ThemeColorsEnum.Background -> db.themePaletteQueries.updateBackgroundColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.Error -> db.themePaletteQueries.updateErrorColor(
+            is ThemeColorsEnum.Error -> db.themePaletteQueries.updateErrorColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.OnBackground -> db.themePaletteQueries.updateOnBackgroundColor(
+            is ThemeColorsEnum.OnBackground -> db.themePaletteQueries.updateOnBackgroundColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.OnError -> db.themePaletteQueries.updateOnErrorColor(
+            is ThemeColorsEnum.OnError -> db.themePaletteQueries.updateOnErrorColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.OnPrimary -> db.themePaletteQueries.updateOnPrimaryColor(
+            is ThemeColorsEnum.OnPrimary -> db.themePaletteQueries.updateOnPrimaryColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.OnSecondary -> db.themePaletteQueries.updateOnSecondaryColor(
+            is ThemeColorsEnum.OnSecondary -> db.themePaletteQueries.updateOnSecondaryColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.OnSurface -> db.themePaletteQueries.updateOnSurfaceColor(
+            is ThemeColorsEnum.OnSurface -> db.themePaletteQueries.updateOnSurfaceColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.Primary -> db.themePaletteQueries.updatePrimaryColor(
+            is ThemeColorsEnum.Primary -> db.themePaletteQueries.updatePrimaryColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.PrimaryVariant -> db.themePaletteQueries.updatePrimaryVariantColor(
+            is ThemeColorsEnum.PrimaryVariant -> db.themePaletteQueries.updatePrimaryVariantColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.Secondary -> db.themePaletteQueries.updateSecondaryColor(
+            is ThemeColorsEnum.Secondary -> db.themePaletteQueries.updateSecondaryColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.SecondaryVariant -> db.themePaletteQueries.updateSecondaryVariantColor(
+            is ThemeColorsEnum.SecondaryVariant -> db.themePaletteQueries.updateSecondaryVariantColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.Surface -> db.themePaletteQueries.updateSurfaceColor(
+            is ThemeColorsEnum.Surface -> db.themePaletteQueries.updateSurfaceColor(
                 color = color,
                 uid = key,
             )
