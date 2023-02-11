@@ -1,29 +1,29 @@
-package dev.t1r.themebuilder.feature.materialcolorspallet.integration
+package dev.t1r.themebuilder.feature.materialcolorspalette.integration
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.states
 import dev.t1r.themebuilder.entity.colors.ColorModel
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent.Model
-import dev.t1r.themebuilder.feature.materialcolorspallet.store.MaterialColorsPalletStore.Intent
-import dev.t1r.themebuilder.feature.materialcolorspallet.store.MaterialColorsPalletStoreProvider
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent.Model
+import dev.t1r.themebuilder.feature.materialcolorspalette.store.MaterialColorsPaletteStore.Intent
+import dev.t1r.themebuilder.feature.materialcolorspalette.store.MaterialColorsPaletteStoreProvider
 import dev.t1r.themebuilder.repository.colors.material.MaterialColorsRepository
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class MaterialColorsPalletComponentImpl constructor(
+class MaterialColorsPaletteComponentImpl constructor(
     componentContext: ComponentContext,
     storeFactory: StoreFactory,
     themeColorsDataSource: ThemeColorsRepository,
     materialColorsDataSource: MaterialColorsRepository,
-) : MaterialColorsPalletComponent, ComponentContext by componentContext {
-    private val store = MaterialColorsPalletStoreProvider(
+) : MaterialColorsPaletteComponent, ComponentContext by componentContext {
+    private val store = MaterialColorsPaletteStoreProvider(
         storeFactory = storeFactory,
-        themeColorsDataSource = themeColorsDataSource,
-        materialColorsDataSource = materialColorsDataSource,
+        themeColorsRepository = themeColorsDataSource,
+        materialColorsRepository = materialColorsDataSource,
     ).provide()
 
     override val models: Flow<Model> = store.states.map { stateToModel(it) }

@@ -18,13 +18,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.feature.baselinecolor.BaselineColorsComponent.Model
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.ui.compose.common.ColorsScreenContainerWidget
 
 @Composable
 internal fun BaselineColorsContent(
     component: BaselineColorsComponent,
-    materialColorsPalletComponent: MaterialColorsPalletComponent,
+    materialColorsPaletteComponent: MaterialColorsPaletteComponent,
     modifier: Modifier = Modifier,
 ) {
     val model by component.models.collectAsState(Model())
@@ -46,7 +46,7 @@ internal fun BaselineColorsContent(
     ColorsScreenContainerWidget(
         navigationModel = component.navigationModel,
         title = "Theme Colors",
-        materialColorsPalletComponent = materialColorsPalletComponent,
+        materialColorsPaletteComponent = materialColorsPaletteComponent,
         modifier = modifier,
         content = { pv ->
             Column(

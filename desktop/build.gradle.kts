@@ -1,7 +1,3 @@
-import org.jetbrains.compose.compose
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
@@ -24,7 +20,7 @@ kotlin {
 
                 implementation(project(Module.UI.compose))
                 implementation(project(Module.Feature.root))
-                implementation(project(Module.Feature.materialColorsPallet))
+                implementation(project(Module.Feature.materialColorsPalette))
                 implementation(project(Module.Data.data))
 
                 implementation(Deps.Decompose.decompose)

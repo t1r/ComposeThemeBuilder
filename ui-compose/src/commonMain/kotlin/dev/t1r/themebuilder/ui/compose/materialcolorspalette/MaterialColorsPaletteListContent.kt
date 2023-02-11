@@ -1,4 +1,4 @@
-package dev.t1r.themebuilder.ui.compose.materialcolorspallet
+package dev.t1r.themebuilder.ui.compose.materialcolorspalette
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

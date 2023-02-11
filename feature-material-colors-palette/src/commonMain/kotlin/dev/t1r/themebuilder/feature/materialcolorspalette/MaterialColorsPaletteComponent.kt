@@ -1,4 +1,4 @@
-package dev.t1r.themebuilder.feature.materialcolorspallet
+package dev.t1r.themebuilder.feature.materialcolorspalette
 
 import dev.t1r.themebuilder.entity.colors.ColorGroup
 import dev.t1r.themebuilder.entity.colors.ColorModel
@@ -6,7 +6,7 @@ import dev.t1r.themebuilder.entity.colors.ThemeColors
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 import kotlinx.coroutines.flow.Flow
 
-interface MaterialColorsPalletComponent {
+interface MaterialColorsPaletteComponent {
     val models: Flow<Model>
 
     data class Model(

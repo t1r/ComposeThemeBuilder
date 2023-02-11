@@ -14,7 +14,7 @@ kotlin {
                 implementation(project(Module.entity))
                 implementation(project(Module.Feature.root))
                 implementation(project(Module.Feature.baselineColor))
-                implementation(project(Module.Feature.materialColorsPallet))
+                implementation(project(Module.Feature.materialColorsPalette))
                 implementation(project(Module.Feature.export))
             }
         }

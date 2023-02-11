@@ -1,4 +1,4 @@
-package dev.t1r.themebuilder.ui.compose.materialcolorspallet
+package dev.t1r.themebuilder.ui.compose.materialcolorspalette
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
@@ -9,13 +9,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent.ContentState
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent.Model
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent.ContentState
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent.Model
 
 @Composable
-fun MaterialColorsPalletContent(
-    component: MaterialColorsPalletComponent,
+fun MaterialColorsPaletteContent(
+    component: MaterialColorsPaletteComponent,
     modifier: Modifier = Modifier,
 ) {
     val model by component.models.collectAsState(Model())

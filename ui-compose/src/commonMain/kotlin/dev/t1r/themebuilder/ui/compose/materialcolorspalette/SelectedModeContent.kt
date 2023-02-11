@@ -1,4 +1,4 @@
-package dev.t1r.themebuilder.ui.compose.materialcolorspallet
+package dev.t1r.themebuilder.ui.compose.materialcolorspalette
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,13 +27,13 @@ import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.entity.colors.ColorGroup
 import dev.t1r.themebuilder.entity.colors.ColorModel
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.ui.compose.common.getContrastColor
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 internal fun MaterialColorsPaletteChangeColorContent(
-    contentState: MaterialColorsPalletComponent.ContentState.ChangeColorMode,
+    contentState: MaterialColorsPaletteComponent.ContentState.ChangeColorMode,
     materialColors: List<ColorGroup>,
     onColorCandidateSelected: (themeColor: ThemeColorsEnum, color: ColorModel) -> Unit,
     onCancelSelectClicked: () -> Unit,

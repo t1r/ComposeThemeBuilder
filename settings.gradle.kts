@@ -29,6 +29,6 @@ include(
     ":entity",
     ":feature-root",
     ":feature-baseline-colors",
-    ":feature-material-colors-pallet",
+    ":feature-material-colors-palette",
     ":feature-export",
 )

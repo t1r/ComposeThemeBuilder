@@ -1,11 +1,11 @@
-package dev.t1r.themebuilder.feature.materialcolorspallet.integration
+package dev.t1r.themebuilder.feature.materialcolorspalette.integration
 
 import dev.t1r.themebuilder.entity.colors.getColorByThemeColorMarker
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent.ContentState
-import dev.t1r.themebuilder.feature.materialcolorspallet.store.MaterialColorsPalletStore
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent.ContentState
+import dev.t1r.themebuilder.feature.materialcolorspalette.store.MaterialColorsPaletteStore
 
-internal val stateToModel: MaterialColorsPalletStore.State.() -> MaterialColorsPalletComponent.Model =
+internal val stateToModel: MaterialColorsPaletteStore.State.() -> MaterialColorsPaletteComponent.Model =
     {
         val contentState = when {
             themeColorToChange != null -> {
@@ -22,7 +22,7 @@ internal val stateToModel: MaterialColorsPalletStore.State.() -> MaterialColorsP
             else -> ContentState.Normal
         }
 
-        MaterialColorsPalletComponent.Model(
+        MaterialColorsPaletteComponent.Model(
             colors = themeColorsModel,
             materialColors = materialColors,
             contentState = contentState,

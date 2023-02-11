@@ -8,7 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.feature.root.RootComponent
 import dev.t1r.themebuilder.feature.root.RootComponent.Child
 import dev.t1r.themebuilder.feature.root.RootComponent.Model
@@ -17,7 +17,7 @@ import dev.t1r.themebuilder.feature.root.RootComponent.Model
 @Composable
 fun RootContent(
     component: RootComponent,
-    materialColorsPalletComponent: MaterialColorsPalletComponent,
+    materialColorsPaletteComponent: MaterialColorsPaletteComponent,
 ) {
     val model by component.models.collectAsState(Model())
 
@@ -43,19 +43,19 @@ fun RootContent(
             when (val child = it.instance) {
                 is Child.BaselineColors -> BaselineColorsContent(
                     component = child.component,
-                    materialColorsPalletComponent = materialColorsPalletComponent,
+                    materialColorsPaletteComponent = materialColorsPaletteComponent,
                     modifier = Modifier.fillMaxSize(),
                 )
 
                 is Child.InputForms -> InputFormsContent(
                     navigationModel = child.model,
-                    materialColorsPalletComponent = materialColorsPalletComponent,
+                    materialColorsPaletteComponent = materialColorsPaletteComponent,
                     modifier = Modifier.fillMaxSize(),
                 )
 
                 is Child.ColorsShowcaseComponents -> ColorsShowcaseComponentsContent(
                     navigationModel = child.model,
-                    materialColorsPalletComponent = materialColorsPalletComponent,
+                    materialColorsPaletteComponent = materialColorsPaletteComponent,
                     modifier = Modifier.fillMaxSize(),
                 )
 

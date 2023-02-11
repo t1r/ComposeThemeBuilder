@@ -1,12 +1,12 @@
-package dev.t1r.themebuilder.feature.materialcolorspallet.store
+package dev.t1r.themebuilder.feature.materialcolorspalette.store
 
 import com.arkivanov.mvikotlin.core.store.Store
 import dev.t1r.themebuilder.entity.colors.ColorGroup
 import dev.t1r.themebuilder.entity.colors.ThemeColors
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
-import dev.t1r.themebuilder.feature.materialcolorspallet.store.MaterialColorsPalletStore.*
+import dev.t1r.themebuilder.feature.materialcolorspalette.store.MaterialColorsPaletteStore.*
 
-interface MaterialColorsPalletStore : Store<Intent, State, Label> {
+interface MaterialColorsPaletteStore : Store<Intent, State, Label> {
     data class State(
         val themeColorsModel: ThemeColors = ThemeColors(),
         val materialColors: List<ColorGroup> = emptyList(),

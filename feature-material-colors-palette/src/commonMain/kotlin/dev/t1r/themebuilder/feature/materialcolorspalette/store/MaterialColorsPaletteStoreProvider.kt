@@ -1,4 +1,4 @@
-package dev.t1r.themebuilder.feature.materialcolorspallet.store
+package dev.t1r.themebuilder.feature.materialcolorspalette.store
 
 import com.arkivanov.mvikotlin.core.store.Reducer
 import com.arkivanov.mvikotlin.core.store.Store
@@ -6,24 +6,24 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import dev.t1r.themebuilder.entity.colors.*
-import dev.t1r.themebuilder.feature.materialcolorspallet.store.MaterialColorsPalletStore.*
+import dev.t1r.themebuilder.feature.materialcolorspalette.store.MaterialColorsPaletteStore.*
 import dev.t1r.themebuilder.repository.colors.material.MaterialColorsRepository
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-internal class MaterialColorsPalletStoreProvider constructor(
+internal class MaterialColorsPaletteStoreProvider constructor(
     private val storeFactory: StoreFactory,
-    private val themeColorsDataSource: ThemeColorsRepository,
-    private val materialColorsDataSource: MaterialColorsRepository,
+    private val themeColorsRepository: ThemeColorsRepository,
+    private val materialColorsRepository: MaterialColorsRepository,
 ) {
 
-    fun provide(): MaterialColorsPalletStore =
-        object : MaterialColorsPalletStore, Store<Intent, State, Label> by storeFactory.create(
-            name = "MaterialColorsPalletStore",
+    fun provide(): MaterialColorsPaletteStore =
+        object : MaterialColorsPaletteStore, Store<Intent, State, Label> by storeFactory.create(
+            name = "MaterialColorsPaletteStore",
             initialState = State(),
-            bootstrapper = BootstrapperImpl(themeColorsDataSource, materialColorsDataSource),
+            bootstrapper = BootstrapperImpl(themeColorsRepository, materialColorsRepository),
             executorFactory = ::ExecutorImpl,
             reducer = ReducerImpl,
         ) {}
@@ -76,7 +76,7 @@ internal class MaterialColorsPalletStoreProvider constructor(
 
         private fun resolveSelectColorCandidate(intent: Intent.SelectColorCandidate) {
             try {
-                themeColorsDataSource.changeThemeColor(intent.themeColor, intent.color)
+                themeColorsRepository.changeThemeColor(intent.themeColor, intent.color)
             } catch (throwable: Throwable) {
                 //TODO
             }
@@ -85,7 +85,7 @@ internal class MaterialColorsPalletStoreProvider constructor(
         private fun resolveCancelSelectColor(state: State) {
             val model = state.themeColorToChange ?: return
             try {
-                themeColorsDataSource.changeThemeColor(model.marker, model.previousColor)
+                themeColorsRepository.changeThemeColor(model.marker, model.previousColor)
                 dispatch(Message.SelectThemeColorToChange(null))
             } catch (throwable: Throwable) {
                 //TODO
@@ -98,7 +98,7 @@ internal class MaterialColorsPalletStoreProvider constructor(
             val newText = intent.text.take(8).filter { it.isDigit() || it.isLetter() }
             try {
                 val newColor = newText.toLong(16)
-                themeColorsDataSource.changeThemeColor(intent.themeColor, newColor)
+                themeColorsRepository.changeThemeColor(intent.themeColor, newColor)
             } catch (throwable: Throwable) {
                 dispatch(Message.TextColorChange(newText))
             }
@@ -106,7 +106,7 @@ internal class MaterialColorsPalletStoreProvider constructor(
 
         private fun resolveThemeMode(state: State) {
             try {
-                themeColorsDataSource.changeThemeMode(!state.themeColorsModel.isLight)
+                themeColorsRepository.changeThemeMode(!state.themeColorsModel.isLight)
             } catch (throwable: Throwable) {
                 //TODO
             }
@@ -119,15 +119,12 @@ internal class MaterialColorsPalletStoreProvider constructor(
                 themeColorsModel = msg.model,
                 newTextColor = null,
             )
-
             is Message.UpdateMaterialColors -> copy(
                 materialColors = msg.list,
             )
-
             is Message.SelectThemeColorToChange -> copy(
                 themeColorToChange = msg.model,
             )
-
             is Message.TextColorChange -> copy(
                 newTextColor = msg.text,
             )
@@ -141,17 +138,17 @@ internal class MaterialColorsPalletStoreProvider constructor(
     }
 
     private class BootstrapperImpl(
-        private val themeColorsDataSource: ThemeColorsRepository,
-        private val materialColorsDataSource: MaterialColorsRepository,
+        private val themeColorsRepository: ThemeColorsRepository,
+        private val materialColorsRepository: MaterialColorsRepository,
     ) : CoroutineBootstrapper<Action>() {
         override fun invoke() {
             scope.launch {
-                themeColorsDataSource.themeColorsState()
+                themeColorsRepository.themeColorsState()
                     .onEach { dispatch(Action.UpdateThemeColors(it)) }
                     .launchIn(this)
             }
             scope.launch {
-                dispatch(Action.UpdateMaterialColors(materialColorsDataSource.getMaterialColors()))
+                dispatch(Action.UpdateMaterialColors(materialColorsRepository.getMaterialColors()))
             }
         }
     }

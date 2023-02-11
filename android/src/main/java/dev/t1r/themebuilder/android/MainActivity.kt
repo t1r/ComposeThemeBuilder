@@ -18,7 +18,7 @@ import dev.t1r.themebuilder.data.colors.theme.ThemeColorsDataSource
 import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepositoryImpl
 import dev.t1r.themebuilder.data.db.DriverFactory
 import dev.t1r.themebuilder.data.kvs.SettingsFactory
-import dev.t1r.themebuilder.feature.materialcolorspallet.integration.MaterialColorsPalletComponentImpl
+import dev.t1r.themebuilder.feature.materialcolorspalette.integration.MaterialColorsPaletteComponentImpl
 import dev.t1r.themebuilder.feature.root.integration.RootComponentImpl
 import dev.t1r.themebuilder.ui.compose.RootContent
 import kotlinx.coroutines.flow.collectLatest
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                     storeFactory = loggingStoreFactory,
                     themeColorsRepository = themeColorsRepository,
                 ),
-                materialColorsPalletComponent = MaterialColorsPalletComponentImpl(
+                materialColorsPaletteComponent = MaterialColorsPaletteComponentImpl(
                     componentContext = defaultComponentContext,
                     storeFactory = loggingStoreFactory,
                     themeColorsDataSource = themeColorsRepository,

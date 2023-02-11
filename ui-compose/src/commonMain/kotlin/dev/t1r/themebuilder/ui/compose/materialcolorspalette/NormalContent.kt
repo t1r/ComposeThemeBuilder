@@ -1,4 +1,4 @@
-package dev.t1r.themebuilder.ui.compose.materialcolorspallet
+package dev.t1r.themebuilder.ui.compose.materialcolorspalette
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
