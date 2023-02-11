@@ -22,12 +22,15 @@ kotlin {
                 implementation(project(Module.Feature.root))
                 implementation(project(Module.Feature.materialColorsPalette))
                 implementation(project(Module.Data.data))
+                implementation(project(Module.entity))
 
                 implementation(Deps.Decompose.decompose)
                 implementation(Deps.Decompose.extensionsComposeJetbrains)
                 implementation(Deps.MviKotlin.mvikotlin)
                 implementation(Deps.MviKotlin.mvikotlinLogging)
                 implementation(Deps.MviKotlin.mvikotlinTimetravel)
+                implementation(Deps.RusshwolfSettings.core)
+                implementation(Deps.RusshwolfSettings.coroutines)
             }
         }
         val jvmTest by getting

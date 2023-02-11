@@ -20,6 +20,7 @@ import dev.t1r.themebuilder.data.db.DriverFactory
 import dev.t1r.themebuilder.data.kvs.SettingsFactory
 import dev.t1r.themebuilder.feature.materialcolorspalette.integration.MaterialColorsPaletteComponentImpl
 import dev.t1r.themebuilder.feature.root.integration.RootComponentImpl
+import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.ui.compose.RootContent
 import kotlinx.coroutines.flow.collectLatest
 
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val loggingStoreFactory = LoggingStoreFactory(TimeTravelStoreFactory())
-        val themeColorsRepository = ThemeColorsRepositoryImpl(
+        val themeColorsRepository: ThemeColorsRepository = ThemeColorsRepositoryImpl(
             dataSource = ThemeColorsDataSource(),
             db = ThemeBuilderDb(
                 driver = DriverFactory(this).create(),
