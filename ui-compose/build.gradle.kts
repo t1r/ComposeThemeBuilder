@@ -8,6 +8,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(compose.material)
+                implementation(compose.materialIconsExtended)
                 implementation(Deps.Decompose.decompose)
                 implementation(Deps.Decompose.extensionsComposeJetbrains)
 

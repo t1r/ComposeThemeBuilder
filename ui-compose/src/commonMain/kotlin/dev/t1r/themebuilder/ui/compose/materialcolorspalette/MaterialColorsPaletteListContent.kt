@@ -7,9 +7,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.twotone.Star
+import androidx.compose.material.icons.twotone.LightMode
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -66,7 +66,7 @@ internal fun MaterialColorsPaletteListContent(
                 )
                 Icon(
                     modifier = Modifier.padding(start = 16.dp),
-                    imageVector = if (model.isLight) Icons.TwoTone.Star else Icons.Filled.Star,
+                    imageVector = if (model.isLight) Icons.TwoTone.LightMode else Icons.Filled.DarkMode,
                     contentDescription = "",
                 )
                 IconButton(

@@ -22,12 +22,6 @@ object Deps {
         const val coroutinesSwing = "org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.6.4"
     }
 
-    object JB {
-        object Compose {
-            const val materialIconsExtended = "org.jetbrains.compose.material:material-icons-extended:1.2.0"
-        }
-    }
-
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:1.4.0"
 

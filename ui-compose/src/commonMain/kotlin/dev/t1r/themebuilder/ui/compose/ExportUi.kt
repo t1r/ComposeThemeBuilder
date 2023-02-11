@@ -9,7 +9,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -59,8 +59,7 @@ fun ExportContent(
                         .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
                         .fillMaxWidth(),
                     content = {
-
-                        Icon(Icons.Filled.Share, "")
+                        Icon(Icons.Filled.ContentCopy, "")
                         Text("Copy")
                     },
                     onClick = {
