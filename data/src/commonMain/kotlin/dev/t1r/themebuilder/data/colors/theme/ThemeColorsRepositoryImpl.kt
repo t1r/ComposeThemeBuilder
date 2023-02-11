@@ -8,8 +8,9 @@ import dev.t1r.themebuilder.entity.colors.ThemeColors
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapNotNull
 
 class ThemeColorsRepositoryImpl(
     private val dataSource: ThemeColorsDataSource,
@@ -29,10 +30,12 @@ class ThemeColorsRepositoryImpl(
     override fun themeColorsState(): Flow<ThemeColors> {
         return settings
             .getLongFlow(THEME_PALETTE_KEY, THEME_PALETTE_DEFAULT_KEY)
-            .flatMapLatest {
-                db.themePaletteQueries.selectByIndex(it).asFlow()
+            .flatMapConcat { uid ->
+                db.themePaletteQueries.selectByIndex(uid).asFlow()
             }
-            .map { mapDbToThemeColors(it.executeAsOne()) }
+            .mapNotNull { query ->
+                query.executeAsOneOrNull()?.let { mapDbToThemeColors(it) }
+            }
     }
 
     override fun palettesListState(): Flow<List<ThemeColors>> {
@@ -116,9 +119,7 @@ class ThemeColorsRepositoryImpl(
     override fun deletePalette(id: Long) {
         val key = settings.getLongOrNull(THEME_PALETTE_KEY) ?: throw RuntimeException()
         if (id == THEME_PALETTE_DEFAULT_KEY || key == id) return
-        db.themePaletteQueries.deleteRowById(
-            uid = key
-        )
+        db.themePaletteQueries.deleteRowById(uid = id)
     }
 
     override fun addPalette() {
