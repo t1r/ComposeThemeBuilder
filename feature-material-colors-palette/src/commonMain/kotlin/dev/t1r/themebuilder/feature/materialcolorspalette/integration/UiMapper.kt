@@ -1,5 +1,6 @@
 package dev.t1r.themebuilder.feature.materialcolorspalette.integration
 
+import dev.t1r.themebuilder.entity.colors.PaletteThemeColors
 import dev.t1r.themebuilder.entity.colors.getColorByThemeColorMarker
 import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent.ContentState
@@ -21,10 +22,17 @@ internal val stateToModel: MaterialColorsPaletteStore.State.() -> MaterialColors
             isPaletteListShowing -> ContentState.PaletteList
             else -> ContentState.Normal
         }
+        val paletteList = paletteList.map { model ->
+            PaletteThemeColors(
+                model = model,
+                isSelected = model.id == themeColorsModel.id,
+            )
+        }
 
         MaterialColorsPaletteComponent.Model(
             colors = themeColorsModel,
             materialColors = materialColors,
             contentState = contentState,
+            paletteList = paletteList,
         )
     }

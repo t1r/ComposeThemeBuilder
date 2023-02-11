@@ -13,6 +13,7 @@ interface MaterialColorsPaletteStore : Store<Intent, State, Label> {
         val themeColorToChange: ThemeColorToChange? = null,
         val newTextColor: String? = null,
         val isPaletteListShowing: Boolean = false,
+        val paletteList: List<ThemeColors> = emptyList(),
     )
 
     data class ThemeColorToChange(
@@ -24,6 +25,7 @@ interface MaterialColorsPaletteStore : Store<Intent, State, Label> {
     sealed class Action {
         data class UpdateThemeColors(val model: ThemeColors) : Action()
         data class UpdateMaterialColors(val list: List<ColorGroup>) : Action()
+        data class UpdatePaletteList(val list: List<ThemeColors>) : Action()
     }
 
     sealed class Intent {
@@ -35,6 +37,9 @@ interface MaterialColorsPaletteStore : Store<Intent, State, Label> {
         data class ChangeTextColor(val themeColor: ThemeColorsEnum, val text: String) : Intent()
         object OpenPaletteList : Intent()
         object ClosePaletteList : Intent()
+        object AddPalette : Intent()
+        data class SelectPalette(val id: Long) : Intent()
+        data class DeletePalette(val id: Long) : Intent()
     }
 
     sealed class Label

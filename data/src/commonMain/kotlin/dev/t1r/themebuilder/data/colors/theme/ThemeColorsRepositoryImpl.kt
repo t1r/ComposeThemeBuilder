@@ -28,11 +28,16 @@ class ThemeColorsRepositoryImpl(
 
     override fun themeColorsState(): Flow<ThemeColors> {
         return settings
-            .getLongFlow(THEME_PALETTE_KEY, 1)
+            .getLongFlow(THEME_PALETTE_KEY, THEME_PALETTE_DEFAULT_KEY)
             .flatMapLatest {
                 db.themePaletteQueries.selectByIndex(it).asFlow()
             }
             .map { mapDbToThemeColors(it.executeAsOne()) }
+    }
+
+    override fun palettesListState(): Flow<List<ThemeColors>> {
+        return db.themePaletteQueries.selectAll().asFlow()
+            .map { query -> query.executeAsList().map(::mapDbToThemeColors) }
     }
 
     override fun changeThemeColor(themeColor: ThemeColorsEnum, color: Long) {
@@ -108,7 +113,7 @@ class ThemeColorsRepositoryImpl(
         )
     }
 
-    fun deletePalette(id: Long) {
+    override fun deletePalette(id: Long) {
         val key = settings.getLongOrNull(THEME_PALETTE_KEY) ?: throw RuntimeException()
         if (id == THEME_PALETTE_DEFAULT_KEY || key == id) return
         db.themePaletteQueries.deleteRowById(
@@ -116,7 +121,7 @@ class ThemeColorsRepositoryImpl(
         )
     }
 
-    fun addPalette() {
+    override fun addPalette() {
         val from = dataSource.provideDefaultColors()
         db.themePaletteQueries.insertRow(
             primaryColor = from.primary,
@@ -135,7 +140,7 @@ class ThemeColorsRepositoryImpl(
         )
     }
 
-    fun selectPalette(id: Long) {
+    override fun selectPalette(id: Long) {
         settings.putLong(THEME_PALETTE_KEY, id)
     }
 

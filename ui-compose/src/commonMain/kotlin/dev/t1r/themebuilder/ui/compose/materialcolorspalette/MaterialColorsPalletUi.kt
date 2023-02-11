@@ -71,7 +71,11 @@ fun MaterialColorsPaletteContent(
             )
             is ContentState.PaletteList -> MaterialColorsPaletteListContent(
                 modifier = Modifier.fillMaxWidth(),
+                list = model.paletteList,
                 onBackToPaletteClicked = component::onBackToPaletteClicked,
+                onAddPaletteClicked = component::onAddPaletteClicked,
+                onPaletteClicked = component::onPaletteClicked,
+                onDeleteClicked = component::onDeleteClicked,
             )
         }
     }

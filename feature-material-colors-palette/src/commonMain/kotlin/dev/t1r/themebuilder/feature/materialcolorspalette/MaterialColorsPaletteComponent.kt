@@ -1,9 +1,6 @@
 package dev.t1r.themebuilder.feature.materialcolorspalette
 
-import dev.t1r.themebuilder.entity.colors.ColorGroup
-import dev.t1r.themebuilder.entity.colors.ColorModel
-import dev.t1r.themebuilder.entity.colors.ThemeColors
-import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
+import dev.t1r.themebuilder.entity.colors.*
 import kotlinx.coroutines.flow.Flow
 
 interface MaterialColorsPaletteComponent {
@@ -13,6 +10,7 @@ interface MaterialColorsPaletteComponent {
         val colors: ThemeColors = ThemeColors(),
         val materialColors: List<ColorGroup> = emptyList(),
         val contentState: ContentState = ContentState.Normal,
+        val paletteList: List<PaletteThemeColors> = emptyList(),
     )
 
     sealed class ContentState {
@@ -36,4 +34,7 @@ interface MaterialColorsPaletteComponent {
     fun onTextColorChanged(themeColor: ThemeColorsEnum, text: String)
     fun onChangePaletteClicked()
     fun onBackToPaletteClicked()
+    fun onAddPaletteClicked()
+    fun onPaletteClicked(id: Long)
+    fun onDeleteClicked(id: Long)
 }

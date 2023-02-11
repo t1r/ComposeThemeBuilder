@@ -59,4 +59,16 @@ class MaterialColorsPaletteComponentImpl constructor(
     override fun onBackToPaletteClicked() {
         store.accept(Intent.ClosePaletteList)
     }
+
+    override fun onAddPaletteClicked() {
+        store.accept(Intent.AddPalette)
+    }
+
+    override fun onPaletteClicked(id: Long) {
+        store.accept(Intent.SelectPalette(id))
+    }
+
+    override fun onDeleteClicked(id: Long) {
+        store.accept(Intent.DeletePalette(id))
+    }
 }

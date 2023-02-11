@@ -35,6 +35,7 @@ internal class MaterialColorsPaletteStoreProvider constructor(
         data class TextColorChange(val text: String) : Message()
         object OpenPaletteList : Message()
         object ClosePaletteList : Message()
+        data class UpdatePaletteList(val list: List<ThemeColors>) : Message()
     }
 
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Message, Label>() {
@@ -44,6 +45,7 @@ internal class MaterialColorsPaletteStoreProvider constructor(
         ): Unit = when (action) {
             is Action.UpdateThemeColors -> dispatch(Message.UpdateThemeColors(action.model))
             is Action.UpdateMaterialColors -> dispatch(Message.UpdateMaterialColors(action.list))
+            is Action.UpdatePaletteList -> dispatch(Message.UpdatePaletteList(action.list))
         }
 
         override fun executeIntent(
@@ -58,6 +60,9 @@ internal class MaterialColorsPaletteStoreProvider constructor(
             is Intent.ChangeThemeMode -> resolveThemeMode(getState())
             is Intent.OpenPaletteList -> dispatch(Message.OpenPaletteList)
             is Intent.ClosePaletteList -> dispatch(Message.ClosePaletteList)
+            is Intent.AddPalette -> themeColorsRepository.addPalette()
+            is Intent.SelectPalette -> themeColorsRepository.selectPalette(intent.id)
+            is Intent.DeletePalette -> themeColorsRepository.deletePalette(intent.id)
         }
 
         private fun resolveSelectThemeColorToChange(state: State, marker: ThemeColorsEnum) {
@@ -134,6 +139,9 @@ internal class MaterialColorsPaletteStoreProvider constructor(
             is Message.OpenPaletteList -> copy(
                 isPaletteListShowing = true,
             )
+            is Message.UpdatePaletteList -> copy(
+                paletteList = msg.list,
+            )
         }
     }
 
@@ -145,6 +153,11 @@ internal class MaterialColorsPaletteStoreProvider constructor(
             scope.launch {
                 themeColorsRepository.themeColorsState()
                     .onEach { dispatch(Action.UpdateThemeColors(it)) }
+                    .launchIn(this)
+            }
+            scope.launch {
+                themeColorsRepository.palettesListState()
+                    .onEach { dispatch(Action.UpdatePaletteList(it)) }
                     .launchIn(this)
             }
             scope.launch {
