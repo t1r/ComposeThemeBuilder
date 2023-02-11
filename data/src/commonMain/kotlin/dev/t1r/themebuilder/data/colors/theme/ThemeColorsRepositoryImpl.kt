@@ -8,7 +8,7 @@ import dev.t1r.themebuilder.entity.colors.ThemeColors
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
 
@@ -20,17 +20,17 @@ class ThemeColorsRepositoryImpl(
 
     init {
         if (settings.getLongOrNull(THEME_PALETTE_KEY) == null) {
-            settings.putLong(THEME_PALETTE_KEY, THEME_PALETTE_DEFAULT_KEY)
+            settings.putLong(THEME_PALETTE_KEY, THEME_PALETTE_DEFAULT_VALUE)
         }
-        if (db.themePaletteQueries.selectByIndex(THEME_PALETTE_DEFAULT_KEY).executeAsOneOrNull() == null) {
+        if (db.themePaletteQueries.selectByIndex(THEME_PALETTE_DEFAULT_VALUE).executeAsOneOrNull() == null) {
             addPalette()
         }
     }
 
     override fun themeColorsState(): Flow<ThemeColors> {
         return settings
-            .getLongFlow(THEME_PALETTE_KEY, THEME_PALETTE_DEFAULT_KEY)
-            .flatMapConcat { uid ->
+            .getLongFlow(THEME_PALETTE_KEY, THEME_PALETTE_DEFAULT_VALUE)
+            .flatMapLatest { uid ->
                 db.themePaletteQueries.selectByIndex(uid).asFlow()
             }
             .mapNotNull { query ->
@@ -118,7 +118,7 @@ class ThemeColorsRepositoryImpl(
 
     override fun deletePalette(id: Long) {
         val key = settings.getLongOrNull(THEME_PALETTE_KEY) ?: throw RuntimeException()
-        if (id == THEME_PALETTE_DEFAULT_KEY || key == id) return
+        if (id == THEME_PALETTE_DEFAULT_VALUE || key == id) return
         db.themePaletteQueries.deleteRowById(uid = id)
     }
 
@@ -147,6 +147,6 @@ class ThemeColorsRepositoryImpl(
 
     companion object {
         private const val THEME_PALETTE_KEY = "THEME_PALETTE_KEY"
-        private const val THEME_PALETTE_DEFAULT_KEY = 1L
+        private const val THEME_PALETTE_DEFAULT_VALUE = 1L
     }
 }
