@@ -40,6 +40,7 @@ internal fun MaterialColorsPaletteListContent(
                 Card(
                     modifier = Modifier.weight(1F),
                     elevation = 8.dp,
+                    backgroundColor = Color.Transparent,
                     content = {
                         Row(
                             modifier = Modifier.fillMaxWidth(),
