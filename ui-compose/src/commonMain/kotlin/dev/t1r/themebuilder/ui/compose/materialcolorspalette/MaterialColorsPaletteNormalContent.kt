@@ -101,7 +101,9 @@ internal fun MaterialColorsPaletteNormalContent(
             onClicked = onChangeThemeModeClicked,
         )
         Button(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 16.dp, end = 16.dp, bottom = 12.dp, top = 6.dp),
             onClick = onChangePaletteClicked,
             content = {
                 Text(
