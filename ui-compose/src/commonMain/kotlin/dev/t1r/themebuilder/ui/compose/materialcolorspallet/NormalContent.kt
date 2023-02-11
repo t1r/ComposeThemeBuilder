@@ -2,13 +2,17 @@ package dev.t1r.themebuilder.ui.compose.materialcolorspallet
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 
 @Composable
-internal fun MaterialColorsPalletNormalContent(
+internal fun MaterialColorsPaletteNormalContent(
     primaryColor: Color,
     primaryVariantColor: Color,
     secondaryColor: Color,
@@ -22,9 +26,10 @@ internal fun MaterialColorsPalletNormalContent(
     onSurfaceColor: Color,
     onErrorColor: Color,
     isLight: Boolean,
-    onThemeColorToChangeSelected: (ThemeColorsEnum) -> Unit,
-    onChangeThemeModeClicked: () -> Unit,
     modifier: Modifier = Modifier,
+    onThemeColorToChangeSelected: (ThemeColorsEnum) -> Unit = {},
+    onChangeThemeModeClicked: () -> Unit = {},
+    onChangePaletteClicked: () -> Unit = {},
 ) {
     Column(modifier = modifier) {
         MaterialColorsPaletteElementWidget(
@@ -94,6 +99,15 @@ internal fun MaterialColorsPalletNormalContent(
             isLight = isLight,
             modifier = Modifier.fillMaxWidth(),
             onClicked = onChangeThemeModeClicked,
+        )
+        Button(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
+            onClick = onChangePaletteClicked,
+            content = {
+                Text(
+                    text = "Change palette",
+                )
+            },
         )
     }
 }

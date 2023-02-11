@@ -51,4 +51,12 @@ class MaterialColorsPalletComponentImpl constructor(
     override fun onTextColorChanged(themeColor: ThemeColorsEnum, text: String) {
         store.accept(Intent.ChangeTextColor(themeColor, text))
     }
+
+    override fun onChangePaletteClicked() {
+        store.accept(Intent.OpenPaletteList)
+    }
+
+    override fun onBackToPaletteClicked() {
+        store.accept(Intent.ClosePaletteList)
+    }
 }

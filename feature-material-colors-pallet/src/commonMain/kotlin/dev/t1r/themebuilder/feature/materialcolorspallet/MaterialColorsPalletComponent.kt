@@ -17,13 +17,15 @@ interface MaterialColorsPalletComponent {
 
     sealed class ContentState {
         object Normal : ContentState()
-        data class SelectedMode(
+        data class ChangeColorMode(
             val model: ThemeColorsEnum,
             val newColor: Long,
             val previousColor: Long,
             val oppositeColor: Long,
             val newColorText: String = "",
         ) : ContentState()
+
+        object PaletteList : ContentState()
     }
 
     fun onThemeColorToChangeSelected(color: ThemeColorsEnum)
@@ -32,4 +34,6 @@ interface MaterialColorsPalletComponent {
     fun onCancelSelectClicked()
     fun onConfirmSelectedClicked()
     fun onTextColorChanged(themeColor: ThemeColorsEnum, text: String)
+    fun onChangePaletteClicked()
+    fun onBackToPaletteClicked()
 }

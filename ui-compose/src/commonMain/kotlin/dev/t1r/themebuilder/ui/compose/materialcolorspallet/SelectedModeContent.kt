@@ -32,17 +32,18 @@ import dev.t1r.themebuilder.ui.compose.common.getContrastColor
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-internal fun MaterialColorsPalletSelectedModeContent(
-    contentState: MaterialColorsPalletComponent.ContentState.SelectedMode,
+internal fun MaterialColorsPaletteChangeColorContent(
+    contentState: MaterialColorsPalletComponent.ContentState.ChangeColorMode,
     materialColors: List<ColorGroup>,
     onColorCandidateSelected: (themeColor: ThemeColorsEnum, color: ColorModel) -> Unit,
     onCancelSelectClicked: () -> Unit,
     onConfirmSelectedClicked: () -> Unit,
     onTextColorChanged: (themeColor: ThemeColorsEnum, text: String) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = modifier) {
         Column(modifier = Modifier.fillMaxWidth()) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 Box(

@@ -33,6 +33,8 @@ internal class MaterialColorsPalletStoreProvider constructor(
         data class UpdateMaterialColors(val list: List<ColorGroup>) : Message()
         data class SelectThemeColorToChange(val model: ThemeColorToChange?) : Message()
         data class TextColorChange(val text: String) : Message()
+        object OpenPaletteList : Message()
+        object ClosePaletteList : Message()
     }
 
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Message, Label>() {
@@ -54,6 +56,8 @@ internal class MaterialColorsPalletStoreProvider constructor(
             is Intent.ConfirmSelectedColor -> dispatch(Message.SelectThemeColorToChange(null))
             is Intent.ChangeTextColor -> resolveChangeTextColor(intent)
             is Intent.ChangeThemeMode -> resolveThemeMode(getState())
+            is Intent.OpenPaletteList -> dispatch(Message.OpenPaletteList)
+            is Intent.ClosePaletteList -> dispatch(Message.ClosePaletteList)
         }
 
         private fun resolveSelectThemeColorToChange(state: State, marker: ThemeColorsEnum) {
@@ -126,6 +130,12 @@ internal class MaterialColorsPalletStoreProvider constructor(
 
             is Message.TextColorChange -> copy(
                 newTextColor = msg.text,
+            )
+            is Message.ClosePaletteList -> copy(
+                isPaletteListShowing = false,
+            )
+            is Message.OpenPaletteList -> copy(
+                isPaletteListShowing = true,
             )
         }
     }
