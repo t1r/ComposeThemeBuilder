@@ -31,9 +31,10 @@ internal fun MaterialColorsPaletteListContent(
             val model = item.model
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .clickable { onPaletteClicked(model.id) }
+                    .background(if (item.isSelected) Color.LightGray else Color.Transparent)
                     .padding(horizontal = 16.dp)
-                    .clickable { onPaletteClicked(model.id) },
+                    .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Card(
