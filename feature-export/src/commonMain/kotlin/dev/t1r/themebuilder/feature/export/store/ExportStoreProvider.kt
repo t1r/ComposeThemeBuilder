@@ -5,9 +5,9 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
-import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.entity.colors.ThemeColors
 import dev.t1r.themebuilder.feature.export.store.ExportStore.*
+import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -73,11 +73,11 @@ MaterialTheme(
     }
 
     private class BootstrapperImpl(
-        private val colorsDataSource: ThemeColorsRepository,
+        private val themeColorsRepository: ThemeColorsRepository,
     ) : CoroutineBootstrapper<Action>() {
         override fun invoke() {
             scope.launch {
-                colorsDataSource.themeColorsState()
+                themeColorsRepository.themeColorsState()
                     .onEach { dispatch(Action.UpdateColors(it)) }
                     .launchIn(this)
             }

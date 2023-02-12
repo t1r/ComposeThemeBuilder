@@ -11,7 +11,6 @@ colors. Then you can export result as Kotlin code.
 + Adding iOS support
 + Adding Compose components customization
 + Import theme
-+ Parallel build dark and light theme
 
 ### ⚙️ Tech Stack
 

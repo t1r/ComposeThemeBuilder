@@ -15,7 +15,7 @@ class ThemeColorsDataSource {
             onBackground = 0xFF000000,
             onSurface = 0xFF000000,
             onError = 0xFFFFFFFF,
-            isLight = false,
+            isLight = true,
         )
     }
 }

@@ -1,6 +1,7 @@
 package dev.t1r.themebuilder.entity.colors
 
 data class ThemeColors(
+    val id: Long = 1L,
     val primary: Long = 0xFF6200EE,
     val primaryVariant: Long = 0xFF3700B3,
     val secondary: Long = 0xFF03DAC6,
@@ -70,3 +71,8 @@ fun getOppositeColorByThemeColorMarker(
         ThemeColorsEnum.Surface -> themeColors.onSurface
     }
 }
+
+data class PaletteThemeColors(
+    val model: ThemeColors,
+    val isSelected: Boolean,
+)

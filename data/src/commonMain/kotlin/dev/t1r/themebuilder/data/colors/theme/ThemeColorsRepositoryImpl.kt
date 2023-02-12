@@ -6,115 +6,147 @@ import com.russhwolf.settings.coroutines.getLongFlow
 import dev.t1r.themebuilder.data.ThemeBuilderDb
 import dev.t1r.themebuilder.entity.colors.ThemeColors
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
+import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapNotNull
 
 class ThemeColorsRepositoryImpl(
-    dataSource: ThemeColorsDataSource,
+    private val dataSource: ThemeColorsDataSource,
     private val db: ThemeBuilderDb,
     private val settings: ObservableSettings,
 ) : ThemeColorsRepository {
 
     init {
         if (settings.getLongOrNull(THEME_PALETTE_KEY) == null) {
-            settings.putLong(THEME_PALETTE_KEY, 1)
+            settings.putLong(THEME_PALETTE_KEY, THEME_PALETTE_DEFAULT_VALUE)
         }
-        if (db.themePaletteQueries.selectByIndex(1).executeAsOneOrNull() == null) {
-            val from = dataSource.provideDefaultColors()
-            db.themePaletteQueries.insertRow(
-                primaryColor = from.primary,
-                primaryVariant = from.primaryVariant,
-                secondary = from.secondary,
-                secondaryVariant = from.secondaryVariant,
-                background = from.background,
-                surface = from.surface,
-                error = from.error,
-                onPrimary = from.onPrimary,
-                onSecondary = from.onSecondary,
-                onBackground = from.onBackground,
-                onSurface = from.onSurface,
-                onError = from.onError,
-                isLight = from.isLight,
-            )
+        if (db.themePaletteQueries.selectByIndex(THEME_PALETTE_DEFAULT_VALUE).executeAsOneOrNull() == null) {
+            addPalette()
         }
     }
 
     override fun themeColorsState(): Flow<ThemeColors> {
         return settings
-            .getLongFlow(THEME_PALETTE_KEY, 1)
-            .flatMapLatest {
-                db.themePaletteQueries.selectByIndex(it.toLong()).asFlow()
+            .getLongFlow(THEME_PALETTE_KEY, THEME_PALETTE_DEFAULT_VALUE)
+            .flatMapLatest { uid ->
+                db.themePaletteQueries.selectByIndex(uid).asFlow()
             }
-            .map { mapDbToThemeColors(it.executeAsOne()) }
+            .mapNotNull { query ->
+                query.executeAsOneOrNull()?.let { mapDbToThemeColors(it) }
+            }
+    }
+
+    override fun palettesListState(): Flow<List<ThemeColors>> {
+        return db.themePaletteQueries.selectAll().asFlow()
+            .map { query -> query.executeAsList().map(::mapDbToThemeColors) }
     }
 
     override fun changeThemeColor(themeColor: ThemeColorsEnum, color: Long) {
         val key = settings.getLongOrNull(THEME_PALETTE_KEY) ?: throw RuntimeException()
         when (themeColor) {
-            ThemeColorsEnum.Background -> db.themePaletteQueries.updateBackgroundColor(
+            is ThemeColorsEnum.Background -> db.themePaletteQueries.updateBackgroundColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.Error -> db.themePaletteQueries.updateErrorColor(
+            is ThemeColorsEnum.Error -> db.themePaletteQueries.updateErrorColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.OnBackground -> db.themePaletteQueries.updateOnBackgroundColor(
+            is ThemeColorsEnum.OnBackground -> db.themePaletteQueries.updateOnBackgroundColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.OnError -> db.themePaletteQueries.updateOnErrorColor(
+            is ThemeColorsEnum.OnError -> db.themePaletteQueries.updateOnErrorColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.OnPrimary -> db.themePaletteQueries.updateOnPrimaryColor(
+            is ThemeColorsEnum.OnPrimary -> db.themePaletteQueries.updateOnPrimaryColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.OnSecondary -> db.themePaletteQueries.updateOnSecondaryColor(
+            is ThemeColorsEnum.OnSecondary -> db.themePaletteQueries.updateOnSecondaryColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.OnSurface -> db.themePaletteQueries.updateOnSurfaceColor(
+            is ThemeColorsEnum.OnSurface -> db.themePaletteQueries.updateOnSurfaceColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.Primary -> db.themePaletteQueries.updatePrimaryColor(
+            is ThemeColorsEnum.Primary -> db.themePaletteQueries.updatePrimaryColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.PrimaryVariant -> db.themePaletteQueries.updatePrimaryVariantColor(
+            is ThemeColorsEnum.PrimaryVariant -> db.themePaletteQueries.updatePrimaryVariantColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.Secondary -> db.themePaletteQueries.updateSecondaryColor(
+            is ThemeColorsEnum.Secondary -> db.themePaletteQueries.updateSecondaryColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.SecondaryVariant -> db.themePaletteQueries.updateSecondaryVariantColor(
+            is ThemeColorsEnum.SecondaryVariant -> db.themePaletteQueries.updateSecondaryVariantColor(
                 color = color,
                 uid = key,
             )
 
-            ThemeColorsEnum.Surface -> db.themePaletteQueries.updateSurfaceColor(
+            is ThemeColorsEnum.Surface -> db.themePaletteQueries.updateSurfaceColor(
                 color = color,
                 uid = key,
             )
         }
     }
 
+    override fun changeThemeMode(isLight: Boolean) {
+        val key = settings.getLongOrNull(THEME_PALETTE_KEY) ?: throw RuntimeException()
+        db.themePaletteQueries.updateIsLightColor(
+            isLight = isLight,
+            uid = key,
+        )
+    }
+
+    override fun deletePalette(id: Long) {
+        val key = settings.getLongOrNull(THEME_PALETTE_KEY) ?: throw RuntimeException()
+        if (id == THEME_PALETTE_DEFAULT_VALUE || key == id) return
+        db.themePaletteQueries.deleteRowById(uid = id)
+    }
+
+    override fun addPalette() {
+        val from = dataSource.provideDefaultColors()
+        db.themePaletteQueries.insertRow(
+            primaryColor = from.primary,
+            primaryVariant = from.primaryVariant,
+            secondary = from.secondary,
+            secondaryVariant = from.secondaryVariant,
+            background = from.background,
+            surface = from.surface,
+            error = from.error,
+            onPrimary = from.onPrimary,
+            onSecondary = from.onSecondary,
+            onBackground = from.onBackground,
+            onSurface = from.onSurface,
+            onError = from.onError,
+            isLight = from.isLight,
+        )
+    }
+
+    override fun selectPalette(id: Long) {
+        settings.putLong(THEME_PALETTE_KEY, id)
+    }
+
     companion object {
         private const val THEME_PALETTE_KEY = "THEME_PALETTE_KEY"
+        private const val THEME_PALETTE_DEFAULT_VALUE = 1L
     }
 }

@@ -1,27 +1,27 @@
 package dev.t1r.themebuilder.feature.baselinecolor.store
 
 import com.arkivanov.mvikotlin.core.store.Reducer
-import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.core.store.Store
+import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
-import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.entity.colors.ThemeColors
-import  dev.t1r.themebuilder.feature.baselinecolor.store.BaselineColorsStore.*
+import dev.t1r.themebuilder.feature.baselinecolor.store.BaselineColorsStore.*
+import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 internal class BaselineColorsStoreProvider constructor(
     private val storeFactory: StoreFactory,
-    private val colorsDataSource: ThemeColorsRepository,
+    private val themeColorsRepository: ThemeColorsRepository,
 ) {
 
     fun provide(): BaselineColorsStore =
         object : BaselineColorsStore, Store<Intent, State, Label> by storeFactory.create(
             name = "BaselineColorsStore",
             initialState = State(),
-            bootstrapper = BootstrapperImpl(colorsDataSource),
+            bootstrapper = BootstrapperImpl(themeColorsRepository),
             executorFactory = ::ExecutorImpl,
             reducer = ReducerImpl,
         ) {}
@@ -48,11 +48,11 @@ internal class BaselineColorsStoreProvider constructor(
     }
 
     private class BootstrapperImpl(
-        private val colorsDataSource: ThemeColorsRepository,
+        private val themeColorsRepository: ThemeColorsRepository,
     ) : CoroutineBootstrapper<Action>() {
         override fun invoke() {
             scope.launch {
-                colorsDataSource.themeColorsState()
+                themeColorsRepository.themeColorsState()
                     .onEach { dispatch(Action.UpdateColors(it)) }
                     .launchIn(this)
             }

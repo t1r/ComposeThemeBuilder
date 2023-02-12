@@ -16,9 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.ui.compose.appmenu.AppMenuWidget
-import dev.t1r.themebuilder.ui.compose.materialcolorspallet.MaterialColorsPalletContent
+import dev.t1r.themebuilder.ui.compose.materialcolorspalette.MaterialColorsPaletteContent
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalComposeUiApi::class)
@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 fun ColorsScreenContainerWidget(
     navigationModel: DrawerNavigationModel,
     title: String,
-    materialColorsPalletComponent: MaterialColorsPalletComponent,
+    materialColorsPaletteComponent: MaterialColorsPaletteComponent,
     modifier: Modifier = Modifier,
     snackBarHostState: SnackbarHostState = remember { SnackbarHostState() },
     content: @Composable (PaddingValues) -> Unit = {},
@@ -44,8 +44,8 @@ fun ColorsScreenContainerWidget(
         modifier = modifier,
         sheetState = bottomSheetState,
         sheetContent = {
-            MaterialColorsPalletContent(
-                component = materialColorsPalletComponent,
+            MaterialColorsPaletteContent(
+                component = materialColorsPaletteComponent,
                 modifier = Modifier.fillMaxWidth(),
             )
         },

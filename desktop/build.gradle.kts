@@ -1,7 +1,3 @@
-import org.jetbrains.compose.compose
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
@@ -24,14 +20,17 @@ kotlin {
 
                 implementation(project(Module.UI.compose))
                 implementation(project(Module.Feature.root))
-                implementation(project(Module.Feature.materialColorsPallet))
+                implementation(project(Module.Feature.materialColorsPalette))
                 implementation(project(Module.Data.data))
+                implementation(project(Module.entity))
 
                 implementation(Deps.Decompose.decompose)
                 implementation(Deps.Decompose.extensionsComposeJetbrains)
                 implementation(Deps.MviKotlin.mvikotlin)
                 implementation(Deps.MviKotlin.mvikotlinLogging)
                 implementation(Deps.MviKotlin.mvikotlinTimetravel)
+                implementation(Deps.RusshwolfSettings.core)
+                implementation(Deps.RusshwolfSettings.coroutines)
             }
         }
         val jvmTest by getting

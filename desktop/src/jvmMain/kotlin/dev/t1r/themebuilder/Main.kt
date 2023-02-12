@@ -14,13 +14,14 @@ import dev.t1r.themebuilder.data.colors.theme.ThemeColorsDataSource
 import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepositoryImpl
 import dev.t1r.themebuilder.data.db.DriverFactory
 import dev.t1r.themebuilder.data.kvs.SettingsFactory
-import dev.t1r.themebuilder.feature.materialcolorspallet.integration.MaterialColorsPalletComponentImpl
+import dev.t1r.themebuilder.feature.materialcolorspalette.integration.MaterialColorsPaletteComponentImpl
 import dev.t1r.themebuilder.feature.root.integration.RootComponentImpl
+import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.ui.compose.RootContent
 import java.util.prefs.Preferences
 
 private val loggingStoreFactory = LoggingStoreFactory(TimeTravelStoreFactory())
-private val themeColorsRepository = ThemeColorsRepositoryImpl(
+private val themeColorsRepository: ThemeColorsRepository = ThemeColorsRepositoryImpl(
     dataSource = ThemeColorsDataSource(),
     db = ThemeBuilderDb(DriverFactory().create()),
     settings = SettingsFactory(Preferences.userRoot().node("userDataPreferences")).createSettings(),
@@ -39,11 +40,11 @@ fun main() = application {
                 storeFactory = loggingStoreFactory,
                 themeColorsRepository = themeColorsRepository,
             ),
-            materialColorsPalletComponent = MaterialColorsPalletComponentImpl(
+            materialColorsPaletteComponent = MaterialColorsPaletteComponentImpl(
                 componentContext = defaultComponentContext,
                 storeFactory = loggingStoreFactory,
-                themeColorsDataSource = themeColorsRepository,
-                materialColorsDataSource = MaterialColorsRepositoryImpl(MaterialColorsDataSource()),
+                themeColorsRepository = themeColorsRepository,
+                materialColorsRepository = MaterialColorsRepositoryImpl(MaterialColorsDataSource()),
             ),
         )
     }

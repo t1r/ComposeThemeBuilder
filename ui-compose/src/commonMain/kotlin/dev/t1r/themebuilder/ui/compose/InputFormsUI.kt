@@ -11,13 +11,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.ui.compose.common.ColorsScreenContainerWidget
 
 @Composable
 fun InputFormsContent(
     navigationModel: DrawerNavigationModel,
-    materialColorsPalletComponent: MaterialColorsPalletComponent,
+    materialColorsPaletteComponent: MaterialColorsPaletteComponent,
     modifier: Modifier = Modifier,
 ) {
     var isRadioButtonSelected by remember { mutableStateOf(false) }
@@ -30,7 +30,7 @@ fun InputFormsContent(
     ColorsScreenContainerWidget(
         navigationModel = navigationModel,
         title = "Input Forms",
-        materialColorsPalletComponent = materialColorsPalletComponent,
+        materialColorsPaletteComponent = materialColorsPaletteComponent,
         modifier = modifier,
         content = { pv ->
             Column(

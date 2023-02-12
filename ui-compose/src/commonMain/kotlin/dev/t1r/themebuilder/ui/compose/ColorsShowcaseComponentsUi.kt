@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
-import dev.t1r.themebuilder.feature.materialcolorspallet.MaterialColorsPalletComponent
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.ui.compose.common.ColorsScreenContainerWidget
 import kotlinx.coroutines.launch
 
@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun ColorsShowcaseComponentsContent(
     navigationModel: DrawerNavigationModel,
-    materialColorsPalletComponent: MaterialColorsPalletComponent,
+    materialColorsPaletteComponent: MaterialColorsPaletteComponent,
     modifier: Modifier = Modifier,
 ) {
     val coroutineScope = rememberCoroutineScope()
@@ -34,7 +34,7 @@ fun ColorsShowcaseComponentsContent(
     val snackBarHostState = remember { SnackbarHostState() }
 
     ColorsScreenContainerWidget(
-        materialColorsPalletComponent = materialColorsPalletComponent,
+        materialColorsPaletteComponent = materialColorsPaletteComponent,
         modifier = modifier,
         title = "Colors Showcase Components",
         navigationModel = navigationModel,
@@ -211,7 +211,7 @@ fun ColorsShowcaseComponentsContent(
         title = { Text(text = "Progress Bar Alert") },
         text = {
             Box(
-                modifier = Modifier.wrapContentSize(),
+                modifier = Modifier.fillMaxWidth(),
                 contentAlignment = Alignment.Center,
             ) {
                 CircularProgressIndicator()
