@@ -47,11 +47,11 @@ internal class RootStoreProvider constructor(
     }
 
     private class BootstrapperImpl(
-        private val colorsDataSource: ThemeColorsRepository,
+        private val themeColorsRepository: ThemeColorsRepository,
     ) : CoroutineBootstrapper<Action>() {
         override fun invoke() {
             scope.launch {
-                colorsDataSource.themeColorsState()
+                themeColorsRepository.themeColorsState()
                     .onEach { dispatch(Action.UpdateColors(it)) }
                     .launchIn(this)
             }

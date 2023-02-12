@@ -18,7 +18,7 @@ class BaselineColorsComponentImpl constructor(
 ) : BaselineColorsComponent, ComponentContext by componentContext {
     private val store = BaselineColorsStoreProvider(
         storeFactory = storeFactory,
-        colorsDataSource = themeColorsRepository,
+        themeColorsRepository = themeColorsRepository,
     ).provide()
 
     override val models: Flow<Model> = store.states.map { stateToModel(it) }

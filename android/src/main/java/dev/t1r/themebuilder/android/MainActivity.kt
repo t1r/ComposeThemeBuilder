@@ -49,8 +49,8 @@ class MainActivity : AppCompatActivity() {
                 materialColorsPaletteComponent = MaterialColorsPaletteComponentImpl(
                     componentContext = defaultComponentContext,
                     storeFactory = loggingStoreFactory,
-                    themeColorsDataSource = themeColorsRepository,
-                    materialColorsDataSource = MaterialColorsRepositoryImpl(MaterialColorsDataSource()),
+                    themeColorsRepository = themeColorsRepository,
+                    materialColorsRepository = MaterialColorsRepositoryImpl(MaterialColorsDataSource()),
                 ),
             )
         }

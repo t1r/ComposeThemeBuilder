@@ -17,13 +17,13 @@ import kotlinx.coroutines.flow.map
 class MaterialColorsPaletteComponentImpl constructor(
     componentContext: ComponentContext,
     storeFactory: StoreFactory,
-    themeColorsDataSource: ThemeColorsRepository,
-    materialColorsDataSource: MaterialColorsRepository,
+    themeColorsRepository: ThemeColorsRepository,
+    materialColorsRepository: MaterialColorsRepository,
 ) : MaterialColorsPaletteComponent, ComponentContext by componentContext {
     private val store = MaterialColorsPaletteStoreProvider(
         storeFactory = storeFactory,
-        themeColorsRepository = themeColorsDataSource,
-        materialColorsRepository = materialColorsDataSource,
+        themeColorsRepository = themeColorsRepository,
+        materialColorsRepository = materialColorsRepository,
     ).provide()
 
     override val models: Flow<Model> = store.states.map { stateToModel(it) }

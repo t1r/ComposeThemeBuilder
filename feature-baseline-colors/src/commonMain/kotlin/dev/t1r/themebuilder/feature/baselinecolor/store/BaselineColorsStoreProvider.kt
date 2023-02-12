@@ -14,14 +14,14 @@ import kotlinx.coroutines.launch
 
 internal class BaselineColorsStoreProvider constructor(
     private val storeFactory: StoreFactory,
-    private val colorsDataSource: ThemeColorsRepository,
+    private val themeColorsRepository: ThemeColorsRepository,
 ) {
 
     fun provide(): BaselineColorsStore =
         object : BaselineColorsStore, Store<Intent, State, Label> by storeFactory.create(
             name = "BaselineColorsStore",
             initialState = State(),
-            bootstrapper = BootstrapperImpl(colorsDataSource),
+            bootstrapper = BootstrapperImpl(themeColorsRepository),
             executorFactory = ::ExecutorImpl,
             reducer = ReducerImpl,
         ) {}
@@ -48,11 +48,11 @@ internal class BaselineColorsStoreProvider constructor(
     }
 
     private class BootstrapperImpl(
-        private val colorsDataSource: ThemeColorsRepository,
+        private val themeColorsRepository: ThemeColorsRepository,
     ) : CoroutineBootstrapper<Action>() {
         override fun invoke() {
             scope.launch {
-                colorsDataSource.themeColorsState()
+                themeColorsRepository.themeColorsState()
                     .onEach { dispatch(Action.UpdateColors(it)) }
                     .launchIn(this)
             }
