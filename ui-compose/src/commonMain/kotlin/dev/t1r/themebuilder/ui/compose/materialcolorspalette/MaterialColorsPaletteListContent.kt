@@ -97,18 +97,14 @@ internal fun MaterialColorsPaletteListContent(
                 modifier = Modifier.weight(1F).padding(end = 12.dp),
                 onClick = onAddPaletteClicked,
                 content = {
-                    Text(
-                        text = "Add palette",
-                    )
+                    Text(text = "Add palette")
                 },
             )
             Button(
                 modifier = Modifier.weight(1F),
                 onClick = onBackToPaletteClicked,
                 content = {
-                    Text(
-                        text = "Back to palette",
-                    )
+                    Text(text = "Back to palette")
                 },
             )
         }

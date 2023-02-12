@@ -7,12 +7,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
+import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentCopy
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalClipboardManager
@@ -24,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.feature.export.ExportComponent
 import dev.t1r.themebuilder.feature.export.ExportComponent.Model
 import dev.t1r.themebuilder.ui.compose.common.ScreenContainerWidget
+import kotlinx.coroutines.launch
 
 @Composable
 fun ExportContent(
@@ -32,10 +32,28 @@ fun ExportContent(
 ) {
     val model by component.models.collectAsState(Model())
     val clipboardManager = LocalClipboardManager.current
+    val coroutineScope = rememberCoroutineScope()
+    val snackBarHostState = remember { SnackbarHostState() }
 
     ScreenContainerWidget(
         navigationModel = component.navigationModel,
         title = "Export",
+        snackBarHostState = snackBarHostState,
+        bottomBar = {
+            Button(
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                    .fillMaxWidth(),
+                content = {
+                    Icon(Icons.Filled.ContentCopy, "")
+                    Text("Copy")
+                },
+                onClick = {
+                    clipboardManager.setText(buildAnnotatedString { append(model.exportString) })
+                    coroutineScope.launch { snackBarHostState.showSnackbar("Theme copied") }
+                },
+            )
+        },
         content = { pv ->
             Column(
                 modifier = Modifier
@@ -53,20 +71,6 @@ fun ExportContent(
                         fontFamily = FontFamily.Monospace,
                         color = Color.Black,
                     ),
-                )
-                Button(
-                    modifier = Modifier
-                        .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
-                        .fillMaxWidth(),
-                    content = {
-                        Icon(Icons.Filled.ContentCopy, "")
-                        Text("Copy")
-                    },
-                    onClick = {
-                        clipboardManager.setText(
-                            buildAnnotatedString { append(model.exportString) }
-                        )
-                    },
                 )
             }
         },

@@ -17,12 +17,14 @@ import kotlinx.coroutines.launch
 internal fun ScreenContainerWidget(
     navigationModel: DrawerNavigationModel,
     title: String,
-    content: @Composable (PaddingValues) -> Unit,
     modifier: Modifier = Modifier,
+    snackBarHostState: SnackbarHostState = remember { SnackbarHostState() },
+    bottomBar: @Composable () -> Unit = {},
+    content: @Composable (PaddingValues) -> Unit = {},
 ) {
     val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
-    val scaffoldState = rememberScaffoldState(drawerState)
+    val scaffoldState = rememberScaffoldState(drawerState, snackBarHostState)
     val keyboardController = LocalSoftwareKeyboardController.current
 
     Scaffold(
@@ -53,6 +55,7 @@ internal fun ScreenContainerWidget(
                 },
             )
         },
+        bottomBar = bottomBar,
         content = content,
     )
 }
