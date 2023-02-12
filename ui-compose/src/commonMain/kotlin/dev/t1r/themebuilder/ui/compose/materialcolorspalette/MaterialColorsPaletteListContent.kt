@@ -37,7 +37,7 @@ internal fun MaterialColorsPaletteListContent(
                     modifier = Modifier
                         .clickable { onPaletteClicked(model.id) }
                         .background(if (item.isSelected) Color.LightGray else Color.Transparent)
-                        .padding(horizontal = 16.dp)
+                        .padding(horizontal = 16.dp, vertical = 4.dp)
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
