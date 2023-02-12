@@ -10,7 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.LightMode
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,11 +20,14 @@ import dev.t1r.themebuilder.entity.colors.PaletteThemeColors
 @Composable
 internal fun MaterialColorsPaletteListContent(
     list: List<PaletteThemeColors>,
+    paletteIdToDelete: Long?,
     modifier: Modifier = Modifier,
     onBackToPaletteClicked: () -> Unit = {},
     onAddPaletteClicked: () -> Unit = {},
     onPaletteClicked: (Long) -> Unit = {},
     onDeleteClicked: (Long) -> Unit = {},
+    onCancelDeleteClicked: () -> Unit = {},
+    onConfirmDeleteClicked: (Long) -> Unit = {},
 ) {
     Column(modifier = modifier) {
         LazyColumn(modifier = Modifier.fillMaxWidth().weight(1F).padding(bottom = 12.dp)) {
@@ -96,17 +99,52 @@ internal fun MaterialColorsPaletteListContent(
             Button(
                 modifier = Modifier.weight(1F).padding(end = 12.dp),
                 onClick = onAddPaletteClicked,
-                content = {
-                    Text(text = "Add palette")
-                },
+                content = { Text(text = "Add palette") },
             )
             Button(
                 modifier = Modifier.weight(1F),
                 onClick = onBackToPaletteClicked,
-                content = {
-                    Text(text = "Back to palette")
-                },
+                content = { Text(text = "Back to palette") },
             )
         }
     }
+
+    if (paletteIdToDelete != null) DeleteAlert(
+        onConfirmClicked = {
+            onConfirmDeleteClicked(paletteIdToDelete)
+            onCancelDeleteClicked()
+        },
+        onDismiss = onCancelDeleteClicked,
+    )
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+private fun DeleteAlert(
+    onConfirmClicked: () -> Unit = {},
+    onDismiss: () -> Unit = {},
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Are you sure to delete palette?") },
+        buttons = {
+            Row(
+                modifier = Modifier.padding(all = 8.dp),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    modifier = Modifier.weight(1f).padding(end = 16.dp),
+                    onClick = onDismiss,
+                ) {
+                    Text("Cancel")
+                }
+                Button(
+                    modifier = Modifier.weight(1f),
+                    onClick = onConfirmClicked
+                ) {
+                    Text("Ok")
+                }
+            }
+        }
+    )
 }

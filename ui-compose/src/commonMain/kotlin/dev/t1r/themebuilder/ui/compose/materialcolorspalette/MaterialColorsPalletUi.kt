@@ -4,9 +4,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
@@ -33,6 +31,8 @@ fun MaterialColorsPaletteContent(
     val onBackgroundColor by animateColorAsState(Color(model.colors.onBackground))
     val onSurfaceColor by animateColorAsState(Color(model.colors.onSurface))
     val onErrorColor by animateColorAsState(Color(model.colors.onError))
+
+    var paletteIdToDelete: Long? by remember { mutableStateOf(null) }
 
     Box(
         modifier = modifier.then(
@@ -69,13 +69,17 @@ fun MaterialColorsPaletteContent(
                 onConfirmSelectedClicked = component::onConfirmSelectedClicked,
                 onTextColorChanged = component::onTextColorChanged,
             )
+
             is ContentState.PaletteList -> MaterialColorsPaletteListContent(
                 modifier = Modifier.fillMaxWidth(),
                 list = model.paletteList,
+                paletteIdToDelete = paletteIdToDelete,
                 onBackToPaletteClicked = component::onBackToPaletteClicked,
                 onAddPaletteClicked = component::onAddPaletteClicked,
                 onPaletteClicked = component::onPaletteClicked,
-                onDeleteClicked = component::onDeleteClicked,
+                onDeleteClicked = { paletteIdToDelete = it },
+                onCancelDeleteClicked = { paletteIdToDelete = null },
+                onConfirmDeleteClicked = component::onDeleteClicked,
             )
         }
     }
