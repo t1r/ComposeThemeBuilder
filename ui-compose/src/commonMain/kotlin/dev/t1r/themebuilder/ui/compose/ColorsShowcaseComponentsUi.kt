@@ -211,7 +211,7 @@ fun ColorsShowcaseComponentsContent(
         title = { Text(text = "Progress Bar Alert") },
         text = {
             Box(
-                modifier = Modifier.wrapContentSize(),
+                modifier = Modifier.fillMaxWidth(),
                 contentAlignment = Alignment.Center,
             ) {
                 CircularProgressIndicator()
