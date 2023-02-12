@@ -22,7 +22,6 @@ include(
     ":android",
     ":desktop",
 
-    ":common",
     ":ui-compose",
     ":data",
 
