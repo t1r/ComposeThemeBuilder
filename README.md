@@ -24,8 +24,8 @@ colors. Then you can export result as Kotlin code.
 
 ### 📸 Screenshots:
 
-![screenshot 1](docs/screenshot_1.jpg "Screenshot 1") ![screenshot 2](docs/screenshot_2.jpg "Screenshot 1")
+![screenshot 1](docs/screenshot_1.png "Screenshot 1") ![screenshot 2](docs/screenshot_2.png "Screenshot 2") ![screenshot 3](docs/screenshot_3.png "Screenshot 3") ![screenshot 4](docs/screenshot_4.png "Screenshot 4")
 
 ### 📱 Stores
 
-[![Google Play](docs/google-play-badge.png)](https://play.google.com/store/apps/details?id=dev.t1r.themebuilder)
+[![Google Play](docs/google-play-badge.png)](https://play.google.com/store/apps/details?id=dev.t1r.themebuilder)[![App Gallery](docs/app-gallery-badge.png)](https://appgallery.huawei.com/#/app/C107587273)
