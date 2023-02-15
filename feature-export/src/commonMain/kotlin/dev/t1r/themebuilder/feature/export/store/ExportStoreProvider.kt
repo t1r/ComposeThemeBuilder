@@ -53,6 +53,7 @@ MaterialTheme(
     onBackground = ${mapToColorString(model.onBackground)} ,
     onSurface = ${mapToColorString(model.onSurface)},
     onError = ${mapToColorString(model.onError)},
+    isLight = ${model.isLight},
   ),
   content = {},
 )
