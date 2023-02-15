@@ -1,7 +1,7 @@
 object App {
     const val id = "dev.t1r.themebuilder"
     const val versionCode = 2
-    const val versionName = "0.2.0"
+    const val versionName = "0.2.1"
 }
 
 object Versions {
