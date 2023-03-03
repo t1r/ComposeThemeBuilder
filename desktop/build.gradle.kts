@@ -19,8 +19,8 @@ kotlin {
                 implementation(compose.desktop.currentOs)
 
                 implementation(project(Module.UI.compose))
-                implementation(project(Module.Feature.root))
-                implementation(project(Module.Feature.materialColorsPalette))
+                implementation(project(Module.Component.root))
+                implementation(project(Module.Component.materialColorsPalette))
                 implementation(project(Module.Data.data))
                 implementation(project(Module.entity))
 

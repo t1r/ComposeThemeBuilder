@@ -10,8 +10,8 @@ kotlin {
             dependencies {
                 implementation(project(Module.entity))
                 implementation(project(Module.Data.data))
-                implementation(project(Module.Feature.baselineColor))
-                implementation(project(Module.Feature.export))
+                implementation(project(Module.Component.baselineColor))
+                implementation(project(Module.Component.export))
             }
         }
     }

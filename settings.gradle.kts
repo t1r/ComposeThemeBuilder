@@ -22,12 +22,12 @@ include(
     ":android",
     ":desktop",
 
-    ":ui-compose",
-    ":data",
+    ":common:ui-compose",
+    ":common:data",
+    ":common:entity",
 
-    ":entity",
-    ":feature-root",
-    ":feature-baseline-colors",
-    ":feature-material-colors-palette",
-    ":feature-export",
+    ":common:component:root",
+    ":common:component:baseline-colors",
+    ":common:component:material-colors-palette",
+    ":common:component:export",
 )

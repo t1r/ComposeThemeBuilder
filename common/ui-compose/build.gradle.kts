@@ -13,10 +13,10 @@ kotlin {
                 implementation(Deps.Decompose.extensionsComposeJetbrains)
 
                 implementation(project(Module.entity))
-                implementation(project(Module.Feature.root))
-                implementation(project(Module.Feature.baselineColor))
-                implementation(project(Module.Feature.materialColorsPalette))
-                implementation(project(Module.Feature.export))
+                implementation(project(Module.Component.root))
+                implementation(project(Module.Component.baselineColor))
+                implementation(project(Module.Component.materialColorsPalette))
+                implementation(project(Module.Component.export))
             }
         }
         val androidMain by getting {
