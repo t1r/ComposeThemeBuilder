@@ -19,8 +19,8 @@ dependencies {
     implementation(Deps.AndroidX.Compose.lifecycleRuntime)
 
     implementation(project(Module.UI.compose))
-    implementation(project(Module.Feature.root))
-    implementation(project(Module.Feature.materialColorsPalette))
+    implementation(project(Module.Component.root))
+    implementation(project(Module.Component.materialColorsPalette))
     implementation(project(Module.Data.data))
     implementation(project(Module.entity))
 
@@ -34,11 +34,11 @@ dependencies {
 }
 
 android {
-    compileSdk = Versions.androidCompileSdk
+    compileSdk = AndroidVersions.androidCompileSdk
     defaultConfig {
         applicationId = App.id
-        minSdk = Versions.androidMinSdk
-        targetSdk = Versions.androidTargetSdk
+        minSdk = AndroidVersions.androidMinSdk
+        targetSdk = AndroidVersions.androidTargetSdk
         versionCode = App.versionCode
         versionName = App.versionName
     }

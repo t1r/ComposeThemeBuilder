@@ -1,18 +1,3 @@
-object App {
-    const val id = "dev.t1r.themebuilder"
-    const val versionCode = 3
-    const val versionName = "0.2.1"
-}
-
-object Versions {
-    const val androidMinSdk = 21
-    const val androidCompileSdk = 32
-    const val androidTargetSdk = androidCompileSdk
-
-    const val decompose = "1.0.0-beta-01"
-    const val mviKotlin = "3.0.2"
-}
-
 object Deps {
     const val gradle = "com.android.tools.build:gradle:7.0.4"
 
@@ -33,18 +18,20 @@ object Deps {
     }
 
     object Decompose {
-        const val decompose = "com.arkivanov.decompose:decompose:${Versions.decompose}"
+        const val version = "1.0.0-beta-01"
+        const val decompose = "com.arkivanov.decompose:decompose:${version}"
         const val extensionsComposeJetbrains =
-            "com.arkivanov.decompose:extensions-compose-jetbrains:${Versions.decompose}"
+            "com.arkivanov.decompose:extensions-compose-jetbrains:${version}"
     }
 
     object MviKotlin {
-        const val mvikotlin = "com.arkivanov.mvikotlin:mvikotlin:${Versions.mviKotlin}"
-        const val mvikotlinMain = "com.arkivanov.mvikotlin:mvikotlin-main:${Versions.mviKotlin}"
-        const val mvikotlinLogging = "com.arkivanov.mvikotlin:mvikotlin-logging:${Versions.mviKotlin}"
-        const val mvikotlinTimetravel = "com.arkivanov.mvikotlin:mvikotlin-timetravel:${Versions.mviKotlin}"
+        private const val version = "3.0.2"
+        const val mvikotlin = "com.arkivanov.mvikotlin:mvikotlin:${version}"
+        const val mvikotlinMain = "com.arkivanov.mvikotlin:mvikotlin-main:${version}"
+        const val mvikotlinLogging = "com.arkivanov.mvikotlin:mvikotlin-logging:${version}"
+        const val mvikotlinTimetravel = "com.arkivanov.mvikotlin:mvikotlin-timetravel:${version}"
         const val mvikotlinExtensionsCoroutines =
-            "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:${Versions.mviKotlin}"
+            "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:${version}"
     }
 
     object SqlDelight {
@@ -62,24 +49,5 @@ object Deps {
     object RusshwolfSettings {
         const val core = "com.russhwolf:multiplatform-settings:1.0.0"
         const val coroutines = "com.russhwolf:multiplatform-settings-coroutines:1.0.0"
-    }
-}
-
-object Module {
-    const val entity = ":entity"
-
-    object Feature {
-        const val root = ":feature-root"
-        const val baselineColor = ":feature-baseline-colors"
-        const val materialColorsPalette = ":feature-material-colors-palette"
-        const val export = ":feature-export"
-    }
-
-    object UI {
-        const val compose = ":ui-compose"
-    }
-
-    object Data {
-        const val data = ":data"
     }
 }
