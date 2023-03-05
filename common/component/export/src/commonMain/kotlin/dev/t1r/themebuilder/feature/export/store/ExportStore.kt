@@ -6,7 +6,8 @@ import  dev.t1r.themebuilder.feature.export.store.ExportStore.*
 
 interface ExportStore : Store<Intent, State, Label> {
     data class State(
-        val exportString: String = "",
+        val composeThemeExportString: String = "",
+        val androidXmlExportString: String = "",
     )
 
     sealed class Action {

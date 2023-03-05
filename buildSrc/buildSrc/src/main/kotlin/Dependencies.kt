@@ -8,13 +8,17 @@ object Deps {
     }
 
     object AndroidX {
-        const val appCompat = "androidx.appcompat:appcompat:1.4.0"
+        const val appCompat = "androidx.appcompat:appcompat:1.4.1"
 
         object Compose {
             const val version = "1.2.0"
             const val activity = "androidx.activity:activity-compose:1.3.0"
             const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha01"
         }
+    }
+
+    object Android {
+        const val material = "com.google.android.material:material:1.6.0"
     }
 
     object Decompose {
