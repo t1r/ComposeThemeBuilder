@@ -2,15 +2,19 @@ package dev.t1r.themebuilder.ui.compose.materialcolorspalette
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.AlertDialog
+import androidx.compose.material.Button
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
-import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent.ContentState
-import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent.Model
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent.*
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MaterialColorsPaletteContent(
     component: MaterialColorsPaletteComponent,
@@ -33,6 +37,7 @@ fun MaterialColorsPaletteContent(
     val onErrorColor by animateColorAsState(Color(model.colors.onError))
 
     var paletteIdToDelete: Long? by remember { mutableStateOf(null) }
+    var isErrorDialogShowing by remember { mutableStateOf(false) }
 
     Box(
         modifier = modifier.then(
@@ -81,6 +86,33 @@ fun MaterialColorsPaletteContent(
                 onCancelDeleteClicked = { paletteIdToDelete = null },
                 onConfirmDeleteClicked = component::onDeleteClicked,
             )
+        }
+    }
+
+    if (isErrorDialogShowing) AlertDialog(
+        onDismissRequest = { isErrorDialogShowing = false },
+        title = { Text(text = "Something went wrong") },
+        buttons = {
+            Row(
+                modifier = Modifier.padding(all = 8.dp).fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
+            ) {
+                Button(
+                    onClick = { isErrorDialogShowing = false }
+                ) {
+                    Text("Ok")
+                }
+            }
+        }
+    )
+
+    LaunchedEffect(Unit) {
+        component.events.collect { event ->
+            when (event) {
+                is Event.Error -> {
+                    isErrorDialogShowing = true
+                }
+            }
         }
     }
 }

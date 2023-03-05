@@ -2,10 +2,12 @@ package dev.t1r.themebuilder.feature.materialcolorspalette.integration
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.store.StoreFactory
+import com.arkivanov.mvikotlin.extensions.coroutines.labels
 import com.arkivanov.mvikotlin.extensions.coroutines.states
 import dev.t1r.themebuilder.entity.colors.ColorModel
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
+import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent.Event
 import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent.Model
 import dev.t1r.themebuilder.feature.materialcolorspalette.store.MaterialColorsPaletteStore.Intent
 import dev.t1r.themebuilder.feature.materialcolorspalette.store.MaterialColorsPaletteStoreProvider
@@ -27,6 +29,7 @@ class MaterialColorsPaletteComponentImpl constructor(
     ).provide()
 
     override val models: Flow<Model> = store.states.map { stateToModel(it) }
+    override val events: Flow<Event> = store.labels.map { labelToEvent(it) }
 
     override fun onThemeColorToChangeSelected(color: ThemeColorsEnum) {
         store.accept(Intent.SelectThemeColorToChange(color))

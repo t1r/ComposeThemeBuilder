@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface MaterialColorsPaletteComponent {
     val models: Flow<Model>
+    val events: Flow<Event>
 
     data class Model(
         val colors: ThemeColors = ThemeColors(),
@@ -24,6 +25,10 @@ interface MaterialColorsPaletteComponent {
         ) : ContentState()
 
         object PaletteList : ContentState()
+    }
+
+    sealed class Event {
+        object Error : Event()
     }
 
     fun onThemeColorToChangeSelected(color: ThemeColorsEnum)
