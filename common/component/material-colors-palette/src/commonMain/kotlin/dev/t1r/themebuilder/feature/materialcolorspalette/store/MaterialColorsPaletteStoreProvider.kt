@@ -83,7 +83,7 @@ internal class MaterialColorsPaletteStoreProvider constructor(
             try {
                 themeColorsRepository.changeThemeColor(intent.themeColor, intent.color)
             } catch (throwable: Throwable) {
-                //TODO
+                publish(Label.Error)
             }
         }
 
@@ -93,7 +93,7 @@ internal class MaterialColorsPaletteStoreProvider constructor(
                 themeColorsRepository.changeThemeColor(model.marker, model.previousColor)
                 dispatch(Message.SelectThemeColorToChange(null))
             } catch (throwable: Throwable) {
-                //TODO
+                publish(Label.Error)
             }
         }
 
@@ -113,7 +113,7 @@ internal class MaterialColorsPaletteStoreProvider constructor(
             try {
                 themeColorsRepository.changeThemeMode(!state.themeColorsModel.isLight)
             } catch (throwable: Throwable) {
-                //TODO
+                publish(Label.Error)
             }
         }
     }
@@ -124,21 +124,27 @@ internal class MaterialColorsPaletteStoreProvider constructor(
                 themeColorsModel = msg.model,
                 newTextColor = null,
             )
+
             is Message.UpdateMaterialColors -> copy(
                 materialColors = msg.list,
             )
+
             is Message.SelectThemeColorToChange -> copy(
                 themeColorToChange = msg.model,
             )
+
             is Message.TextColorChange -> copy(
                 newTextColor = msg.text,
             )
+
             is Message.ClosePaletteList -> copy(
                 isPaletteListShowing = false,
             )
+
             is Message.OpenPaletteList -> copy(
                 isPaletteListShowing = true,
             )
+
             is Message.UpdatePaletteList -> copy(
                 paletteList = msg.list,
             )

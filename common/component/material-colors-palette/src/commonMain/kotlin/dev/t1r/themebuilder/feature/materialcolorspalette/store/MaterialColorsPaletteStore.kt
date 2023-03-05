@@ -42,5 +42,7 @@ interface MaterialColorsPaletteStore : Store<Intent, State, Label> {
         data class DeletePalette(val id: Long) : Intent()
     }
 
-    sealed class Label
+    sealed class Label {
+        object Error : Label()
+    }
 }
