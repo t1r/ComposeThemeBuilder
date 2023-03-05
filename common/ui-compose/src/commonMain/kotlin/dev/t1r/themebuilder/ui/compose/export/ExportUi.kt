@@ -1,20 +1,25 @@
 package dev.t1r.themebuilder.ui.compose.export
 
-import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.rememberPagerState
 import dev.t1r.themebuilder.component.export.ExportComponent
 import dev.t1r.themebuilder.component.export.ExportComponent.Model
 import dev.t1r.themebuilder.ui.compose.common.ScreenContainerWidget
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun ExportContent(
     component: ExportComponent,
@@ -26,6 +31,7 @@ fun ExportContent(
     val snackBarHostState = remember { SnackbarHostState() }
 
     var tabPosition by remember { mutableStateOf(0) }
+    val pagerState = rememberPagerState()
 
     ScreenContainerWidget(
         modifier = modifier,
@@ -38,7 +44,9 @@ fun ExportContent(
             ) {
                 Tab(
                     selected = tabPosition == 0,
-                    onClick = { tabPosition = 0 },
+                    onClick = {
+                        coroutineScope.launch { pagerState.scrollToPage(0) }
+                    },
                 ) {
                     Text(
                         modifier = Modifier.padding(16.dp),
@@ -48,7 +56,9 @@ fun ExportContent(
                 }
                 Tab(
                     selected = tabPosition == 1,
-                    onClick = { tabPosition = 1 },
+                    onClick = {
+                        coroutineScope.launch { pagerState.scrollToPage(1) }
+                    },
                 ) {
                     Text(
                         modifier = Modifier.padding(16.dp),
@@ -59,17 +69,24 @@ fun ExportContent(
             }
         },
         content = { pv ->
-            Crossfade(
-                modifier = Modifier.fillMaxSize().padding(pv),
-                targetState = tabPosition,
-            ) {
-                when (tabPosition) {
+            HorizontalPager(
+                modifier = Modifier
+                    .padding(pv)
+                    .fillMaxSize(),
+                count = 2,
+                state = pagerState,
+            ) { index ->
+                when (index) {
                     0 -> ExportThemeWidget(
                         exportString = model.composeThemeExportString,
                         modifier = Modifier.fillMaxSize(),
                         onButtonClicked = {
-                            clipboardManager.setText(buildAnnotatedString { append(model.composeThemeExportString) })
-                            coroutineScope.launch { snackBarHostState.showSnackbar("Theme copied") }
+                            copyToClipboardAction(
+                                string = model.composeThemeExportString,
+                                clipboardManager = clipboardManager,
+                                coroutineScope = coroutineScope,
+                                snackBarHostState = snackBarHostState
+                            )
                         }
                     )
 
@@ -77,8 +94,12 @@ fun ExportContent(
                         exportString = model.androidXmlExportString,
                         modifier = Modifier.fillMaxSize(),
                         onButtonClicked = {
-                            clipboardManager.setText(buildAnnotatedString { append(model.androidXmlExportString) })
-                            coroutineScope.launch { snackBarHostState.showSnackbar("Theme copied") }
+                            copyToClipboardAction(
+                                string = model.androidXmlExportString,
+                                clipboardManager = clipboardManager,
+                                coroutineScope = coroutineScope,
+                                snackBarHostState = snackBarHostState
+                            )
                         }
                     )
 
@@ -87,4 +108,20 @@ fun ExportContent(
             }
         },
     )
+
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }.collect { page ->
+            tabPosition = page
+        }
+    }
+}
+
+private fun copyToClipboardAction(
+    string: String,
+    clipboardManager: ClipboardManager,
+    coroutineScope: CoroutineScope,
+    snackBarHostState: SnackbarHostState,
+) {
+    clipboardManager.setText(buildAnnotatedString { append(string) })
+    coroutineScope.launch { snackBarHostState.showSnackbar("Theme copied") }
 }
