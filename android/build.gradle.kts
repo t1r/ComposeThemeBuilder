@@ -4,10 +4,6 @@ plugins {
     kotlin("android")
 }
 
-apply {
-    from("signingcreds/signing.gradle")
-}
-
 repositories {
     jcenter()
 }

@@ -1,7 +1,7 @@
 object App {
     const val id = "dev.t1r.themebuilder"
-    const val versionCode = 3
-    const val versionName = "0.2.1"
+    const val versionCode = 4
+    const val versionName = "0.3.0"
 }
 
 object AndroidVersions {
