@@ -39,21 +39,6 @@ fun ExportContent(
         navigationModel = component.navigationModel,
         title = "Export",
         snackBarHostState = snackBarHostState,
-        bottomBar = {
-            Button(
-                modifier = Modifier
-                    .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
-                    .fillMaxWidth(),
-                content = {
-                    Icon(Icons.Filled.ContentCopy, "")
-                    Text("Copy")
-                },
-                onClick = {
-                    clipboardManager.setText(buildAnnotatedString { append(model.exportString) })
-                    coroutineScope.launch { snackBarHostState.showSnackbar("Theme copied") }
-                },
-            )
-        },
         content = { pv ->
             Column(
                 modifier = Modifier
@@ -65,12 +50,50 @@ fun ExportContent(
                         .padding(16.dp)
                         .weight(1F)
                         .verticalScroll(rememberScrollState()),
-                    text = model.exportString,
+                    text = model.composeThemeExportString,
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily.Monospace,
                         color = Color.Black,
                     ),
+                )
+                Button(
+                    modifier = Modifier
+                        .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                        .fillMaxWidth(),
+                    content = {
+                        Icon(Icons.Filled.ContentCopy, "")
+                        Text("Copy")
+                    },
+                    onClick = {
+                        clipboardManager.setText(buildAnnotatedString { append(model.composeThemeExportString) })
+                        coroutineScope.launch { snackBarHostState.showSnackbar("Theme copied") }
+                    },
+                )
+                Text(
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .weight(1F)
+                        .verticalScroll(rememberScrollState()),
+                    text = model.androidXmlExportString,
+                    style = TextStyle(
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = FontFamily.Monospace,
+                        color = Color.Black,
+                    ),
+                )
+                Button(
+                    modifier = Modifier
+                        .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                        .fillMaxWidth(),
+                    content = {
+                        Icon(Icons.Filled.ContentCopy, "")
+                        Text("Copy")
+                    },
+                    onClick = {
+                        clipboardManager.setText(buildAnnotatedString { append(model.androidXmlExportString) })
+                        coroutineScope.launch { snackBarHostState.showSnackbar("Theme copied") }
+                    },
                 )
             }
         },

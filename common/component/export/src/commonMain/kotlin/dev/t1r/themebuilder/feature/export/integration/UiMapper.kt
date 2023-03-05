@@ -6,6 +6,7 @@ import dev.t1r.themebuilder.feature.export.store.ExportStore
 internal val stateToModel: ExportStore.State.() -> ExportComponent.Model =
     {
         ExportComponent.Model(
-            exportString = exportString,
+            composeThemeExportString = composeThemeExportString,
+            androidXmlExportString = androidXmlExportString,
         )
     }

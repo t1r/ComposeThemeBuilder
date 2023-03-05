@@ -8,7 +8,8 @@ interface ExportComponent {
     val navigationModel: DrawerNavigationModel
 
     data class Model(
-        val exportString: String = "",
+        val composeThemeExportString: String = "",
+        val androidXmlExportString: String = "",
     )
 
     data class Params(

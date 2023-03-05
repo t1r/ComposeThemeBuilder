@@ -31,6 +31,7 @@ dependencies {
     implementation(Deps.MviKotlin.mvikotlinTimetravel)
     implementation(Deps.RusshwolfSettings.core)
     implementation(Deps.RusshwolfSettings.coroutines)
+    implementation(Deps.Android.material)
 }
 
 android {
