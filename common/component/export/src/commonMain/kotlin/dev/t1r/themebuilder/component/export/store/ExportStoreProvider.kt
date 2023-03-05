@@ -68,8 +68,10 @@ MaterialTheme(
         }
 
         private fun updateAndroidXmlThemeExport(model: ThemeColors) {
+            val darkModeString = if (model.isLight) "values" else "values-night"
             val exportString = """
-<!-- Use com.google.android.material:material:1.1.0 and higher -->
+<!-- Use "com.google.android.material:material:1.1.0" and higher -->
+<!-- Add to file "theme.xml" "$darkModeString" folder -->
 <style name="Theme.ApplicationName" parent="Theme.MaterialComponents.NoActionBar">
     <item name="colorPrimary">${mapToAndroidXmlColorString(model.primary)}</item>
     <item name="colorPrimaryVariant">${mapToAndroidXmlColorString(model.primaryVariant)}</item>
