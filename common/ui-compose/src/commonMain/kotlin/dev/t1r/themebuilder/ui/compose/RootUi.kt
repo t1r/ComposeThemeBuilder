@@ -8,10 +8,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
-import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
-import dev.t1r.themebuilder.feature.root.RootComponent
-import dev.t1r.themebuilder.feature.root.RootComponent.Child
-import dev.t1r.themebuilder.feature.root.RootComponent.Model
+import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
+import dev.t1r.themebuilder.component.root.RootComponent
+import dev.t1r.themebuilder.component.root.RootComponent.Child
+import dev.t1r.themebuilder.component.root.RootComponent.Model
 import dev.t1r.themebuilder.ui.compose.export.ExportContent
 
 @OptIn(ExperimentalDecomposeApi::class)

@@ -11,8 +11,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
-import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent.*
+import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
+import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent.*
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable

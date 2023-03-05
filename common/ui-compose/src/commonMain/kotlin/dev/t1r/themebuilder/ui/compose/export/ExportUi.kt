@@ -10,8 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
-import dev.t1r.themebuilder.feature.export.ExportComponent
-import dev.t1r.themebuilder.feature.export.ExportComponent.Model
+import dev.t1r.themebuilder.component.export.ExportComponent
+import dev.t1r.themebuilder.component.export.ExportComponent.Model
 import dev.t1r.themebuilder.ui.compose.common.ScreenContainerWidget
 import kotlinx.coroutines.launch
 
@@ -72,6 +72,7 @@ fun ExportContent(
                             coroutineScope.launch { snackBarHostState.showSnackbar("Theme copied") }
                         }
                     )
+
                     1 -> ExportThemeWidget(
                         exportString = model.androidXmlExportString,
                         modifier = Modifier.fillMaxSize(),
@@ -80,6 +81,7 @@ fun ExportContent(
                             coroutineScope.launch { snackBarHostState.showSnackbar("Theme copied") }
                         }
                     )
+
                     else -> Spacer(modifier = Modifier.fillMaxSize())
                 }
             }
