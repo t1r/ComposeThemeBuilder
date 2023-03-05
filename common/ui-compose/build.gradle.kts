@@ -11,6 +11,7 @@ kotlin {
                 implementation(compose.materialIconsExtended)
                 implementation(Deps.Decompose.decompose)
                 implementation(Deps.Decompose.extensionsComposeJetbrains)
+                implementation(Deps.GosyerAccompanist.pager)
 
                 implementation(project(Module.entity))
                 implementation(project(Module.Component.root))

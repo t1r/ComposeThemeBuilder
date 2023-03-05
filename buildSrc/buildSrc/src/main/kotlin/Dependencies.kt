@@ -54,4 +54,8 @@ object Deps {
         const val core = "com.russhwolf:multiplatform-settings:1.0.0"
         const val coroutines = "com.russhwolf:multiplatform-settings-coroutines:1.0.0"
     }
+
+    object GosyerAccompanist {
+        const val pager = "ca.gosyer:accompanist-pager:0.25.1"
+    }
 }
