@@ -10,8 +10,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
-import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.ui.compose.common.ColorsScreenContainerWidget
 
 @Composable

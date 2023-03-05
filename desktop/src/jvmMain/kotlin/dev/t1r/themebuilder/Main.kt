@@ -7,6 +7,8 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
 import com.arkivanov.mvikotlin.timetravel.store.TimeTravelStoreFactory
+import dev.t1r.themebuilder.component.materialcolorspalette.integration.MaterialColorsPaletteComponentImpl
+import dev.t1r.themebuilder.component.root.integration.RootComponentImpl
 import dev.t1r.themebuilder.data.ThemeBuilderDb
 import dev.t1r.themebuilder.data.colors.material.MaterialColorsDataSource
 import dev.t1r.themebuilder.data.colors.material.MaterialColorsRepositoryImpl
@@ -14,8 +16,6 @@ import dev.t1r.themebuilder.data.colors.theme.ThemeColorsDataSource
 import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepositoryImpl
 import dev.t1r.themebuilder.data.db.DriverFactory
 import dev.t1r.themebuilder.data.kvs.SettingsFactory
-import dev.t1r.themebuilder.feature.materialcolorspalette.integration.MaterialColorsPaletteComponentImpl
-import dev.t1r.themebuilder.feature.root.integration.RootComponentImpl
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.ui.compose.RootContent
 import java.util.prefs.Preferences

@@ -24,10 +24,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.entity.colors.ColorGroup
 import dev.t1r.themebuilder.entity.colors.ColorModel
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
-import dev.t1r.themebuilder.feature.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.ui.compose.common.getContrastColor
 
 @OptIn(ExperimentalComposeUiApi::class)
