@@ -1,6 +1,7 @@
 package dev.t1r.themebuilder.android
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.compose.setContent
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
                     componentContext = defaultComponentContext,
                     storeFactory = loggingStoreFactory,
                     themeColorsRepository = themeColorsRepository,
+                    shareAction = { text -> share(text = text) },
                 ),
                 materialColorsPaletteComponent = MaterialColorsPaletteComponentImpl(
                     componentContext = defaultComponentContext,
@@ -69,5 +71,16 @@ class MainActivity : AppCompatActivity() {
             addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             statusBarColor = Color(color).toArgb()
         }
+    }
+
+    private fun share(
+        text: String,
+    ) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, text)
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(sendIntent, null))
     }
 }

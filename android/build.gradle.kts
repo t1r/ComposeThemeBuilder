@@ -54,6 +54,8 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
+            isDebuggable = false
+            isShrinkResources = true
         }
     }
 }

@@ -15,4 +15,6 @@ interface ExportComponent {
     data class Params(
         val navigationModel: DrawerNavigationModel,
     )
+
+    fun onShareClicked(text: String)
 }

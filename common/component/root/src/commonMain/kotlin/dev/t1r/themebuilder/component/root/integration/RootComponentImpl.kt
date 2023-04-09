@@ -50,6 +50,7 @@ class RootComponentImpl internal constructor(
         componentContext: ComponentContext,
         storeFactory: StoreFactory,
         themeColorsRepository: ThemeColorsRepository,
+        shareAction: ((String) -> Unit)?,
     ) : this(
         componentContext = componentContext,
         storeFactory = storeFactory,
@@ -68,6 +69,7 @@ class RootComponentImpl internal constructor(
                 storeFactory = storeFactory,
                 themeColorsRepository = themeColorsRepository,
                 params = params,
+                shareAction = shareAction,
             )
         },
     )

@@ -39,6 +39,7 @@ fun main() = application {
                 componentContext = defaultComponentContext,
                 storeFactory = loggingStoreFactory,
                 themeColorsRepository = themeColorsRepository,
+                shareAction = null,
             ),
             materialColorsPaletteComponent = MaterialColorsPaletteComponentImpl(
                 componentContext = defaultComponentContext,
