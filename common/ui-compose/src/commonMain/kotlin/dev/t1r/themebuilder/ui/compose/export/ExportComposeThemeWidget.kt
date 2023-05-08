@@ -19,11 +19,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import dev.t1r.themebuilder.ui.compose.common.Os
 
 @Composable
 internal fun ExportThemeWidget(
     exportString: String,
+    isShareShowing: Boolean,
     modifier: Modifier = Modifier,
     onExportButtonClicked: () -> Unit = {},
     onShareButtonClicked: () -> Unit = {},
@@ -58,7 +58,7 @@ internal fun ExportThemeWidget(
                 },
                 onClick = onExportButtonClicked,
             )
-            if (currentOs() is Os.Android) Button(
+            if (isShareShowing) Button(
                 modifier = Modifier
                     .padding()
                     .weight(1F),

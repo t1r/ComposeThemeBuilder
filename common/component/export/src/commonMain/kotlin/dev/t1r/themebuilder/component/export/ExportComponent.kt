@@ -10,6 +10,7 @@ interface ExportComponent {
     data class Model(
         val composeThemeExportString: String = "",
         val androidXmlExportString: String = "",
+        val isShareShowing: Boolean = false,
     )
 
     data class Params(

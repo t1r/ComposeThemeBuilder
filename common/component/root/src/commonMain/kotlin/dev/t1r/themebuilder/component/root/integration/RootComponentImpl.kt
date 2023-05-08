@@ -20,6 +20,7 @@ import dev.t1r.themebuilder.component.root.RootComponent.Model
 import dev.t1r.themebuilder.component.root.store.RootStoreProvider
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
+import dev.t1r.themebuilder.repository.platform.PlatformRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -50,7 +51,7 @@ class RootComponentImpl internal constructor(
         componentContext: ComponentContext,
         storeFactory: StoreFactory,
         themeColorsRepository: ThemeColorsRepository,
-        shareAction: ((String) -> Unit)?,
+        platformRepository: PlatformRepository,
     ) : this(
         componentContext = componentContext,
         storeFactory = storeFactory,
@@ -69,7 +70,7 @@ class RootComponentImpl internal constructor(
                 storeFactory = storeFactory,
                 themeColorsRepository = themeColorsRepository,
                 params = params,
-                shareAction = shareAction,
+                platformRepository = platformRepository,
             )
         },
     )
@@ -86,7 +87,9 @@ class RootComponentImpl internal constructor(
         )
 
         is Configuration.InputForms -> Child.InputForms(getDrawerNavigationModel())
-        is Configuration.ColorsShowcaseComponents -> Child.ColorsShowcaseComponents(getDrawerNavigationModel())
+        is Configuration.ColorsShowcaseComponents -> Child.ColorsShowcaseComponents(
+            getDrawerNavigationModel()
+        )
 
         is Configuration.Export -> Child.Export(
             export(

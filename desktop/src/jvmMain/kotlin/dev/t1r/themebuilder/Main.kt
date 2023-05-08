@@ -16,6 +16,7 @@ import dev.t1r.themebuilder.data.colors.theme.ThemeColorsDataSource
 import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepositoryImpl
 import dev.t1r.themebuilder.data.db.DriverFactory
 import dev.t1r.themebuilder.data.kvs.SettingsFactory
+import dev.t1r.themebuilder.data.platform.PlatformRepositoryImpl
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.ui.compose.RootContent
 import java.util.prefs.Preferences
@@ -39,7 +40,9 @@ fun main() = application {
                 componentContext = defaultComponentContext,
                 storeFactory = loggingStoreFactory,
                 themeColorsRepository = themeColorsRepository,
-                shareAction = null,
+                platformRepository = PlatformRepositoryImpl(
+                    shareAction = null,
+                ),
             ),
             materialColorsPaletteComponent = MaterialColorsPaletteComponentImpl(
                 componentContext = defaultComponentContext,

@@ -79,6 +79,7 @@ fun ExportContent(
                 when (index) {
                     0 -> ExportThemeWidget(
                         exportString = model.composeThemeExportString,
+                        isShareShowing = model.isShareShowing,
                         modifier = Modifier.fillMaxSize(),
                         onExportButtonClicked = {
                             copyToClipboardAction(
@@ -95,6 +96,7 @@ fun ExportContent(
 
                     1 -> ExportThemeWidget(
                         exportString = model.androidXmlExportString,
+                        isShareShowing = model.isShareShowing,
                         modifier = Modifier.fillMaxSize(),
                         onExportButtonClicked = {
                             copyToClipboardAction(

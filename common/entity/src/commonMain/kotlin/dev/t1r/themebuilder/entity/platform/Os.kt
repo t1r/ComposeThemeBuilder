@@ -1,4 +1,4 @@
-package dev.t1r.themebuilder.ui.compose.common
+package dev.t1r.themebuilder.entity.platform
 
 sealed class Os {
     object Android : Os()
