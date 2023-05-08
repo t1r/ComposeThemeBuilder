@@ -1,6 +1,7 @@
 package dev.t1r.themebuilder.component.materialcolorspalette.integration
 
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.mvikotlin.core.instancekeeper.getStore
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.labels
 import com.arkivanov.mvikotlin.extensions.coroutines.states
@@ -22,11 +23,13 @@ class MaterialColorsPaletteComponentImpl constructor(
     themeColorsRepository: ThemeColorsRepository,
     materialColorsRepository: MaterialColorsRepository,
 ) : MaterialColorsPaletteComponent, ComponentContext by componentContext {
-    private val store = MaterialColorsPaletteStoreProvider(
-        storeFactory = storeFactory,
-        themeColorsRepository = themeColorsRepository,
-        materialColorsRepository = materialColorsRepository,
-    ).provide()
+    private val store = instanceKeeper.getStore {
+        MaterialColorsPaletteStoreProvider(
+            storeFactory = storeFactory,
+            themeColorsRepository = themeColorsRepository,
+            materialColorsRepository = materialColorsRepository,
+        ).provide()
+    }
 
     override val models: Flow<Model> = store.states.map { stateToModel(it) }
     override val events: Flow<Event> = store.labels.map { labelToEvent(it) }

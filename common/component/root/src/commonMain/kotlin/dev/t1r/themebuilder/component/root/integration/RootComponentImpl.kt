@@ -8,6 +8,7 @@ import com.arkivanov.decompose.router.stack.replaceCurrent
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
+import com.arkivanov.mvikotlin.core.instancekeeper.getStore
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.states
 import dev.t1r.themebuilder.component.baselinecolor.BaselineColorsComponent
@@ -39,10 +40,12 @@ class RootComponentImpl internal constructor(
         childFactory = ::createChild
     )
 
-    private val store = RootStoreProvider(
-        storeFactory = storeFactory,
-        themeColorsRepository = themeColorsRepository,
-    ).provide()
+    private val store = instanceKeeper.getStore {
+        RootStoreProvider(
+            storeFactory = storeFactory,
+            themeColorsRepository = themeColorsRepository,
+        ).provide()
+    }
 
     override val childStack: Value<ChildStack<*, Child>> = stack
     override val models: Flow<Model> = store.states.map { stateToModel(it) }

@@ -1,6 +1,7 @@
 package dev.t1r.themebuilder.component.export.integration
 
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.mvikotlin.core.instancekeeper.getStore
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.states
 import dev.t1r.themebuilder.component.export.ExportComponent
@@ -19,11 +20,13 @@ class ExportComponentImpl(
     themeColorsRepository: ThemeColorsRepository,
     platformRepository: PlatformRepository,
 ) : ExportComponent, ComponentContext by componentContext {
-    private val store = ExportStoreProvider(
-        storeFactory = storeFactory,
-        themeColorsRepository = themeColorsRepository,
-        platformRepository = platformRepository,
-    ).provide()
+    private val store = instanceKeeper.getStore {
+        ExportStoreProvider(
+            storeFactory = storeFactory,
+            themeColorsRepository = themeColorsRepository,
+            platformRepository = platformRepository,
+        ).provide()
+    }
 
     override val models: Flow<Model> = store.states.map { stateToModel(it) }
     override val navigationModel = params.navigationModel

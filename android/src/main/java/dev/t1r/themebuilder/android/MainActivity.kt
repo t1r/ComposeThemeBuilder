@@ -29,9 +29,12 @@ import dev.t1r.themebuilder.ui.compose.RootContent
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-    private val loggingStoreFactory get() = LoggingStoreFactory(TimeTravelStoreFactory())
-    private val themeColorsRepository: ThemeColorsRepository
-        get() = ThemeColorsRepositoryImpl(
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val loggingStoreFactory = LoggingStoreFactory(TimeTravelStoreFactory())
+        val themeColorsRepository: ThemeColorsRepository = ThemeColorsRepositoryImpl(
             dataSource = ThemeColorsDataSource(),
             db = ThemeBuilderDb(
                 driver = DriverFactory(this).create(),
@@ -39,8 +42,6 @@ class MainActivity : AppCompatActivity() {
             settings = SettingsFactory(getPreferences(Context.MODE_PRIVATE)).createSettings(),
         )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         setContent {
             val defaultComponentContext = defaultComponentContext()
             RootContent(
