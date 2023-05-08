@@ -8,7 +8,9 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.arkivanov.decompose.defaultComponentContext
 import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
 import com.arkivanov.mvikotlin.timetravel.store.TimeTravelStoreFactory
@@ -23,15 +25,12 @@ import dev.t1r.themebuilder.data.db.DriverFactory
 import dev.t1r.themebuilder.data.kvs.SettingsFactory
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.ui.compose.RootContent
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val loggingStoreFactory = LoggingStoreFactory(TimeTravelStoreFactory())
-        val themeColorsRepository: ThemeColorsRepository = ThemeColorsRepositoryImpl(
+    private val loggingStoreFactory get() = LoggingStoreFactory(TimeTravelStoreFactory())
+    private val themeColorsRepository: ThemeColorsRepository
+        get() = ThemeColorsRepositoryImpl(
             dataSource = ThemeColorsDataSource(),
             db = ThemeBuilderDb(
                 driver = DriverFactory(this).create(),
@@ -39,6 +38,8 @@ class MainActivity : AppCompatActivity() {
             settings = SettingsFactory(getPreferences(Context.MODE_PRIVATE)).createSettings(),
         )
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContent {
             val defaultComponentContext = defaultComponentContext()
             RootContent(
@@ -57,9 +58,11 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        lifecycleScope.launchWhenCreated {
-            themeColorsRepository.themeColorsState()
-                .collectLatest { setStatusBarColor(it.primaryVariant) }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                themeColorsRepository.themeColorsState()
+                    .collect { setStatusBarColor(it.primaryVariant) }
+            }
         }
     }
 
