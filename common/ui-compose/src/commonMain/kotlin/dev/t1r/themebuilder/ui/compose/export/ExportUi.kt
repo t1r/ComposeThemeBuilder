@@ -79,28 +79,36 @@ fun ExportContent(
                 when (index) {
                     0 -> ExportThemeWidget(
                         exportString = model.composeThemeExportString,
+                        isShareShowing = model.isShareShowing,
                         modifier = Modifier.fillMaxSize(),
-                        onButtonClicked = {
+                        onExportButtonClicked = {
                             copyToClipboardAction(
                                 string = model.composeThemeExportString,
                                 clipboardManager = clipboardManager,
                                 coroutineScope = coroutineScope,
                                 snackBarHostState = snackBarHostState
                             )
-                        }
+                        },
+                        onShareButtonClicked = {
+                            component.onShareClicked(model.composeThemeExportString)
+                        },
                     )
 
                     1 -> ExportThemeWidget(
                         exportString = model.androidXmlExportString,
+                        isShareShowing = model.isShareShowing,
                         modifier = Modifier.fillMaxSize(),
-                        onButtonClicked = {
+                        onExportButtonClicked = {
                             copyToClipboardAction(
                                 string = model.androidXmlExportString,
                                 clipboardManager = clipboardManager,
                                 coroutineScope = coroutineScope,
                                 snackBarHostState = snackBarHostState
                             )
-                        }
+                        },
+                        onShareButtonClicked = {
+                            component.onShareClicked(model.androidXmlExportString)
+                        },
                     )
 
                     else -> Spacer(modifier = Modifier.fillMaxSize())

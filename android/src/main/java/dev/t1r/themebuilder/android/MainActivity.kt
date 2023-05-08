@@ -1,13 +1,16 @@
 package dev.t1r.themebuilder.android
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.arkivanov.decompose.defaultComponentContext
 import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
 import com.arkivanov.mvikotlin.timetravel.store.TimeTravelStoreFactory
@@ -20,9 +23,10 @@ import dev.t1r.themebuilder.data.colors.theme.ThemeColorsDataSource
 import dev.t1r.themebuilder.data.colors.theme.ThemeColorsRepositoryImpl
 import dev.t1r.themebuilder.data.db.DriverFactory
 import dev.t1r.themebuilder.data.kvs.SettingsFactory
+import dev.t1r.themebuilder.data.platform.PlatformRepositoryImpl
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.ui.compose.RootContent
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,6 +49,9 @@ class MainActivity : AppCompatActivity() {
                     componentContext = defaultComponentContext,
                     storeFactory = loggingStoreFactory,
                     themeColorsRepository = themeColorsRepository,
+                    platformRepository = PlatformRepositoryImpl(
+                        shareAction = { text -> share(text = text) },
+                    ),
                 ),
                 materialColorsPaletteComponent = MaterialColorsPaletteComponentImpl(
                     componentContext = defaultComponentContext,
@@ -55,9 +62,11 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        lifecycleScope.launchWhenCreated {
-            themeColorsRepository.themeColorsState()
-                .collectLatest { setStatusBarColor(it.primaryVariant) }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                themeColorsRepository.themeColorsState()
+                    .collect { setStatusBarColor(it.primaryVariant) }
+            }
         }
     }
 
@@ -69,5 +78,16 @@ class MainActivity : AppCompatActivity() {
             addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             statusBarColor = Color(color).toArgb()
         }
+    }
+
+    private fun share(
+        text: String,
+    ) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, text)
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(sendIntent, null))
     }
 }

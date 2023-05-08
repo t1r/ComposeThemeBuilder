@@ -5,9 +5,14 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
-import dev.t1r.themebuilder.component.export.store.ExportStore.*
+import dev.t1r.themebuilder.component.export.store.ExportStore.Action
+import dev.t1r.themebuilder.component.export.store.ExportStore.Intent
+import dev.t1r.themebuilder.component.export.store.ExportStore.Label
+import dev.t1r.themebuilder.component.export.store.ExportStore.State
 import dev.t1r.themebuilder.entity.colors.ThemeColors
+import dev.t1r.themebuilder.entity.platform.Os
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
+import dev.t1r.themebuilder.repository.platform.PlatformRepository
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -15,19 +20,22 @@ import kotlinx.coroutines.launch
 internal class ExportStoreProvider constructor(
     private val storeFactory: StoreFactory,
     private val themeColorsRepository: ThemeColorsRepository,
+    private val platformRepository: PlatformRepository,
 ) {
 
-    fun provide(): ExportStore = object : ExportStore, Store<Intent, State, Label> by storeFactory.create(
-        name = "ExportStore",
-        initialState = State(),
-        bootstrapper = BootstrapperImpl(themeColorsRepository),
-        executorFactory = ::ExecutorImpl,
-        reducer = ReducerImpl,
-    ) {}
+    fun provide(): ExportStore =
+        object : ExportStore, Store<Intent, State, Label> by storeFactory.create(
+            name = "ExportStore",
+            initialState = State(),
+            bootstrapper = BootstrapperImpl(themeColorsRepository, platformRepository),
+            executorFactory = ::ExecutorImpl,
+            reducer = ReducerImpl,
+        ) {}
 
     private sealed class Message {
         data class UpdateComposeThemeExportString(val exportString: String) : Message()
         data class UpdateAndroidXmlExportString(val exportString: String) : Message()
+        data class UpdateIsCanShare(val isCanShare: Boolean) : Message()
     }
 
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Message, Label>() {
@@ -36,6 +44,18 @@ internal class ExportStoreProvider constructor(
             getState: () -> State,
         ): Unit = when (action) {
             is Action.UpdateColors -> handleUpdateColors(action.model)
+            is Action.HandleOs -> handleOs(action.os)
+        }
+
+        private fun handleOs(os: Os) {
+            dispatch(Message.UpdateIsCanShare(os is Os.Android || os is Os.iOs))
+        }
+
+        override fun executeIntent(
+            intent: Intent,
+            getState: () -> State,
+        ): Unit = when (intent) {
+            is Intent.Share -> platformRepository.share(intent.text)
         }
 
         private fun handleUpdateColors(model: ThemeColors) {
@@ -107,16 +127,26 @@ MaterialTheme(
             is Message.UpdateAndroidXmlExportString -> copy(
                 androidXmlExportString = msg.exportString,
             )
+
+            is Message.UpdateIsCanShare -> copy(
+                isCanShare = msg.isCanShare,
+            )
         }
     }
 
     private class BootstrapperImpl(
         private val themeColorsRepository: ThemeColorsRepository,
+        private val platformRepository: PlatformRepository,
     ) : CoroutineBootstrapper<Action>() {
         override fun invoke() {
             scope.launch {
                 themeColorsRepository.themeColorsState()
                     .onEach { dispatch(Action.UpdateColors(it)) }
+                    .launchIn(this)
+            }
+            scope.launch {
+                platformRepository.platform()
+                    .onEach { dispatch(Action.HandleOs(it)) }
                     .launchIn(this)
             }
         }

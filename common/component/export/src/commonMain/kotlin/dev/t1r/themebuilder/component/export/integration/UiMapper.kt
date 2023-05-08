@@ -8,5 +8,6 @@ internal val stateToModel: ExportStore.State.() -> ExportComponent.Model =
         ExportComponent.Model(
             composeThemeExportString = composeThemeExportString,
             androidXmlExportString = androidXmlExportString,
+            isShareShowing = isCanShare,
         )
     }

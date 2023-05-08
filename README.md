@@ -8,9 +8,12 @@ colors. Then you can export result as Kotlin code.
 + Fixing bugs
 + Adding Compose shape customization
 + Improving UX
-+ Adding iOS support
++ Adding iOS build support
++ Adding WASM build support
 + Adding Compose components customization
 + Import theme
++ Adding Material 3 tools
++ Adding Theme Generator
 
 ### ⚙️ Tech Stack
 
