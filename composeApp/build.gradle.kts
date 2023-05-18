@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.cocoapods)
     alias(libs.plugins.android.application)
     alias(libs.plugins.sqlDelight)
-//    alias(libs.plugins.kotlinx.serialization).apply(false)
     id("kotlin-parcelize")
 }
 
@@ -99,6 +98,7 @@ kotlin {
                 implementation(compose.desktop.common)
                 implementation(compose.desktop.currentOs)
                 implementation(libs.sqlDelight.driver.sqlite)
+                implementation(libs.kotlinx.coroutines.swing)
 
                 implementation(libs.decompose.extensionsComposeJetbrains)
             }
