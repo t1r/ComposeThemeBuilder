@@ -1,0 +1,16 @@
+android {
+    signingConfigs {
+        release {
+            keyAlias 'releasegp'
+            keyPassword 'Ru7m6pIaj006'
+            storeFile file('/signingcreds/ctbkey.jks')
+            storePassword 'Iaj006Ru7m6p'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+}
