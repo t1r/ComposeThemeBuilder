@@ -6,8 +6,6 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.replaceCurrent
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.essenty.parcelable.Parcelable
-import com.arkivanov.essenty.parcelable.Parcelize
 import com.arkivanov.mvikotlin.core.instancekeeper.getStore
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.states
@@ -24,6 +22,7 @@ import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.repository.platform.PlatformRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.serialization.Serializable
 
 class RootComponentImpl internal constructor(
     componentContext: ComponentContext,
@@ -37,7 +36,8 @@ class RootComponentImpl internal constructor(
         initialConfiguration = Configuration.BaselineColor,
         source = navigation,
         handleBackButton = true,
-        childFactory = ::createChild
+        childFactory = ::createChild,
+        serializer = null,
     )
 
     private val store = instanceKeeper.getStore {
@@ -112,20 +112,21 @@ class RootComponentImpl internal constructor(
         navigateToAbout = { navigation.replaceCurrent(Configuration.About) },
     )
 
-    private sealed class Configuration : Parcelable {
-        @Parcelize
-        object BaselineColor : Configuration()
+    @Serializable
+    private sealed interface Configuration {
+        @Serializable
+        data object BaselineColor : Configuration
 
-        @Parcelize
-        object InputForms : Configuration()
+        @Serializable
+        data object InputForms : Configuration
 
-        @Parcelize
-        object ColorsShowcaseComponents : Configuration()
+        @Serializable
+        data object ColorsShowcaseComponents : Configuration
 
-        @Parcelize
-        object Export : Configuration()
+        @Serializable
+        data object Export : Configuration
 
-        @Parcelize
-        object About : Configuration()
+        @Serializable
+        data object About : Configuration
     }
 }

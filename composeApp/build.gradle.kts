@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.appCashSqldelight)
+    alias(libs.plugins.serialization)
 }
 
 kotlin {

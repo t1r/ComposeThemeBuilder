@@ -12,8 +12,6 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
-//        maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
-//        maven(url = "https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
 
@@ -27,8 +25,6 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
-//        maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
-//        maven(url = "https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
 
