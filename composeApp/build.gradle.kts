@@ -1,6 +1,8 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.konan.target.Family
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -28,9 +30,17 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+
+            export(libs.decompose)
         }
     }
-    
+
+//    cocoapods {
+//        framework {
+//            export(libs.decompose)
+//        }
+//    }
+
     sourceSets {
         val desktopMain by getting
         
@@ -52,7 +62,7 @@ kotlin {
             implementation(libs.coroutines)
 
             implementation(libs.decompose)
-            implementation(libs.decompose.extensionComposeJetbrains)
+//            implementation(libs.decompose.extensionComposeJetbrains)
 
             implementation(libs.mvikotlin)
             implementation(libs.mvikotlin.main)

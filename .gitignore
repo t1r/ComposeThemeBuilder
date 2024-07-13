@@ -125,3 +125,16 @@ signing.gradle
 signing.gradle.kts
 ctbkey.jks
 hms_ctbkey.jks
+
+.kotlin
+**/build/
+xcuserdata
+!src/**/build/
+.idea
+captures
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
