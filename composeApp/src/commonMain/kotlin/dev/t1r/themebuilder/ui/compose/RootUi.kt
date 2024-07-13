@@ -14,7 +14,6 @@ import dev.t1r.themebuilder.component.root.RootComponent.Child
 import dev.t1r.themebuilder.component.root.RootComponent.Model
 import dev.t1r.themebuilder.ui.compose.export.ExportContent
 
-@OptIn(ExperimentalDecomposeApi::class)
 @Composable
 fun RootContent(
     component: RootComponent,

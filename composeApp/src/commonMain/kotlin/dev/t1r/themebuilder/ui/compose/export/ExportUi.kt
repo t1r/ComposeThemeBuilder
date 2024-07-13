@@ -1,8 +1,11 @@
 package dev.t1r.themebuilder.ui.compose.export
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -10,16 +13,13 @@ import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
 import dev.t1r.themebuilder.component.export.ExportComponent
 import dev.t1r.themebuilder.component.export.ExportComponent.Model
 import dev.t1r.themebuilder.ui.compose.common.ScreenContainerWidget
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ExportContent(
     component: ExportComponent,
@@ -31,7 +31,7 @@ fun ExportContent(
     val snackBarHostState = remember { SnackbarHostState() }
 
     var tabPosition by remember { mutableStateOf(0) }
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState { 2 }
 
     ScreenContainerWidget(
         modifier = modifier,
@@ -73,7 +73,6 @@ fun ExportContent(
                 modifier = Modifier
                     .padding(pv)
                     .fillMaxSize(),
-                count = 2,
                 state = pagerState,
             ) { index ->
                 when (index) {

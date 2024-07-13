@@ -38,6 +38,7 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.sqldelight.driver.android)
+            implementation(libs.androidx.lifecycle.runtimeCompose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -46,12 +47,9 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(compose.materialIconsExtended)
 
             implementation(libs.coroutines)
-            implementation(libs.coroutines.swing)
 
             implementation(libs.decompose)
             implementation(libs.decompose.extensionComposeJetbrains)
@@ -74,6 +72,7 @@ kotlin {
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.sqldelight.driver.sqlite)
+            implementation(libs.coroutines.swing)
         }
     }
 }
@@ -127,11 +126,10 @@ compose.desktop {
     }
 }
 
-//sqldelight {
-//    databases {
-//        create("ThemeBuilderDb") {
-//            packageName.set("dev.t1r.themebuilder.data")
-//            sourceFolders.set(listOf("sqldelight"))
-//        }
-//    }
-//}
+sqldelight {
+    databases {
+        create("ThemeBuilderDb") {
+            packageName.set("dev.t1r.themebuilder.data")
+        }
+    }
+}
