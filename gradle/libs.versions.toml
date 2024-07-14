@@ -19,6 +19,9 @@ mviKotlin = "3.0.2"
 sqlDelight = "2.0.2"
 russhwolfSettings = "1.0.0"
 gosyerAccompanist = "0.25.1"
+kotlinxSerialization = "2.0.0"
+androidxLifecycleRuntime = "2.6.0"
+kotlinxCoroutines = "1.6.4"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -31,10 +34,10 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-androidx-lifecycle-runtimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version = "2.6.0" }
+androidx-lifecycle-runtimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version = "androidxLifecycleRuntime" }
 
-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.6.4" }
-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version = "1.6.4" }
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "kotlinxCoroutines" }
+coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version = "kotlinxCoroutines" }
 
 decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-extensionComposeJetbrains = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
@@ -63,4 +66,4 @@ jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 appCashSqldelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version = "2.0.0" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinxSerialization" }
