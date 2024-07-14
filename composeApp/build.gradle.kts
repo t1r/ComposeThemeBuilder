@@ -36,12 +36,6 @@ kotlin {
         }
     }
 
-//    cocoapods {
-//        framework {
-//            export(libs.decompose)
-//        }
-//    }
-
     sourceSets {
         val desktopMain by getting
         
@@ -77,8 +71,6 @@ kotlin {
 
             implementation(libs.russhwolfsettings.settings)
             implementation(libs.russhwolfsettings.settingsCoroutines)
-
-            implementation(libs.gosyerAccompanist)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -110,7 +102,9 @@ android {
     }
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isDebuggable = false
+            isShrinkResources = true
         }
     }
     compileOptions {
@@ -119,6 +113,14 @@ android {
     }
     buildFeatures {
         compose = true
+    }
+    signingConfigs {
+        getByName("debug") {
+            storeFile = rootProject.file("android/signingcreds/debug.keystore")
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+            storePassword = "android"
+        }
     }
     dependencies {
         debugImplementation(compose.uiTooling)

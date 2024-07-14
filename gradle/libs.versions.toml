@@ -1,27 +1,25 @@
 [versions]
 agp = "8.2.0"
 android-compileSdk = "34"
-android-minSdk = "24"
+android-minSdk = "21"
 android-targetSdk = "34"
 androidx-activityCompose = "1.9.0"
 androidx-appcompat = "1.7.0"
 androidx-constraintlayout = "2.1.4"
 androidx-core-ktx = "1.13.1"
-androidx-espresso-core = "3.6.0"
+androidx-espresso-core = "3.6.1"
 androidx-material = "1.12.0"
-androidx-test-junit = "1.2.0"
+androidx-test-junit = "1.2.1"
 compose-plugin = "1.6.11"
 junit = "4.13.2"
 kotlin = "2.0.0"
-kotlin-coroutines = "2.0.0"
 decompose = "3.1.0"
 mviKotlin = "3.0.2"
 sqlDelight = "2.0.2"
-russhwolfSettings = "1.0.0"
-gosyerAccompanist = "0.25.1"
+russhwolfSettings = "1.1.1"
 kotlinxSerialization = "2.0.0"
-androidxLifecycleRuntime = "2.6.0"
-kotlinxCoroutines = "1.6.4"
+androidxLifecycleRuntime = "2.8.3"
+kotlinxCoroutines = "1.8.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -34,10 +32,10 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-androidx-lifecycle-runtimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version = "androidxLifecycleRuntime" }
+androidx-lifecycle-runtimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref= "androidxLifecycleRuntime" }
 
-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "kotlinxCoroutines" }
-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version = "kotlinxCoroutines" }
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinxCoroutines" }
 
 decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-extensionComposeJetbrains = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
@@ -56,8 +54,6 @@ sqldelight-driver-sqlite = { module = "app.cash.sqldelight:sqlite-driver", versi
 
 russhwolfsettings-settings = { module = "com.russhwolf:multiplatform-settings", version.ref = "russhwolfSettings" }
 russhwolfsettings-settingsCoroutines = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "russhwolfSettings" }
-
-gosyerAccompanist = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "gosyerAccompanist" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
