@@ -63,7 +63,7 @@ kotlin {
             implementation(libs.coroutines)
 
             implementation(libs.decompose)
-//            implementation(libs.decompose.extensionComposeJetbrains)
+            implementation(libs.decompose.extensionComposeJetbrains)
 
             implementation(libs.mvikotlin)
             implementation(libs.mvikotlin.main)
