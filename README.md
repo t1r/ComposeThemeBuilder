@@ -33,6 +33,12 @@ colors. Then you can export result as Kotlin code.
 
 [![Google Play](docs/google-play-badge.png)](https://play.google.com/store/apps/details?id=dev.t1r.themebuilder)[![App Gallery](docs/app-gallery-badge.png)](https://appgallery.huawei.com/#/app/C107587273)
 
+### Run 
+
+```shell
+./gradlew run 
+```
+
 ### Build 
 ## Desktops
 
