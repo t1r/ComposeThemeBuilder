@@ -19,8 +19,13 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.*
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.ui.compose.common.ScreenContainerWidget
+import org.jetbrains.compose.resources.stringResource
+
+const val URL_PROJECT = "https://github.com/t1r/ComposeThemeBuilder"
 
 @Composable
 fun AboutContent(
@@ -30,7 +35,7 @@ fun AboutContent(
     val uriHandler = LocalUriHandler.current
     ScreenContainerWidget(
         navigationModel = navigationModel,
-        title = "About",
+        title = stringResource(Res.string.about_title),
         content = { pv ->
             Column(
                 modifier = Modifier
@@ -42,7 +47,7 @@ fun AboutContent(
                     modifier = Modifier
                         .padding(horizontal = 16.dp, vertical = 6.dp)
                         .fillMaxWidth(),
-                    text = "Used frameworks, libraries and so on:",
+                    text = stringResource(Res.string.about_used_dependencies),
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -53,7 +58,7 @@ fun AboutContent(
                     modifier = Modifier
                         .padding(horizontal = 16.dp, vertical = 6.dp)
                         .fillMaxWidth(),
-                    text = "Kotlin",
+                    text = stringResource(Res.string.lib_kotlin),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily.Monospace,
@@ -64,7 +69,7 @@ fun AboutContent(
                     modifier = Modifier
                         .padding(horizontal = 16.dp, vertical = 6.dp)
                         .fillMaxWidth(),
-                    text = "Kotlin Coroutines",
+                    text = stringResource(Res.string.lib_kotlin_coroutines),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily.Monospace,
@@ -75,7 +80,7 @@ fun AboutContent(
                     modifier = Modifier
                         .padding(horizontal = 16.dp, vertical = 6.dp)
                         .fillMaxWidth(),
-                    text = "Compose",
+                    text = stringResource(Res.string.lib_compose),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily.Monospace,
@@ -86,7 +91,7 @@ fun AboutContent(
                     modifier = Modifier
                         .padding(horizontal = 16.dp, vertical = 6.dp)
                         .fillMaxWidth(),
-                    text = "Decompose",
+                    text = stringResource(Res.string.lib_decompose),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily.Monospace,
@@ -97,7 +102,7 @@ fun AboutContent(
                     modifier = Modifier
                         .padding(horizontal = 16.dp, vertical = 6.dp)
                         .fillMaxWidth(),
-                    text = "MVIKotlin",
+                    text = stringResource(Res.string.lib_mvikotlin),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily.Monospace,
@@ -108,7 +113,7 @@ fun AboutContent(
                     modifier = Modifier
                         .padding(horizontal = 16.dp, vertical = 6.dp)
                         .fillMaxWidth(),
-                    text = "SQLDelight",
+                    text = stringResource(Res.string.lib_sqldelight),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily.Monospace,
@@ -119,7 +124,7 @@ fun AboutContent(
                     modifier = Modifier
                         .padding(horizontal = 16.dp, vertical = 6.dp)
                         .fillMaxWidth(),
-                    text = "Russell Wolf's Multiplatform Settings",
+                    text = stringResource(Res.string.lib_rw_settings),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily.Monospace,
@@ -132,7 +137,7 @@ fun AboutContent(
                         .padding(start = 16.dp, end = 16.dp, top = 6.dp, bottom = 12.dp)
                         .fillMaxWidth(),
                     text = buildAnnotatedString {
-                        append("Source code of Project on GitHub")
+                        append(stringResource(Res.string.project_label))
                     },
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
@@ -140,7 +145,7 @@ fun AboutContent(
                         color = Color.Black,
                         textDecoration = TextDecoration.Underline
                     ),
-                    onClick = { uriHandler.openUri("https://github.com/t1r/ComposeThemeBuilder") },
+                    onClick = { uriHandler.openUri(URL_PROJECT) },
                 )
             }
         },

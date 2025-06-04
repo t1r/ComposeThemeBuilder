@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Material Theme Builder</string>
+
+    <string name="input_forms_title">Input Forms</string>
+    <string name="outlined_text_field_title">OutlinedTextField</string>
+    <string name="label_title">Label</string>
+    <string name="radio_button_title">RadioButton</string>
+    <string name="checkbox_title">Checkbox</string>
+    <string name="switch_title">Switch</string>
+    <string name="clear_content_description">Clear</string>
+
+    <string name="theme_colors_title">Theme Colors</string>
+    <string name="primary_title">Primary</string>
+    <string name="primary_variant_title">Primary Variant</string>
+    <string name="secondary_title">Secondary</string>
+    <string name="secondary_variant_title">Secondary Variant</string>
+    <string name="background_title">Background</string>
+    <string name="surface_title">Background</string>
+    <string name="error_title">Background</string>
+
+    <string name="text_thin_title">Text Thin</string>
+    <string name="text_light_title">Text Light</string>
+    <string name="text_normal_title">Text Normal</string>
+    <string name="text_medium_title">Text Medium</string>
+    <string name="text_bold_title">Text Bold</string>
+
+    <string name="about_title">About</string>
+    <string name="about_used_dependencies">Used frameworks, libraries and so on:</string>
+    <string name="lib_kotlin">Kotlin</string>
+    <string name="lib_kotlin_coroutines">Kotlin Coroutines</string>
+    <string name="lib_compose">Compose</string>
+    <string name="lib_decompose">Decompose</string>
+    <string name="lib_mvikotlin">MVIKotlin</string>
+    <string name="lib_sqldelight">SQLDelight</string>
+    <string name="lib_rw_settings">Russell Wolf's Multiplatform Settings</string>
+    <string name="project_label">Source code of Project on GitHub</string>
+</resources>

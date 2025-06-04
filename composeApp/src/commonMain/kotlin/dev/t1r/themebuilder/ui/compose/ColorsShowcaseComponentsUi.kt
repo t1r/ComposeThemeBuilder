@@ -18,7 +18,6 @@ import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.ui.compose.common.ColorsScreenContainerWidget
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ColorsShowcaseComponentsContent(
     navigationModel: DrawerNavigationModel,
