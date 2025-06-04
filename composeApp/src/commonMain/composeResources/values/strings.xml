@@ -34,4 +34,9 @@
     <string name="lib_sqldelight">SQLDelight</string>
     <string name="lib_rw_settings">Russell Wolf's Multiplatform Settings</string>
     <string name="project_label">Source code of Project on GitHub</string>
+
+    <string name="export_title">Export</string>
+    <string name="compose_tab_title">Compose</string>
+    <string name="android_xml_tab_title">Android XML</string>
+    <string name="export_theme_copied">Theme copied</string>
 </resources>

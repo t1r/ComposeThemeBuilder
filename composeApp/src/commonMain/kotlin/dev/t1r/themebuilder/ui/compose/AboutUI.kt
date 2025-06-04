@@ -20,7 +20,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import composethemebuilder.composeapp.generated.resources.Res
-import composethemebuilder.composeapp.generated.resources.*
+import composethemebuilder.composeapp.generated.resources.about_title
+import composethemebuilder.composeapp.generated.resources.about_used_dependencies
+import composethemebuilder.composeapp.generated.resources.lib_compose
+import composethemebuilder.composeapp.generated.resources.lib_decompose
+import composethemebuilder.composeapp.generated.resources.lib_kotlin
+import composethemebuilder.composeapp.generated.resources.lib_kotlin_coroutines
+import composethemebuilder.composeapp.generated.resources.lib_mvikotlin
+import composethemebuilder.composeapp.generated.resources.lib_rw_settings
+import composethemebuilder.composeapp.generated.resources.lib_sqldelight
+import composethemebuilder.composeapp.generated.resources.project_label
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.ui.compose.common.ScreenContainerWidget
 import org.jetbrains.compose.resources.stringResource
