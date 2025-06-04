@@ -1,7 +1,7 @@
 package dev.t1r.themebuilder.entity.platform
 
-sealed class Os {
-    object Android : Os()
-    object Desktop : Os()
-    object iOs : Os()
+sealed interface Os {
+    data object Android : Os
+    data object Desktop : Os
+    data object iOs : Os
 }

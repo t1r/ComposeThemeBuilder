@@ -5,15 +5,23 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
-import dev.t1r.themebuilder.component.materialcolorspalette.store.MaterialColorsPaletteStore.*
-import dev.t1r.themebuilder.entity.colors.*
+import dev.t1r.themebuilder.component.materialcolorspalette.store.MaterialColorsPaletteStore.Action
+import dev.t1r.themebuilder.component.materialcolorspalette.store.MaterialColorsPaletteStore.Intent
+import dev.t1r.themebuilder.component.materialcolorspalette.store.MaterialColorsPaletteStore.Label
+import dev.t1r.themebuilder.component.materialcolorspalette.store.MaterialColorsPaletteStore.State
+import dev.t1r.themebuilder.component.materialcolorspalette.store.MaterialColorsPaletteStore.ThemeColorToChange
+import dev.t1r.themebuilder.entity.colors.ColorGroup
+import dev.t1r.themebuilder.entity.colors.ThemeColors
+import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
+import dev.t1r.themebuilder.entity.colors.getColorByThemeColorMarker
+import dev.t1r.themebuilder.entity.colors.getOppositeColorByThemeColorMarker
 import dev.t1r.themebuilder.repository.colors.material.MaterialColorsRepository
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-internal class MaterialColorsPaletteStoreProvider constructor(
+internal class MaterialColorsPaletteStoreProvider(
     private val storeFactory: StoreFactory,
     private val themeColorsRepository: ThemeColorsRepository,
     private val materialColorsRepository: MaterialColorsRepository,
@@ -28,36 +36,34 @@ internal class MaterialColorsPaletteStoreProvider constructor(
             reducer = ReducerImpl,
         ) {}
 
-    private sealed class Message {
-        data class UpdateThemeColors(val model: ThemeColors) : Message()
-        data class UpdateMaterialColors(val list: List<ColorGroup>) : Message()
-        data class SelectThemeColorToChange(val model: ThemeColorToChange?) : Message()
-        data class TextColorChange(val text: String) : Message()
-        object OpenPaletteList : Message()
-        object ClosePaletteList : Message()
-        data class UpdatePaletteList(val list: List<ThemeColors>) : Message()
+    private sealed interface Message {
+        data class UpdateThemeColors(val model: ThemeColors) : Message
+        data class UpdateMaterialColors(val list: List<ColorGroup>) : Message
+        data class SelectThemeColorToChange(val model: ThemeColorToChange?) : Message
+        data class TextColorChange(val text: String) : Message
+        data object OpenPaletteList : Message
+        data object ClosePaletteList : Message
+        data class UpdatePaletteList(val list: List<ThemeColors>) : Message
     }
 
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Message, Label>() {
-        override fun executeAction(
-            action: Action,
-            getState: () -> State,
-        ): Unit = when (action) {
+        override fun executeAction(action: Action): Unit = when (action) {
             is Action.UpdateThemeColors -> dispatch(Message.UpdateThemeColors(action.model))
             is Action.UpdateMaterialColors -> dispatch(Message.UpdateMaterialColors(action.list))
             is Action.UpdatePaletteList -> dispatch(Message.UpdatePaletteList(action.list))
         }
 
-        override fun executeIntent(
-            intent: Intent,
-            getState: () -> State,
-        ): Unit = when (intent) {
-            is Intent.SelectThemeColorToChange -> resolveSelectThemeColorToChange(getState(), intent.color)
+        override fun executeIntent(intent: Intent): Unit = when (intent) {
+            is Intent.SelectThemeColorToChange -> resolveSelectThemeColorToChange(
+                state(),
+                intent.color
+            )
+
             is Intent.SelectColorCandidate -> resolveSelectColorCandidate(intent)
-            is Intent.CancelSelectColor -> resolveCancelSelectColor(getState())
+            is Intent.CancelSelectColor -> resolveCancelSelectColor(state())
             is Intent.ConfirmSelectedColor -> dispatch(Message.SelectThemeColorToChange(null))
             is Intent.ChangeTextColor -> resolveChangeTextColor(intent)
-            is Intent.ChangeThemeMode -> resolveThemeMode(getState())
+            is Intent.ChangeThemeMode -> resolveThemeMode(state())
             is Intent.OpenPaletteList -> dispatch(Message.OpenPaletteList)
             is Intent.ClosePaletteList -> dispatch(Message.ClosePaletteList)
             is Intent.AddPalette -> themeColorsRepository.addPalette()

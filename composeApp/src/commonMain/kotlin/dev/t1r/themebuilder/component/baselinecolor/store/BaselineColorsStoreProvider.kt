@@ -5,14 +5,17 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
-import dev.t1r.themebuilder.component.baselinecolor.store.BaselineColorsStore.*
+import dev.t1r.themebuilder.component.baselinecolor.store.BaselineColorsStore.Action
+import dev.t1r.themebuilder.component.baselinecolor.store.BaselineColorsStore.Intent
+import dev.t1r.themebuilder.component.baselinecolor.store.BaselineColorsStore.Label
+import dev.t1r.themebuilder.component.baselinecolor.store.BaselineColorsStore.State
 import dev.t1r.themebuilder.entity.colors.ThemeColors
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-internal class BaselineColorsStoreProvider constructor(
+internal class BaselineColorsStoreProvider(
     private val storeFactory: StoreFactory,
     private val themeColorsRepository: ThemeColorsRepository,
 ) {
@@ -26,15 +29,12 @@ internal class BaselineColorsStoreProvider constructor(
             reducer = ReducerImpl,
         ) {}
 
-    private sealed class Message {
-        data class UpdateColors(val model: ThemeColors) : Message()
+    private sealed interface Message {
+        data class UpdateColors(val model: ThemeColors) : Message
     }
 
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Message, Label>() {
-        override fun executeAction(
-            action: Action,
-            getState: () -> State,
-        ): Unit = when (action) {
+        override fun executeAction(action: Action): Unit = when (action) {
             is Action.UpdateColors -> dispatch(Message.UpdateColors(action.model))
         }
     }

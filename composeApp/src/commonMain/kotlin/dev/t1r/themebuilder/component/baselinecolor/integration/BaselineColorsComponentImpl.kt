@@ -11,7 +11,7 @@ import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class BaselineColorsComponentImpl constructor(
+class BaselineColorsComponentImpl(
     componentContext: ComponentContext,
     storeFactory: StoreFactory,
     params: BaselineColorsComponent.Params,

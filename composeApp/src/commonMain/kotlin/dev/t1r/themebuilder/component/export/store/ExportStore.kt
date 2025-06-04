@@ -14,14 +14,14 @@ interface ExportStore : Store<Intent, State, Label> {
         val isCanShare: Boolean = false,
     )
 
-    sealed class Action {
-        data class UpdateColors(val model: ThemeColors) : Action()
-        data class HandleOs(val os: Os) : Action()
+    sealed interface Action {
+        data class UpdateColors(val model: ThemeColors) : Action
+        data class HandleOs(val os: Os) : Action
     }
 
-    sealed class Intent {
-        data class Share(val text: String) : Intent()
+    sealed interface Intent {
+        data class Share(val text: String) : Intent
     }
 
-    sealed class Label
+    sealed interface Label
 }

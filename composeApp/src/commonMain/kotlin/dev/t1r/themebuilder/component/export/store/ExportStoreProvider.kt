@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-internal class ExportStoreProvider constructor(
+internal class ExportStoreProvider(
     private val storeFactory: StoreFactory,
     private val themeColorsRepository: ThemeColorsRepository,
     private val platformRepository: PlatformRepository,
@@ -32,17 +32,14 @@ internal class ExportStoreProvider constructor(
             reducer = ReducerImpl,
         ) {}
 
-    private sealed class Message {
-        data class UpdateComposeThemeExportString(val exportString: String) : Message()
-        data class UpdateAndroidXmlExportString(val exportString: String) : Message()
-        data class UpdateIsCanShare(val isCanShare: Boolean) : Message()
+    private sealed interface Message {
+        data class UpdateComposeThemeExportString(val exportString: String) : Message
+        data class UpdateAndroidXmlExportString(val exportString: String) : Message
+        data class UpdateIsCanShare(val isCanShare: Boolean) : Message
     }
 
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Message, Label>() {
-        override fun executeAction(
-            action: Action,
-            getState: () -> State,
-        ): Unit = when (action) {
+        override fun executeAction(action: Action): Unit = when (action) {
             is Action.UpdateColors -> handleUpdateColors(action.model)
             is Action.HandleOs -> handleOs(action.os)
         }
@@ -51,10 +48,7 @@ internal class ExportStoreProvider constructor(
             dispatch(Message.UpdateIsCanShare(os is Os.Android || os is Os.iOs))
         }
 
-        override fun executeIntent(
-            intent: Intent,
-            getState: () -> State,
-        ): Unit = when (intent) {
+        override fun executeIntent(intent: Intent): Unit = when (intent) {
             is Intent.Share -> platformRepository.share(intent.text)
         }
 
