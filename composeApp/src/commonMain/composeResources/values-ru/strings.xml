@@ -31,11 +31,11 @@
     <string name="surface">Surface</string>
     <string name="error">Error</string>
 
-    <string name="text_thin">Text Thin</string>
-    <string name="text_light">Text Light</string>
-    <string name="text_normal">Text Normal</string>
-    <string name="text_medium">Text Medium</string>
-    <string name="text_bold">Text Bold</string>
+    <string name="text_thin">Текст Thin</string>
+    <string name="text_light">Текст Light</string>
+    <string name="text_normal">Текст Normal</string>
+    <string name="text_medium">Текст Medium</string>
+    <string name="text_bold">Текст Bold</string>
 
     <string name="about_title">О приложении</string>
     <string name="about_used_dependencies">Используемые фреймворки, библиотеки и прочее:</string>

@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Material Theme Builder</string>
+
+    <string name="common_hide">Ocultar</string>
+    <string name="common_show">Mostrar</string>
+    <string name="common_create">Cree</string>
+    <string name="common_ok">Bien</string>
+    <string name="common_cancel">Abolir</string>
+    <string name="common_clear">Claro</string>
+    <string name="common_share">Compartir</string>
+    <string name="common_copy">Copia</string>
+    <string name="common_confirm">Acuse recibo</string>
+    <string name="common_delete">Borrar</string>
+
+    <string name="drawer_content_description">Drawer</string>
+    <string name="msg_common_error">Algo salió mal</string>
+
+    <string name="input_forms_title">Formularios de entrada</string>
+    <string name="outlined_text_field">OutlinedTextField</string>
+    <string name="label">Label</string>
+    <string name="radio_button">RadioButton</string>
+    <string name="checkbox">Checkbox</string>
+    <string name="switch">Switch</string>
+
+    <string name="theme_colors_title">Colores temáticos</string>
+    <string name="primary">Primary</string>
+    <string name="primary_variant">Primary Variant</string>
+    <string name="secondary">Secondary</string>
+    <string name="secondary_variant">Secondary Variant</string>
+    <string name="background">Background</string>
+    <string name="surface">Surface</string>
+    <string name="error">Error</string>
+
+    <string name="text_thin">Text Thin</string>
+    <string name="text_light">Text Light</string>
+    <string name="text_normal">Text Normal</string>
+    <string name="text_medium">Text Medium</string>
+    <string name="text_bold">Text Bold</string>
+
+    <string name="about_title">Sobre el anexo</string>
+    <string name="about_used_dependencies">Frameworks, bibliotecas, etc. utilizados:</string>
+    <string name="lib_kotlin">Kotlin</string>
+    <string name="lib_kotlin_coroutines">Kotlin Coroutines</string>
+    <string name="lib_compose">Compose</string>
+    <string name="lib_decompose">Decompose</string>
+    <string name="lib_mvikotlin">MVIKotlin</string>
+    <string name="lib_sqldelight">SQLDelight</string>
+    <string name="lib_rw_settings">Russell Wolf's Multiplatform Settings</string>
+    <string name="project_label">Código fuente del proyecto en GitHub</string>
+
+    <string name="export_title">Exportaciones</string>
+    <string name="compose_tab">Compose</string>
+    <string name="android_xml_tab">Android XML</string>
+    <string name="export_theme_copied">Tema copiado</string>
+
+    <string name="colors_showcase_components_title">Demostración de los colores de los componentes</string>
+    <string name="csc_tab_1">Tab 1</string>
+    <string name="csc_tab_2">Tab 2</string>
+    <string name="button_component">Button componente</string>
+    <string name="show_alert">Mostrar alertas</string>
+    <string name="outlined_button_component">OutlinedButton componente</string>
+    <string name="show_progress_alert">Mostrar Progress Alert</string>
+    <string name="show_linear_progress_bar">TextButton componente, mostrar Linear Progress Bar</string>
+    <string name="show_snack_bar">IconButton componente, mostrar snack bar</string>
+    <string name="text_message">Mensaje de texto</string>
+    <string name="icon_toggle_button">IconToggleButton</string>
+    <string name="icon_toggle_button_component">IconToggleButton componente</string>
+    <string name="alerts">Cabecera de alerta</string>
+    <string name="short_some_text">Lorem ipsum text</string>
+    <string name="progress_bar_alert">Progress Bar Alert</string>
+
+    <string name="input_custom_color">Introduzca un color arbitrario</string>
+
+    <string name="new_template">Nuevo %1$s</string>
+    <string name="previous_template">Anterior %1$s</string>
+    <string name="confirm_selected_color_template">Confirme la selección %1$s color</string>
+    <string name="add_palette">Añadir una paleta</string>
+    <string name="back_to_palette">Volver a la paleta</string>
+    <string name="confirm_palette_delete_text">¿Seguro que quieres borrar la paleta?</string>
+    <string name="change_palette">Cambiar paleta</string>
+    <string name="light_theme">Tema luminoso</string>
+    <string name="dark_theme">Tema oscuro</string>
+</resources>
