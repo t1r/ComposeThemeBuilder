@@ -1,13 +1,19 @@
 <resources>
     <string name="app_name">Material Theme Builder</string>
 
+    <string name="common_hide">Hide</string>
+    <string name="common_show">Show</string>
+    <string name="common_create">Create</string>
+    <string name="common_ok">Ok</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_clear">Clear</string>
+
     <string name="input_forms_title">Input Forms</string>
     <string name="outlined_text_field_title">OutlinedTextField</string>
     <string name="label_title">Label</string>
     <string name="radio_button_title">RadioButton</string>
     <string name="checkbox_title">Checkbox</string>
     <string name="switch_title">Switch</string>
-    <string name="clear_content_description">Clear</string>
 
     <string name="theme_colors_title">Theme Colors</string>
     <string name="primary_title">Primary</string>
@@ -39,4 +45,20 @@
     <string name="compose_tab_title">Compose</string>
     <string name="android_xml_tab_title">Android XML</string>
     <string name="export_theme_copied">Theme copied</string>
+
+    <string name="colors_showcase_components_title">Colors Showcase Components</string>
+    <string name="csc_tab_1">Colors Showcase Components</string>
+    <string name="csc_tab_2">Colors Showcase Components</string>
+    <string name="button_component_title">Button component</string>
+    <string name="show_alert_title">Show Alert</string>
+    <string name="outlined_button_component_title">OutlinedButton component</string>
+    <string name="show_progress_alert_title">Show Progress Alert</string>
+    <string name="show_linear_progress_bar_title">TextButton component, Show Linear Progress Bar</string>
+    <string name="show_snack_bar_title">IconButton component, show snack bar</string>
+    <string name="text_message_title">Text Message</string>
+    <string name="icon_toggle_button">IconToggleButton</string>
+    <string name="icon_toggle_button_component">IconToggleButton component</string>
+    <string name="alerts_title">Alerts Title</string>
+    <string name="short_some_text">Lorem ipsum text</string>
+    <string name="progress_bar_alert">Progress Bar Alert</string>
 </resources>

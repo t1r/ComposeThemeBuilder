@@ -28,7 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import composethemebuilder.composeapp.generated.resources.Res
 import composethemebuilder.composeapp.generated.resources.checkbox_title
-import composethemebuilder.composeapp.generated.resources.clear_content_description
+import composethemebuilder.composeapp.generated.resources.common_clear
 import composethemebuilder.composeapp.generated.resources.input_forms_title
 import composethemebuilder.composeapp.generated.resources.label_title
 import composethemebuilder.composeapp.generated.resources.outlined_text_field_title
@@ -77,7 +77,7 @@ fun InputFormsContent(
                             content = {
                                 Icon(
                                     Icons.Filled.Clear,
-                                    stringResource(Res.string.clear_content_description)
+                                    stringResource(Res.string.common_clear)
                                 )
                             },
                             onClick = { outlinedTextFieldText = "" },
@@ -97,7 +97,7 @@ fun InputFormsContent(
                             content = {
                                 Icon(
                                     Icons.Filled.Clear,
-                                    stringResource(Res.string.clear_content_description)
+                                    stringResource(Res.string.common_clear)
                                 )
                             },
                             onClick = { textFieldText = "" },

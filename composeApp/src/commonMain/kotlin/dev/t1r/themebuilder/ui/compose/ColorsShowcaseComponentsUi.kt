@@ -37,10 +37,33 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.alerts_title
+import composethemebuilder.composeapp.generated.resources.button_component_title
+import composethemebuilder.composeapp.generated.resources.colors_showcase_components_title
+import composethemebuilder.composeapp.generated.resources.common_cancel
+import composethemebuilder.composeapp.generated.resources.common_create
+import composethemebuilder.composeapp.generated.resources.common_hide
+import composethemebuilder.composeapp.generated.resources.common_ok
+import composethemebuilder.composeapp.generated.resources.common_show
+import composethemebuilder.composeapp.generated.resources.csc_tab_1
+import composethemebuilder.composeapp.generated.resources.csc_tab_2
+import composethemebuilder.composeapp.generated.resources.icon_toggle_button
+import composethemebuilder.composeapp.generated.resources.icon_toggle_button_component
+import composethemebuilder.composeapp.generated.resources.outlined_button_component_title
+import composethemebuilder.composeapp.generated.resources.progress_bar_alert
+import composethemebuilder.composeapp.generated.resources.short_some_text
+import composethemebuilder.composeapp.generated.resources.show_alert_title
+import composethemebuilder.composeapp.generated.resources.show_linear_progress_bar_title
+import composethemebuilder.composeapp.generated.resources.show_progress_alert_title
+import composethemebuilder.composeapp.generated.resources.show_snack_bar_title
+import composethemebuilder.composeapp.generated.resources.text_message_title
 import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.ui.compose.common.ColorsScreenContainerWidget
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.getString
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun ColorsShowcaseComponentsContent(
@@ -59,7 +82,7 @@ fun ColorsShowcaseComponentsContent(
     ColorsScreenContainerWidget(
         materialColorsPaletteComponent = materialColorsPaletteComponent,
         modifier = modifier,
-        title = "Colors Showcase Components",
+        title = stringResource(Res.string.colors_showcase_components_title),
         navigationModel = navigationModel,
         snackBarHostState = snackBarHostState,
         content = { pv ->
@@ -77,7 +100,7 @@ fun ColorsShowcaseComponentsContent(
                     ) {
                         Text(
                             modifier = Modifier.padding(16.dp),
-                            text = "Tab 1".uppercase(),
+                            text = stringResource(Res.string.csc_tab_1).uppercase(),
                             style = MaterialTheme.typography.caption,
                         )
                     }
@@ -87,7 +110,7 @@ fun ColorsShowcaseComponentsContent(
                     ) {
                         Text(
                             modifier = Modifier.padding(16.dp),
-                            text = "Tab 2".uppercase(),
+                            text = stringResource(Res.string.csc_tab_2).uppercase(),
                             style = MaterialTheme.typography.caption,
                         )
                     }
@@ -106,13 +129,13 @@ fun ColorsShowcaseComponentsContent(
                     ) {
                         Text(
                             modifier = Modifier.weight(1F),
-                            text = "Button component",
+                            text = stringResource(Res.string.button_component_title),
                         )
                         Button(
                             onClick = { isAlertDialogShowing = true },
                             content = {
                                 Text(
-                                    text = "Show Alert",
+                                    text = stringResource(Res.string.show_alert_title),
                                 )
                             },
                         )
@@ -126,13 +149,13 @@ fun ColorsShowcaseComponentsContent(
                     ) {
                         Text(
                             modifier = Modifier.weight(1F),
-                            text = "OutlinedButton component",
+                            text = stringResource(Res.string.outlined_button_component_title),
                         )
                         OutlinedButton(
                             onClick = { isProgressAlertDialogShowing = true },
                             content = {
                                 Text(
-                                    text = "Show Progress Alert",
+                                    text = stringResource(Res.string.show_progress_alert_title)
                                 )
                             },
                         )
@@ -152,12 +175,17 @@ fun ColorsShowcaseComponentsContent(
                     ) {
                         Text(
                             modifier = Modifier.weight(1F),
-                            text = "TextButton component, Show Linear Progress Bar",
+                            text = stringResource(Res.string.show_linear_progress_bar_title),
                         )
                         TextButton(
                             onClick = { isLinearProgressBarShowing = !isLinearProgressBarShowing },
                             content = {
-                                Text(text = if (isLinearProgressBarShowing) "Hide" else "Show")
+                                Text(
+                                    text = stringResource(
+                                        if (isLinearProgressBarShowing) Res.string.common_hide
+                                        else Res.string.common_show
+                                    )
+                                )
                             },
                         )
                     }
@@ -170,11 +198,20 @@ fun ColorsShowcaseComponentsContent(
                     ) {
                         Text(
                             modifier = Modifier.weight(1F),
-                            text = "IconButton component, show snack bar",
+                            text = stringResource(Res.string.show_snack_bar_title),
                         )
                         IconButton(
-                            content = { Icon(Icons.Filled.Create, "Create") },
-                            onClick = { coroutineScope.launch { snackBarHostState.showSnackbar("Text Message") } },
+                            content = {
+                                Icon(
+                                    Icons.Filled.Create,
+                                    stringResource(Res.string.common_create)
+                                )
+                            },
+                            onClick = {
+                                coroutineScope.launch {
+                                    snackBarHostState.showSnackbar(getString(Res.string.text_message_title))
+                                }
+                            },
                         )
                     }
                     Row(
@@ -186,7 +223,7 @@ fun ColorsShowcaseComponentsContent(
                     ) {
                         Text(
                             modifier = Modifier.weight(1F),
-                            text = "IconToggleButton component",
+                            text = stringResource(Res.string.icon_toggle_button_component),
                         )
                         IconToggleButton(
                             checked = isIconToggleChecked,
@@ -194,7 +231,7 @@ fun ColorsShowcaseComponentsContent(
                             content = {
                                 Icon(
                                     imageVector = if (isIconToggleChecked) Icons.Filled.Info else Icons.Outlined.Info,
-                                    contentDescription = "IconToggleButton",
+                                    contentDescription = stringResource(Res.string.icon_toggle_button),
                                 )
                             },
                         )
@@ -206,8 +243,8 @@ fun ColorsShowcaseComponentsContent(
 
     if (isAlertDialogShowing) AlertDialog(
         onDismissRequest = { isAlertDialogShowing = false },
-        title = { Text(text = "Alerts Title") },
-        text = { Text("Lorem ipsum text") },
+        title = { Text(text = stringResource(Res.string.alerts_title)) },
+        text = { Text(stringResource(Res.string.short_some_text)) },
         buttons = {
             Row(
                 modifier = Modifier.padding(all = 8.dp),
@@ -217,13 +254,13 @@ fun ColorsShowcaseComponentsContent(
                     modifier = Modifier.weight(1f).padding(end = 16.dp),
                     onClick = { isAlertDialogShowing = false }
                 ) {
-                    Text("Cancel")
+                    Text(stringResource(Res.string.common_cancel))
                 }
                 Button(
                     modifier = Modifier.weight(1f),
                     onClick = { isAlertDialogShowing = false }
                 ) {
-                    Text("Ok")
+                    Text(stringResource(Res.string.common_ok))
                 }
             }
         }
@@ -231,7 +268,7 @@ fun ColorsShowcaseComponentsContent(
 
     if (isProgressAlertDialogShowing) AlertDialog(
         onDismissRequest = { isProgressAlertDialogShowing = false },
-        title = { Text(text = "Progress Bar Alert") },
+        title = { Text(text = stringResource(Res.string.progress_bar_alert)) },
         text = {
             Box(
                 modifier = Modifier.fillMaxWidth(),
@@ -249,13 +286,13 @@ fun ColorsShowcaseComponentsContent(
                     modifier = Modifier.weight(1f).padding(end = 16.dp),
                     onClick = { isProgressAlertDialogShowing = false }
                 ) {
-                    Text("Cancel")
+                    Text(stringResource(Res.string.common_cancel))
                 }
                 Button(
                     modifier = Modifier.weight(1f),
                     onClick = { isProgressAlertDialogShowing = false }
                 ) {
-                    Text("Ok")
+                    Text(stringResource(Res.string.common_ok))
                 }
             }
         }
