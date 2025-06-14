@@ -28,8 +28,8 @@
     <string name="secondary">Secondary</string>
     <string name="secondary_variant">Secondary Variant</string>
     <string name="background">Background</string>
-    <string name="surface">Background</string>
-    <string name="error">Background</string>
+    <string name="surface">Surface</string>
+    <string name="error">Error</string>
 
     <string name="text_thin">Text Thin</string>
     <string name="text_light">Text Light</string>
@@ -72,7 +72,7 @@
     <string name="input_custom_color">Input custom color</string>
 
     <string name="new_template">New %1$s</string>
-    <string name="old_template">Old %1$s</string>
+    <string name="previous_template">Previous %1$s</string>
     <string name="confirm_selected_color_template">Confirm new selected %1$s color</string>
     <string name="add_palette">Add palette</string>
     <string name="back_to_palette">Back to palette</string>

@@ -34,7 +34,7 @@ import composethemebuilder.composeapp.generated.resources.common_confirm
 import composethemebuilder.composeapp.generated.resources.confirm_selected_color_template
 import composethemebuilder.composeapp.generated.resources.input_custom_color
 import composethemebuilder.composeapp.generated.resources.new_template
-import composethemebuilder.composeapp.generated.resources.old_template
+import composethemebuilder.composeapp.generated.resources.previous_template
 import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.entity.colors.ColorGroup
 import dev.t1r.themebuilder.entity.colors.ColorModel
@@ -64,7 +64,10 @@ internal fun MaterialColorsPaletteChangeColorContent(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
-                        text = stringResource(Res.string.old_template, contentState.model.title),
+                        text = stringResource(
+                            Res.string.previous_template,
+                            contentState.model.title
+                        ),
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = Color(contentState.oppositeColor),
