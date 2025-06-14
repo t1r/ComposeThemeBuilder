@@ -54,8 +54,8 @@
     <string name="export_theme_copied">Theme copied</string>
 
     <string name="colors_showcase_components_title">Colors Showcase Components</string>
-    <string name="csc_tab_1">Colors Showcase Components</string>
-    <string name="csc_tab_2">Colors Showcase Components</string>
+    <string name="csc_tab_1">Tab 1</string>
+    <string name="csc_tab_2">Tab 2</string>
     <string name="button_component">Button component</string>
     <string name="show_alert">Show Alert</string>
     <string name="outlined_button_component">OutlinedButton component</string>
