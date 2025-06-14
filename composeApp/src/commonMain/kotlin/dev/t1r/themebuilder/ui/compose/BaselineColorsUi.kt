@@ -23,18 +23,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import composethemebuilder.composeapp.generated.resources.Res
-import composethemebuilder.composeapp.generated.resources.background_title
-import composethemebuilder.composeapp.generated.resources.error_title
-import composethemebuilder.composeapp.generated.resources.primary_title
-import composethemebuilder.composeapp.generated.resources.primary_variant_title
-import composethemebuilder.composeapp.generated.resources.secondary_title
-import composethemebuilder.composeapp.generated.resources.secondary_variant_title
-import composethemebuilder.composeapp.generated.resources.surface_title
-import composethemebuilder.composeapp.generated.resources.text_bold_title
-import composethemebuilder.composeapp.generated.resources.text_light_title
-import composethemebuilder.composeapp.generated.resources.text_medium_title
-import composethemebuilder.composeapp.generated.resources.text_normal_title
-import composethemebuilder.composeapp.generated.resources.text_thin_title
+import composethemebuilder.composeapp.generated.resources.background
+import composethemebuilder.composeapp.generated.resources.error
+import composethemebuilder.composeapp.generated.resources.primary
+import composethemebuilder.composeapp.generated.resources.primary_variant
+import composethemebuilder.composeapp.generated.resources.secondary
+import composethemebuilder.composeapp.generated.resources.secondary_variant
+import composethemebuilder.composeapp.generated.resources.surface
+import composethemebuilder.composeapp.generated.resources.text_bold
+import composethemebuilder.composeapp.generated.resources.text_light
+import composethemebuilder.composeapp.generated.resources.text_medium
+import composethemebuilder.composeapp.generated.resources.text_normal
+import composethemebuilder.composeapp.generated.resources.text_thin
 import composethemebuilder.composeapp.generated.resources.theme_colors_title
 import dev.t1r.themebuilder.component.baselinecolor.BaselineColorsComponent
 import dev.t1r.themebuilder.component.baselinecolor.BaselineColorsComponent.Model
@@ -77,43 +77,43 @@ internal fun BaselineColorsContent(
                     .verticalScroll(rememberScrollState()),
             ) {
                 Element(
-                    title = stringResource(Res.string.primary_title),
+                    title = stringResource(Res.string.primary),
                     mainColor = primaryColor,
                     onMainColor = onPrimaryColor,
                     modifier = Modifier.fillMaxWidth()
                 )
                 Element(
-                    title = stringResource(Res.string.primary_variant_title),
+                    title = stringResource(Res.string.primary_variant),
                     mainColor = primaryVariantColor,
                     onMainColor = onPrimaryColor,
                     modifier = Modifier.fillMaxWidth()
                 )
                 Element(
-                    title = stringResource(Res.string.secondary_title),
+                    title = stringResource(Res.string.secondary),
                     mainColor = secondaryColor,
                     onMainColor = onSecondaryColor,
                     modifier = Modifier.fillMaxWidth()
                 )
                 Element(
-                    title = stringResource(Res.string.secondary_variant_title),
+                    title = stringResource(Res.string.secondary_variant),
                     mainColor = secondaryVariantColor,
                     onMainColor = onSecondaryColor,
                     modifier = Modifier.fillMaxWidth()
                 )
                 Element(
-                    title = stringResource(Res.string.background_title),
+                    title = stringResource(Res.string.background),
                     mainColor = backgroundColor,
                     onMainColor = onBackgroundColor,
                     modifier = Modifier.fillMaxWidth()
                 )
                 Element(
-                    title = stringResource(Res.string.surface_title),
+                    title = stringResource(Res.string.surface),
                     mainColor = surfaceColor,
                     onMainColor = onSurfaceColor,
                     modifier = Modifier.fillMaxWidth()
                 )
                 Element(
-                    title = stringResource(Res.string.error_title),
+                    title = stringResource(Res.string.error),
                     mainColor = errorColor,
                     onMainColor = onErrorColor,
                     modifier = Modifier.fillMaxWidth()
@@ -146,35 +146,35 @@ private fun Element(
             textAlign = TextAlign.Center,
         )
         Text(
-            text = stringResource(Res.string.text_thin_title),
+            text = stringResource(Res.string.text_thin),
             style = TextStyle(
                 fontWeight = FontWeight.Thin,
                 color = onMainColor,
             )
         )
         Text(
-            text = stringResource(Res.string.text_light_title),
+            text = stringResource(Res.string.text_light),
             style = TextStyle(
                 fontWeight = FontWeight.Light,
                 color = onMainColor,
             )
         )
         Text(
-            text = stringResource(Res.string.text_normal_title),
+            text = stringResource(Res.string.text_normal),
             style = TextStyle(
                 fontWeight = FontWeight.Normal,
                 color = onMainColor,
             )
         )
         Text(
-            text = stringResource(Res.string.text_medium_title),
+            text = stringResource(Res.string.text_medium),
             style = TextStyle(
                 fontWeight = FontWeight.Medium,
                 color = onMainColor,
             )
         )
         Text(
-            text = stringResource(Res.string.text_bold_title),
+            text = stringResource(Res.string.text_bold),
             style = TextStyle(
                 fontWeight = FontWeight.Bold,
                 color = onMainColor,

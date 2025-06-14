@@ -26,9 +26,9 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
 import composethemebuilder.composeapp.generated.resources.Res
 import composethemebuilder.composeapp.generated.resources.about_title
-import composethemebuilder.composeapp.generated.resources.android_xml_tab_title
+import composethemebuilder.composeapp.generated.resources.android_xml_tab
+import composethemebuilder.composeapp.generated.resources.export
 import composethemebuilder.composeapp.generated.resources.export_theme_copied
-import composethemebuilder.composeapp.generated.resources.export_title
 import dev.t1r.themebuilder.component.export.ExportComponent
 import dev.t1r.themebuilder.component.export.ExportComponent.Model
 import dev.t1r.themebuilder.ui.compose.common.ScreenContainerWidget
@@ -67,7 +67,7 @@ fun ExportContent(
                 ) {
                     Text(
                         modifier = Modifier.padding(16.dp),
-                        text = stringResource(Res.string.export_title).uppercase(),
+                        text = stringResource(Res.string.export).uppercase(),
                         style = MaterialTheme.typography.caption,
                     )
                 }
@@ -79,7 +79,7 @@ fun ExportContent(
                 ) {
                     Text(
                         modifier = Modifier.padding(16.dp),
-                        text = stringResource(Res.string.android_xml_tab_title).uppercase(),
+                        text = stringResource(Res.string.android_xml_tab).uppercase(),
                         style = MaterialTheme.typography.caption,
                     )
                 }

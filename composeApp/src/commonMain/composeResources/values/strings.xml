@@ -9,26 +9,26 @@
     <string name="common_clear">Clear</string>
 
     <string name="input_forms_title">Input Forms</string>
-    <string name="outlined_text_field_title">OutlinedTextField</string>
-    <string name="label_title">Label</string>
-    <string name="radio_button_title">RadioButton</string>
-    <string name="checkbox_title">Checkbox</string>
-    <string name="switch_title">Switch</string>
+    <string name="outlined_text_field">OutlinedTextField</string>
+    <string name="label">Label</string>
+    <string name="radio_button">RadioButton</string>
+    <string name="checkbox">Checkbox</string>
+    <string name="switch">Switch</string>
 
     <string name="theme_colors_title">Theme Colors</string>
-    <string name="primary_title">Primary</string>
-    <string name="primary_variant_title">Primary Variant</string>
-    <string name="secondary_title">Secondary</string>
-    <string name="secondary_variant_title">Secondary Variant</string>
-    <string name="background_title">Background</string>
-    <string name="surface_title">Background</string>
-    <string name="error_title">Background</string>
+    <string name="primary">Primary</string>
+    <string name="primary_variant">Primary Variant</string>
+    <string name="secondary">Secondary</string>
+    <string name="secondary_variant">Secondary Variant</string>
+    <string name="background">Background</string>
+    <string name="surface">Background</string>
+    <string name="error">Background</string>
 
-    <string name="text_thin_title">Text Thin</string>
-    <string name="text_light_title">Text Light</string>
-    <string name="text_normal_title">Text Normal</string>
-    <string name="text_medium_title">Text Medium</string>
-    <string name="text_bold_title">Text Bold</string>
+    <string name="text_thin">Text Thin</string>
+    <string name="text_light">Text Light</string>
+    <string name="text_normal">Text Normal</string>
+    <string name="text_medium">Text Medium</string>
+    <string name="text_bold">Text Bold</string>
 
     <string name="about_title">About</string>
     <string name="about_used_dependencies">Used frameworks, libraries and so on:</string>
@@ -41,24 +41,24 @@
     <string name="lib_rw_settings">Russell Wolf's Multiplatform Settings</string>
     <string name="project_label">Source code of Project on GitHub</string>
 
-    <string name="export_title">Export</string>
-    <string name="compose_tab_title">Compose</string>
-    <string name="android_xml_tab_title">Android XML</string>
+    <string name="export">Export</string>
+    <string name="compose_tab">Compose</string>
+    <string name="android_xml_tab">Android XML</string>
     <string name="export_theme_copied">Theme copied</string>
 
     <string name="colors_showcase_components_title">Colors Showcase Components</string>
     <string name="csc_tab_1">Colors Showcase Components</string>
     <string name="csc_tab_2">Colors Showcase Components</string>
-    <string name="button_component_title">Button component</string>
-    <string name="show_alert_title">Show Alert</string>
-    <string name="outlined_button_component_title">OutlinedButton component</string>
-    <string name="show_progress_alert_title">Show Progress Alert</string>
-    <string name="show_linear_progress_bar_title">TextButton component, Show Linear Progress Bar</string>
-    <string name="show_snack_bar_title">IconButton component, show snack bar</string>
-    <string name="text_message_title">Text Message</string>
+    <string name="button_component">Button component</string>
+    <string name="show_alert">Show Alert</string>
+    <string name="outlined_button_component">OutlinedButton component</string>
+    <string name="show_progress_alert">Show Progress Alert</string>
+    <string name="show_linear_progress_bar">TextButton component, Show Linear Progress Bar</string>
+    <string name="show_snack_bar">IconButton component, show snack bar</string>
+    <string name="text_message">Text Message</string>
     <string name="icon_toggle_button">IconToggleButton</string>
     <string name="icon_toggle_button_component">IconToggleButton component</string>
-    <string name="alerts_title">Alerts Title</string>
+    <string name="alerts">Alerts Title</string>
     <string name="short_some_text">Lorem ipsum text</string>
     <string name="progress_bar_alert">Progress Bar Alert</string>
 </resources>

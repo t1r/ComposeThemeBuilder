@@ -11,7 +11,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.theme_colors_title
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun AppMenuWidget(
@@ -27,7 +30,7 @@ internal fun AppMenuWidget(
             content = {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "Theme Colors",
+                    text = stringResource(Res.string.theme_colors_title),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,

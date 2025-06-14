@@ -38,8 +38,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
 import composethemebuilder.composeapp.generated.resources.Res
-import composethemebuilder.composeapp.generated.resources.alerts_title
-import composethemebuilder.composeapp.generated.resources.button_component_title
+import composethemebuilder.composeapp.generated.resources.alerts
+import composethemebuilder.composeapp.generated.resources.button_component
 import composethemebuilder.composeapp.generated.resources.colors_showcase_components_title
 import composethemebuilder.composeapp.generated.resources.common_cancel
 import composethemebuilder.composeapp.generated.resources.common_create
@@ -50,14 +50,14 @@ import composethemebuilder.composeapp.generated.resources.csc_tab_1
 import composethemebuilder.composeapp.generated.resources.csc_tab_2
 import composethemebuilder.composeapp.generated.resources.icon_toggle_button
 import composethemebuilder.composeapp.generated.resources.icon_toggle_button_component
-import composethemebuilder.composeapp.generated.resources.outlined_button_component_title
+import composethemebuilder.composeapp.generated.resources.outlined_button_component
 import composethemebuilder.composeapp.generated.resources.progress_bar_alert
 import composethemebuilder.composeapp.generated.resources.short_some_text
-import composethemebuilder.composeapp.generated.resources.show_alert_title
-import composethemebuilder.composeapp.generated.resources.show_linear_progress_bar_title
-import composethemebuilder.composeapp.generated.resources.show_progress_alert_title
-import composethemebuilder.composeapp.generated.resources.show_snack_bar_title
-import composethemebuilder.composeapp.generated.resources.text_message_title
+import composethemebuilder.composeapp.generated.resources.show_alert
+import composethemebuilder.composeapp.generated.resources.show_linear_progress_bar
+import composethemebuilder.composeapp.generated.resources.show_progress_alert
+import composethemebuilder.composeapp.generated.resources.show_snack_bar
+import composethemebuilder.composeapp.generated.resources.text_message
 import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.ui.compose.common.ColorsScreenContainerWidget
@@ -129,13 +129,13 @@ fun ColorsShowcaseComponentsContent(
                     ) {
                         Text(
                             modifier = Modifier.weight(1F),
-                            text = stringResource(Res.string.button_component_title),
+                            text = stringResource(Res.string.button_component),
                         )
                         Button(
                             onClick = { isAlertDialogShowing = true },
                             content = {
                                 Text(
-                                    text = stringResource(Res.string.show_alert_title),
+                                    text = stringResource(Res.string.show_alert),
                                 )
                             },
                         )
@@ -149,13 +149,13 @@ fun ColorsShowcaseComponentsContent(
                     ) {
                         Text(
                             modifier = Modifier.weight(1F),
-                            text = stringResource(Res.string.outlined_button_component_title),
+                            text = stringResource(Res.string.outlined_button_component),
                         )
                         OutlinedButton(
                             onClick = { isProgressAlertDialogShowing = true },
                             content = {
                                 Text(
-                                    text = stringResource(Res.string.show_progress_alert_title)
+                                    text = stringResource(Res.string.show_progress_alert)
                                 )
                             },
                         )
@@ -175,7 +175,7 @@ fun ColorsShowcaseComponentsContent(
                     ) {
                         Text(
                             modifier = Modifier.weight(1F),
-                            text = stringResource(Res.string.show_linear_progress_bar_title),
+                            text = stringResource(Res.string.show_linear_progress_bar),
                         )
                         TextButton(
                             onClick = { isLinearProgressBarShowing = !isLinearProgressBarShowing },
@@ -198,7 +198,7 @@ fun ColorsShowcaseComponentsContent(
                     ) {
                         Text(
                             modifier = Modifier.weight(1F),
-                            text = stringResource(Res.string.show_snack_bar_title),
+                            text = stringResource(Res.string.show_snack_bar),
                         )
                         IconButton(
                             content = {
@@ -209,7 +209,7 @@ fun ColorsShowcaseComponentsContent(
                             },
                             onClick = {
                                 coroutineScope.launch {
-                                    snackBarHostState.showSnackbar(getString(Res.string.text_message_title))
+                                    snackBarHostState.showSnackbar(getString(Res.string.text_message))
                                 }
                             },
                         )
@@ -243,7 +243,7 @@ fun ColorsShowcaseComponentsContent(
 
     if (isAlertDialogShowing) AlertDialog(
         onDismissRequest = { isAlertDialogShowing = false },
-        title = { Text(text = stringResource(Res.string.alerts_title)) },
+        title = { Text(text = stringResource(Res.string.alerts)) },
         text = { Text(stringResource(Res.string.short_some_text)) },
         buttons = {
             Row(
