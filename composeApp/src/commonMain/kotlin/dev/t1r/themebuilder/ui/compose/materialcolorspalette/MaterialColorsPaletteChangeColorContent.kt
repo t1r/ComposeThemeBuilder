@@ -28,11 +28,19 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.common_cancel
+import composethemebuilder.composeapp.generated.resources.common_confirm
+import composethemebuilder.composeapp.generated.resources.confirm_selected_color_template
+import composethemebuilder.composeapp.generated.resources.input_custom_color
+import composethemebuilder.composeapp.generated.resources.new_template
+import composethemebuilder.composeapp.generated.resources.old_template
 import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.entity.colors.ColorGroup
 import dev.t1r.themebuilder.entity.colors.ColorModel
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 import dev.t1r.themebuilder.ui.compose.common.getContrastColor
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun MaterialColorsPaletteChangeColorContent(
@@ -56,7 +64,7 @@ internal fun MaterialColorsPaletteChangeColorContent(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
-                        text = "Old ${contentState.model.title}",
+                        text = stringResource(Res.string.old_template, contentState.model.title),
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = Color(contentState.oppositeColor),
@@ -70,7 +78,7 @@ internal fun MaterialColorsPaletteChangeColorContent(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
-                        text = "New ${contentState.model.title}",
+                        text = stringResource(Res.string.new_template, contentState.model.title),
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = Color(contentState.oppositeColor),
@@ -88,7 +96,7 @@ internal fun MaterialColorsPaletteChangeColorContent(
             ) {
                 Text(
                     modifier = Modifier.weight(1F).padding(end = 16.dp),
-                    text = "Input custom color",
+                    text = stringResource(Res.string.input_custom_color),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
@@ -113,7 +121,10 @@ internal fun MaterialColorsPaletteChangeColorContent(
             ) {
                 Text(
                     modifier = Modifier.weight(1F).padding(start = 16.dp),
-                    text = "Confirm new selected ${contentState.model.title} color",
+                    text = stringResource(
+                        Res.string.confirm_selected_color_template,
+                        contentState.model.title
+                    ),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
@@ -123,7 +134,7 @@ internal fun MaterialColorsPaletteChangeColorContent(
                     modifier = Modifier.padding(end = 8.dp),
                     content = {
                         Text(
-                            text = "Cancel",
+                            text = stringResource(Res.string.common_cancel),
                             style = TextStyle(
                                 fontWeight = FontWeight.Medium,
                                 color = Color.Black,
@@ -136,7 +147,7 @@ internal fun MaterialColorsPaletteChangeColorContent(
                     modifier = Modifier.padding(end = 16.dp),
                     content = {
                         Text(
-                            text = "Confirm",
+                            text = stringResource(Res.string.common_confirm),
                             style = TextStyle(
                                 fontWeight = FontWeight.Medium,
                                 color = Color.Black,

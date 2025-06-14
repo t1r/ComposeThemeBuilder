@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import composethemebuilder.composeapp.generated.resources.Res
 import composethemebuilder.composeapp.generated.resources.about_title
 import composethemebuilder.composeapp.generated.resources.android_xml_tab
-import composethemebuilder.composeapp.generated.resources.export
+import composethemebuilder.composeapp.generated.resources.compose_tab
 import composethemebuilder.composeapp.generated.resources.export_theme_copied
 import dev.t1r.themebuilder.component.export.ExportComponent
 import dev.t1r.themebuilder.component.export.ExportComponent.Model
@@ -67,7 +67,7 @@ fun ExportContent(
                 ) {
                     Text(
                         modifier = Modifier.padding(16.dp),
-                        text = stringResource(Res.string.export).uppercase(),
+                        text = stringResource(Res.string.compose_tab).uppercase(),
                         style = MaterialTheme.typography.caption,
                     )
                 }

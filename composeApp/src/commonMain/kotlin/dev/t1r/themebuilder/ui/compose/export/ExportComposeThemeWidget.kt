@@ -19,6 +19,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.common_copy
+import composethemebuilder.composeapp.generated.resources.common_share
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun ExportThemeWidget(
@@ -54,7 +58,7 @@ internal fun ExportThemeWidget(
                     .weight(1F),
                 content = {
                     Icon(Icons.Filled.ContentCopy, "")
-                    Text("Copy")
+                    Text(stringResource(Res.string.common_copy))
                 },
                 onClick = onExportButtonClicked,
             )
@@ -64,7 +68,7 @@ internal fun ExportThemeWidget(
                     .weight(1F),
                 content = {
                     Icon(Icons.Filled.Share, "")
-                    Text("Share")
+                    Text(stringResource(Res.string.common_share))
                 },
                 onClick = onShareButtonClicked,
             )

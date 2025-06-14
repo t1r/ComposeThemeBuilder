@@ -14,7 +14,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -27,7 +26,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.add_palette
+import composethemebuilder.composeapp.generated.resources.back_to_palette
+import composethemebuilder.composeapp.generated.resources.common_cancel
+import composethemebuilder.composeapp.generated.resources.common_delete
+import composethemebuilder.composeapp.generated.resources.common_ok
+import composethemebuilder.composeapp.generated.resources.confirm_palette_delete_text
 import dev.t1r.themebuilder.entity.colors.PaletteThemeColors
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun MaterialColorsPaletteListContent(
@@ -119,7 +126,12 @@ internal fun MaterialColorsPaletteListContent(
                         contentDescription = "",
                     )
                     IconButton(
-                        content = { Icon(Icons.Filled.Delete, "Delete") },
+                        content = {
+                            Icon(
+                                Icons.Filled.Delete,
+                                stringResource(Res.string.common_delete)
+                            )
+                        },
                         onClick = { onDeleteClicked(model.id) },
                     )
                 }
@@ -131,12 +143,12 @@ internal fun MaterialColorsPaletteListContent(
             Button(
                 modifier = Modifier.weight(1F).padding(end = 12.dp),
                 onClick = onAddPaletteClicked,
-                content = { Text(text = "Add palette") },
+                content = { Text(text = stringResource(Res.string.add_palette)) },
             )
             Button(
                 modifier = Modifier.weight(1F),
                 onClick = onBackToPaletteClicked,
-                content = { Text(text = "Back to palette") },
+                content = { Text(text = stringResource(Res.string.back_to_palette)) },
             )
         }
     }
@@ -150,7 +162,6 @@ internal fun MaterialColorsPaletteListContent(
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun DeleteAlert(
     onConfirmClicked: () -> Unit = {},
@@ -158,7 +169,7 @@ private fun DeleteAlert(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Are you sure to delete palette?") },
+        title = { Text(stringResource(Res.string.confirm_palette_delete_text)) },
         buttons = {
             Row(
                 modifier = Modifier.padding(all = 8.dp),
@@ -168,13 +179,13 @@ private fun DeleteAlert(
                     modifier = Modifier.weight(1f).padding(end = 16.dp),
                     onClick = onDismiss,
                 ) {
-                    Text("Cancel")
+                    Text(stringResource(Res.string.common_cancel))
                 }
                 Button(
                     modifier = Modifier.weight(1f),
                     onClick = onConfirmClicked
                 ) {
-                    Text("Ok")
+                    Text(stringResource(Res.string.common_ok))
                 }
             }
         }

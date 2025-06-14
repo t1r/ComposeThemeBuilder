@@ -12,6 +12,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.about_title
+import composethemebuilder.composeapp.generated.resources.colors_showcase_components_title
+import composethemebuilder.composeapp.generated.resources.export_title
+import composethemebuilder.composeapp.generated.resources.input_forms_title
 import composethemebuilder.composeapp.generated.resources.theme_colors_title
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import org.jetbrains.compose.resources.stringResource
@@ -47,7 +51,7 @@ internal fun AppMenuWidget(
             content = {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "Input forms",
+                    text = stringResource(Res.string.input_forms_title),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
@@ -64,7 +68,7 @@ internal fun AppMenuWidget(
             content = {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "Colors Showcase Components",
+                    text = stringResource(Res.string.colors_showcase_components_title),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
@@ -81,7 +85,7 @@ internal fun AppMenuWidget(
             content = {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "Export",
+                    text = stringResource(Res.string.export_title),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
@@ -98,7 +102,7 @@ internal fun AppMenuWidget(
             content = {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "About",
+                    text = stringResource(Res.string.about_title),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,

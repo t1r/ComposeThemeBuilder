@@ -20,10 +20,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.common_ok
+import composethemebuilder.composeapp.generated.resources.msg_common_error
 import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent.ContentState
 import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent.Event
 import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent.Model
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun MaterialColorsPaletteContent(
@@ -101,7 +105,7 @@ fun MaterialColorsPaletteContent(
 
     if (isErrorDialogShowing) AlertDialog(
         onDismissRequest = { isErrorDialogShowing = false },
-        title = { Text(text = "Something went wrong") },
+        title = { Text(text = stringResource(Res.string.msg_common_error)) },
         buttons = {
             Row(
                 modifier = Modifier.padding(all = 8.dp).fillMaxWidth(),
@@ -110,7 +114,7 @@ fun MaterialColorsPaletteContent(
                 Button(
                     onClick = { isErrorDialogShowing = false }
                 ) {
-                    Text("Ok")
+                    Text(stringResource(Res.string.common_ok))
                 }
             }
         }

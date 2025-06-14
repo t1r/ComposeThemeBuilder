@@ -18,9 +18,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.drawer_content_description
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.ui.compose.appmenu.AppMenuWidget
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun ScreenContainerWidget(
@@ -51,7 +54,10 @@ internal fun ScreenContainerWidget(
                 navigationIcon = {
                     IconButton(
                         content = {
-                            Icon(Icons.Filled.Menu, "Drawer")
+                            Icon(
+                                Icons.Filled.Menu,
+                                stringResource(Res.string.drawer_content_description)
+                            )
                         },
                         onClick = {
                             keyboardController?.hide()

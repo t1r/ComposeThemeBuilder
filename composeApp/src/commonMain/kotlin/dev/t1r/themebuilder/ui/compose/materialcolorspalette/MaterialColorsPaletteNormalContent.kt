@@ -9,7 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.change_palette
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun MaterialColorsPaletteNormalContent(
@@ -107,7 +110,7 @@ internal fun MaterialColorsPaletteNormalContent(
             onClick = onChangePaletteClicked,
             content = {
                 Text(
-                    text = "Change palette",
+                    text = stringResource(Res.string.change_palette),
                 )
             },
         )

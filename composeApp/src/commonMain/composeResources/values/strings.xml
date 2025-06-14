@@ -7,6 +7,13 @@
     <string name="common_ok">Ok</string>
     <string name="common_cancel">Cancel</string>
     <string name="common_clear">Clear</string>
+    <string name="common_share">Share</string>
+    <string name="common_copy">Copy</string>
+    <string name="common_confirm">Confirm</string>
+    <string name="common_delete">Delete</string>
+
+    <string name="drawer_content_description">Drawer</string>
+    <string name="msg_common_error">Something went wrong</string>
 
     <string name="input_forms_title">Input Forms</string>
     <string name="outlined_text_field">OutlinedTextField</string>
@@ -41,7 +48,7 @@
     <string name="lib_rw_settings">Russell Wolf's Multiplatform Settings</string>
     <string name="project_label">Source code of Project on GitHub</string>
 
-    <string name="export">Export</string>
+    <string name="export_title">Export</string>
     <string name="compose_tab">Compose</string>
     <string name="android_xml_tab">Android XML</string>
     <string name="export_theme_copied">Theme copied</string>
@@ -61,4 +68,16 @@
     <string name="alerts">Alerts Title</string>
     <string name="short_some_text">Lorem ipsum text</string>
     <string name="progress_bar_alert">Progress Bar Alert</string>
+
+    <string name="input_custom_color">Input custom color</string>
+
+    <string name="new_template">New %1$s</string>
+    <string name="old_template">Old %1$s</string>
+    <string name="confirm_selected_color_template">Confirm new selected %1$s color</string>
+    <string name="add_palette">Add palette</string>
+    <string name="back_to_palette">Back to palette</string>
+    <string name="confirm_palette_delete_text">Are you sure to delete palette?</string>
+    <string name="change_palette">Change palette</string>
+    <string name="light_theme">Light theme</string>
+    <string name="dark_theme">Dark theme</string>
 </resources>
