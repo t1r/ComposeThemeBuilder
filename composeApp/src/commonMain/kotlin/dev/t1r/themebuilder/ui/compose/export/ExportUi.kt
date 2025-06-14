@@ -1,25 +1,42 @@
 package dev.t1r.themebuilder.ui.compose.export
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.SnackbarHostState
+import androidx.compose.material.Tab
+import androidx.compose.material.TabRow
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.about_title
+import composethemebuilder.composeapp.generated.resources.android_xml_tab
+import composethemebuilder.composeapp.generated.resources.compose_tab
+import composethemebuilder.composeapp.generated.resources.export_theme_copied
 import dev.t1r.themebuilder.component.export.ExportComponent
 import dev.t1r.themebuilder.component.export.ExportComponent.Model
 import dev.t1r.themebuilder.ui.compose.common.ScreenContainerWidget
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.getString
+import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ExportContent(
     component: ExportComponent,
@@ -36,7 +53,7 @@ fun ExportContent(
     ScreenContainerWidget(
         modifier = modifier,
         navigationModel = component.navigationModel,
-        title = "Export",
+        title = stringResource(Res.string.about_title),
         snackBarHostState = snackBarHostState,
         bottomBar = {
             TabRow(
@@ -50,7 +67,7 @@ fun ExportContent(
                 ) {
                     Text(
                         modifier = Modifier.padding(16.dp),
-                        text = "Compose".uppercase(),
+                        text = stringResource(Res.string.compose_tab).uppercase(),
                         style = MaterialTheme.typography.caption,
                     )
                 }
@@ -62,7 +79,7 @@ fun ExportContent(
                 ) {
                     Text(
                         modifier = Modifier.padding(16.dp),
-                        text = "Android XML".uppercase(),
+                        text = stringResource(Res.string.android_xml_tab).uppercase(),
                         style = MaterialTheme.typography.caption,
                     )
                 }
@@ -83,7 +100,7 @@ fun ExportContent(
                         onExportButtonClicked = {
                             copyToClipboardAction(
                                 string = model.composeThemeExportString,
-                                clipboardManager = clipboardManager,
+                                clipboard = clipboardManager,
                                 coroutineScope = coroutineScope,
                                 snackBarHostState = snackBarHostState
                             )
@@ -100,7 +117,7 @@ fun ExportContent(
                         onExportButtonClicked = {
                             copyToClipboardAction(
                                 string = model.androidXmlExportString,
-                                clipboardManager = clipboardManager,
+                                clipboard = clipboardManager,
                                 coroutineScope = coroutineScope,
                                 snackBarHostState = snackBarHostState
                             )
@@ -125,10 +142,14 @@ fun ExportContent(
 
 private fun copyToClipboardAction(
     string: String,
-    clipboardManager: ClipboardManager,
+    clipboard: ClipboardManager,
     coroutineScope: CoroutineScope,
     snackBarHostState: SnackbarHostState,
 ) {
-    clipboardManager.setText(buildAnnotatedString { append(string) })
-    coroutineScope.launch { snackBarHostState.showSnackbar("Theme copied") }
+    clipboard.setText(buildAnnotatedString { append(string) })
+    coroutineScope.launch {
+        snackBarHostState.showSnackbar(
+            getString(Res.string.export_theme_copied)
+        )
+    }
 }

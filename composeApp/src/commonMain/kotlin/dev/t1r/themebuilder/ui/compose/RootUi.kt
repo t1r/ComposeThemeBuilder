@@ -5,8 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import com.arkivanov.decompose.extensions.compose.stack.Children
+import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.component.root.RootComponent
 import dev.t1r.themebuilder.component.root.RootComponent.Child
 import dev.t1r.themebuilder.component.root.RootComponent.Model
@@ -36,7 +36,7 @@ fun RootContent(
     ) {
         Children(
             modifier = Modifier.fillMaxSize(),
-            stack = component.childStack,
+            stack = component.childStack
         ) {
             when (val child = it.instance) {
                 is Child.BaselineColors -> BaselineColorsContent(

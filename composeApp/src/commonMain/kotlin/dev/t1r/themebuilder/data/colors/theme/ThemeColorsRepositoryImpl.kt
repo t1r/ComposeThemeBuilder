@@ -22,7 +22,9 @@ class ThemeColorsRepositoryImpl(
         if (settings.getLongOrNull(THEME_PALETTE_KEY) == null) {
             settings.putLong(THEME_PALETTE_KEY, THEME_PALETTE_DEFAULT_VALUE)
         }
-        if (db.themePaletteQueries.selectByIndex(THEME_PALETTE_DEFAULT_VALUE).executeAsOneOrNull() == null) {
+        if (db.themePaletteQueries.selectByIndex(THEME_PALETTE_DEFAULT_VALUE)
+                .executeAsOneOrNull() == null
+        ) {
             addPalette()
         }
     }

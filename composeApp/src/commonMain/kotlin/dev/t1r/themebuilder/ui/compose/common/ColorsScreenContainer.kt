@@ -4,24 +4,37 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material.DrawerValue
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.material.Scaffold
+import androidx.compose.material.SnackbarHostState
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.rememberDrawerState
+import androidx.compose.material.rememberModalBottomSheetState
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.drawer_content_description
 import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.ui.compose.appmenu.AppMenuWidget
 import dev.t1r.themebuilder.ui.compose.materialcolorspalette.MaterialColorsPaletteContent
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalComposeUiApi::class)
 @Composable
 fun ColorsScreenContainerWidget(
     navigationModel: DrawerNavigationModel,
@@ -73,7 +86,10 @@ fun ColorsScreenContainerWidget(
                         navigationIcon = {
                             IconButton(
                                 content = {
-                                    Icon(Icons.Filled.Menu, "Drawer")
+                                    Icon(
+                                        Icons.Filled.Menu,
+                                        stringResource(Res.string.drawer_content_description)
+                                    )
                                 },
                                 onClick = {
                                     keyboardController?.hide()

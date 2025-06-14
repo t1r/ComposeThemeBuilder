@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Material Theme Builder</string>
+
+    <string name="common_hide">Hide</string>
+    <string name="common_show">Show</string>
+    <string name="common_create">Create</string>
+    <string name="common_ok">Ok</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_clear">Clear</string>
+    <string name="common_share">Share</string>
+    <string name="common_copy">Copy</string>
+    <string name="common_confirm">Confirm</string>
+    <string name="common_delete">Delete</string>
+
+    <string name="drawer_content_description">Drawer</string>
+    <string name="msg_common_error">Something went wrong</string>
+
+    <string name="input_forms_title">Input Forms</string>
+    <string name="outlined_text_field">OutlinedTextField</string>
+    <string name="label">Label</string>
+    <string name="radio_button">RadioButton</string>
+    <string name="checkbox">Checkbox</string>
+    <string name="switch">Switch</string>
+
+    <string name="theme_colors_title">Theme Colors</string>
+    <string name="primary">Primary</string>
+    <string name="primary_variant">Primary Variant</string>
+    <string name="secondary">Secondary</string>
+    <string name="secondary_variant">Secondary Variant</string>
+    <string name="background">Background</string>
+    <string name="surface">Surface</string>
+    <string name="error">Error</string>
+
+    <string name="text_thin">Text Thin</string>
+    <string name="text_light">Text Light</string>
+    <string name="text_normal">Text Normal</string>
+    <string name="text_medium">Text Medium</string>
+    <string name="text_bold">Text Bold</string>
+
+    <string name="about_title">About</string>
+    <string name="about_used_dependencies">Used frameworks, libraries and so on:</string>
+    <string name="lib_kotlin">Kotlin</string>
+    <string name="lib_kotlin_coroutines">Kotlin Coroutines</string>
+    <string name="lib_compose">Compose</string>
+    <string name="lib_decompose">Decompose</string>
+    <string name="lib_mvikotlin">MVIKotlin</string>
+    <string name="lib_sqldelight">SQLDelight</string>
+    <string name="lib_rw_settings">Russell Wolf's Multiplatform Settings</string>
+    <string name="project_label">Source code of Project on GitHub</string>
+
+    <string name="export_title">Export</string>
+    <string name="compose_tab">Compose</string>
+    <string name="android_xml_tab">Android XML</string>
+    <string name="export_theme_copied">Theme copied</string>
+
+    <string name="colors_showcase_components_title">Colors Showcase Components</string>
+    <string name="csc_tab_1">Tab 1</string>
+    <string name="csc_tab_2">Tab 2</string>
+    <string name="button_component">Button component</string>
+    <string name="show_alert">Show Alert</string>
+    <string name="outlined_button_component">OutlinedButton component</string>
+    <string name="show_progress_alert">Show Progress Alert</string>
+    <string name="show_linear_progress_bar">TextButton component, Show Linear Progress Bar</string>
+    <string name="show_snack_bar">IconButton component, show snack bar</string>
+    <string name="text_message">Text Message</string>
+    <string name="icon_toggle_button">IconToggleButton</string>
+    <string name="icon_toggle_button_component">IconToggleButton component</string>
+    <string name="alerts">Alerts Title</string>
+    <string name="short_some_text">Lorem ipsum text</string>
+    <string name="progress_bar_alert">Progress Bar Alert</string>
+
+    <string name="input_custom_color">Input custom color</string>
+
+    <string name="new_template">New %1$s</string>
+    <string name="previous_template">Previous %1$s</string>
+    <string name="confirm_selected_color_template">Confirm new selected %1$s color</string>
+    <string name="add_palette">Add palette</string>
+    <string name="back_to_palette">Back to palette</string>
+    <string name="confirm_palette_delete_text">Are you sure to delete palette?</string>
+    <string name="change_palette">Change palette</string>
+    <string name="light_theme">Light theme</string>
+    <string name="dark_theme">Dark theme</string>
+</resources>

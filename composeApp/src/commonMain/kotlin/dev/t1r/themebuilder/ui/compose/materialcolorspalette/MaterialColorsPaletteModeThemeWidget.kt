@@ -16,6 +16,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.dark_theme
+import composethemebuilder.composeapp.generated.resources.light_theme
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun MaterialColorsPaletteModeThemeWidget(
@@ -30,7 +34,10 @@ internal fun MaterialColorsPaletteModeThemeWidget(
             modifier = Modifier
                 .weight(1F)
                 .padding(16.dp),
-            text = if (isLight) "Light theme" else "Dark theme",
+            text = stringResource(
+                if (isLight) Res.string.light_theme
+                else Res.string.dark_theme
+            ),
             style = TextStyle(
                 fontWeight = FontWeight.Normal,
                 color = Color.Black,

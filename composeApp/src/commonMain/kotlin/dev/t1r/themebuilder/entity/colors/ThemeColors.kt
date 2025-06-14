@@ -18,18 +18,18 @@ data class ThemeColors(
 )
 
 sealed class ThemeColorsEnum(val title: String) {
-    object Primary : ThemeColorsEnum("Primary")
-    object PrimaryVariant : ThemeColorsEnum("Primary Variant")
-    object Secondary : ThemeColorsEnum("Secondary")
-    object SecondaryVariant : ThemeColorsEnum("Secondary Variant")
-    object Background : ThemeColorsEnum("Background")
-    object Surface : ThemeColorsEnum("Surface")
-    object Error : ThemeColorsEnum("Error")
-    object OnPrimary : ThemeColorsEnum("On Primary")
-    object OnSecondary : ThemeColorsEnum("On Secondary")
-    object OnBackground : ThemeColorsEnum("On Background")
-    object OnSurface : ThemeColorsEnum("On Surface")
-    object OnError : ThemeColorsEnum("On Error")
+    data object Primary : ThemeColorsEnum("Primary")
+    data object PrimaryVariant : ThemeColorsEnum("Primary Variant")
+    data object Secondary : ThemeColorsEnum("Secondary")
+    data object SecondaryVariant : ThemeColorsEnum("Secondary Variant")
+    data object Background : ThemeColorsEnum("Background")
+    data object Surface : ThemeColorsEnum("Surface")
+    data object Error : ThemeColorsEnum("Error")
+    data object OnPrimary : ThemeColorsEnum("On Primary")
+    data object OnSecondary : ThemeColorsEnum("On Secondary")
+    data object OnBackground : ThemeColorsEnum("On Background")
+    data object OnSurface : ThemeColorsEnum("On Surface")
+    data object OnError : ThemeColorsEnum("On Error")
 }
 
 fun getColorByThemeColorMarker(

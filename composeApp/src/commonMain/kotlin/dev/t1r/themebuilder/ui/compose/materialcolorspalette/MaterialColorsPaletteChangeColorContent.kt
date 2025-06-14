@@ -3,7 +3,12 @@ package dev.t1r.themebuilder.ui.compose.materialcolorspalette
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -16,7 +21,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -24,13 +28,20 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.common_cancel
+import composethemebuilder.composeapp.generated.resources.common_confirm
+import composethemebuilder.composeapp.generated.resources.confirm_selected_color_template
+import composethemebuilder.composeapp.generated.resources.input_custom_color
+import composethemebuilder.composeapp.generated.resources.new_template
+import composethemebuilder.composeapp.generated.resources.previous_template
 import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.entity.colors.ColorGroup
 import dev.t1r.themebuilder.entity.colors.ColorModel
 import dev.t1r.themebuilder.entity.colors.ThemeColorsEnum
 import dev.t1r.themebuilder.ui.compose.common.getContrastColor
+import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 internal fun MaterialColorsPaletteChangeColorContent(
     contentState: MaterialColorsPaletteComponent.ContentState.ChangeColorMode,
@@ -53,7 +64,10 @@ internal fun MaterialColorsPaletteChangeColorContent(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
-                        text = "Old ${contentState.model.title}",
+                        text = stringResource(
+                            Res.string.previous_template,
+                            contentState.model.title
+                        ),
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = Color(contentState.oppositeColor),
@@ -67,7 +81,7 @@ internal fun MaterialColorsPaletteChangeColorContent(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
-                        text = "New ${contentState.model.title}",
+                        text = stringResource(Res.string.new_template, contentState.model.title),
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = Color(contentState.oppositeColor),
@@ -85,7 +99,7 @@ internal fun MaterialColorsPaletteChangeColorContent(
             ) {
                 Text(
                     modifier = Modifier.weight(1F).padding(end = 16.dp),
-                    text = "Input custom color",
+                    text = stringResource(Res.string.input_custom_color),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
@@ -110,7 +124,10 @@ internal fun MaterialColorsPaletteChangeColorContent(
             ) {
                 Text(
                     modifier = Modifier.weight(1F).padding(start = 16.dp),
-                    text = "Confirm new selected ${contentState.model.title} color",
+                    text = stringResource(
+                        Res.string.confirm_selected_color_template,
+                        contentState.model.title
+                    ),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
@@ -120,7 +137,7 @@ internal fun MaterialColorsPaletteChangeColorContent(
                     modifier = Modifier.padding(end = 8.dp),
                     content = {
                         Text(
-                            text = "Cancel",
+                            text = stringResource(Res.string.common_cancel),
                             style = TextStyle(
                                 fontWeight = FontWeight.Medium,
                                 color = Color.Black,
@@ -133,7 +150,7 @@ internal fun MaterialColorsPaletteChangeColorContent(
                     modifier = Modifier.padding(end = 16.dp),
                     content = {
                         Text(
-                            text = "Confirm",
+                            text = stringResource(Res.string.common_confirm),
                             style = TextStyle(
                                 fontWeight = FontWeight.Medium,
                                 color = Color.Black,
@@ -168,7 +185,12 @@ internal fun MaterialColorsPaletteChangeColorContent(
                             Box(
                                 modifier = Modifier
                                     .clickable(
-                                        onClick = { onColorCandidateSelected(contentState.model, item) },
+                                        onClick = {
+                                            onColorCandidateSelected(
+                                                contentState.model,
+                                                item
+                                            )
+                                        },
                                     )
                                     .background(Color(item.color))
                                     .padding(16.dp),

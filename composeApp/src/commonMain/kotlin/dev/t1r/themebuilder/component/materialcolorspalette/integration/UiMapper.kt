@@ -10,7 +10,8 @@ internal val stateToModel: MaterialColorsPaletteStore.State.() -> MaterialColors
     {
         val contentState = when {
             themeColorToChange != null -> {
-                val newColor = getColorByThemeColorMarker(themeColorToChange.marker, themeColorsModel)
+                val newColor =
+                    getColorByThemeColorMarker(themeColorToChange.marker, themeColorsModel)
                 ContentState.ChangeColorMode(
                     model = themeColorToChange.marker,
                     newColor = newColor,

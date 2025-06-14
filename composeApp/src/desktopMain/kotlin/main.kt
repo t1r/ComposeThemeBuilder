@@ -5,6 +5,8 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
 import com.arkivanov.mvikotlin.timetravel.store.TimeTravelStoreFactory
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.app_name
 import dev.t1r.themebuilder.component.materialcolorspalette.integration.MaterialColorsPaletteComponentImpl
 import dev.t1r.themebuilder.component.root.integration.RootComponentImpl
 import dev.t1r.themebuilder.data.ThemeBuilderDb
@@ -17,6 +19,7 @@ import dev.t1r.themebuilder.data.kvs.SettingsFactory
 import dev.t1r.themebuilder.data.platform.PlatformRepositoryImpl
 import dev.t1r.themebuilder.repository.colors.theme.ThemeColorsRepository
 import dev.t1r.themebuilder.ui.compose.RootContent
+import org.jetbrains.compose.resources.stringResource
 import java.util.prefs.Preferences
 
 private val loggingStoreFactory = LoggingStoreFactory(TimeTravelStoreFactory())
@@ -30,7 +33,7 @@ private val defaultComponentContext = DefaultComponentContext(LifecycleRegistry(
 fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
-        title = "Compose Theme Builder",
+        title = stringResource(Res.string.app_name),
         icon = painterResource("drawable/ic_launcher.png"),
     ) {
         RootContent(

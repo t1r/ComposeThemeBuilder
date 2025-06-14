@@ -1,18 +1,43 @@
 package dev.t1r.themebuilder.ui.compose
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material.Checkbox
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.RadioButton
+import androidx.compose.material.Slider
+import androidx.compose.material.Switch
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import composethemebuilder.composeapp.generated.resources.Res
+import composethemebuilder.composeapp.generated.resources.checkbox
+import composethemebuilder.composeapp.generated.resources.common_clear
+import composethemebuilder.composeapp.generated.resources.input_forms_title
+import composethemebuilder.composeapp.generated.resources.label
+import composethemebuilder.composeapp.generated.resources.outlined_text_field
+import composethemebuilder.composeapp.generated.resources.radio_button
+import composethemebuilder.composeapp.generated.resources.switch
 import dev.t1r.themebuilder.component.materialcolorspalette.MaterialColorsPaletteComponent
 import dev.t1r.themebuilder.entity.navigation.DrawerNavigationModel
 import dev.t1r.themebuilder.ui.compose.common.ColorsScreenContainerWidget
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun InputFormsContent(
@@ -29,7 +54,7 @@ fun InputFormsContent(
 
     ColorsScreenContainerWidget(
         navigationModel = navigationModel,
-        title = "Input Forms",
+        title = stringResource(Res.string.input_forms_title),
         materialColorsPaletteComponent = materialColorsPaletteComponent,
         modifier = modifier,
         content = { pv ->
@@ -45,11 +70,16 @@ fun InputFormsContent(
                         .padding(vertical = 12.dp, horizontal = 16.dp),
                     value = outlinedTextFieldText,
                     onValueChange = { outlinedTextFieldText = it },
-                    placeholder = { Text("OutlinedTextField") },
-                    label = { Text("Label") },
+                    placeholder = { Text(stringResource(Res.string.outlined_text_field)) },
+                    label = { Text(stringResource(Res.string.label)) },
                     trailingIcon = {
                         IconButton(
-                            content = { Icon(Icons.Filled.Clear, "Clear") },
+                            content = {
+                                Icon(
+                                    Icons.Filled.Clear,
+                                    stringResource(Res.string.common_clear)
+                                )
+                            },
                             onClick = { outlinedTextFieldText = "" },
                         )
                     },
@@ -60,11 +90,16 @@ fun InputFormsContent(
                         .padding(vertical = 12.dp, horizontal = 16.dp),
                     value = textFieldText,
                     onValueChange = { textFieldText = it },
-                    placeholder = { Text("OutlinedTextField") },
-                    label = { Text("Label") },
+                    placeholder = { Text(stringResource(Res.string.outlined_text_field)) },
+                    label = { Text(stringResource(Res.string.label)) },
                     trailingIcon = {
                         IconButton(
-                            content = { Icon(Icons.Filled.Clear, "Clear") },
+                            content = {
+                                Icon(
+                                    Icons.Filled.Clear,
+                                    stringResource(Res.string.common_clear)
+                                )
+                            },
                             onClick = { textFieldText = "" },
                         )
                     },
@@ -82,7 +117,7 @@ fun InputFormsContent(
                         modifier = Modifier
                             .weight(1F)
                             .padding(horizontal = 16.dp),
-                        text = "RadioButton",
+                        text = stringResource(Res.string.radio_button),
                     )
                 }
                 Row(
@@ -96,7 +131,7 @@ fun InputFormsContent(
                     )
                     Text(
                         modifier = Modifier.weight(1F).padding(horizontal = 16.dp),
-                        text = "Checkbox",
+                        text = stringResource(Res.string.checkbox),
                     )
                 }
                 Row(
@@ -110,7 +145,7 @@ fun InputFormsContent(
                     )
                     Text(
                         modifier = Modifier.weight(1F).padding(horizontal = 16.dp),
-                        text = "Switch",
+                        text = stringResource(Res.string.switch),
                     )
                 }
                 Slider(

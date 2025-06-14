@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Material Theme Builder</string>
+
+    <string name="common_hide">Скрыть</string>
+    <string name="common_show">Показать</string>
+    <string name="common_create">Создать</string>
+    <string name="common_ok">Ок</string>
+    <string name="common_cancel">Отмена</string>
+    <string name="common_clear">Очистить</string>
+    <string name="common_share">Поделиться</string>
+    <string name="common_copy">Копировать</string>
+    <string name="common_confirm">Подтвердить</string>
+    <string name="common_delete">Удалить</string>
+
+    <string name="drawer_content_description">Drawer</string>
+    <string name="msg_common_error">Что-то пошло не так</string>
+
+    <string name="input_forms_title">Формы ввода</string>
+    <string name="outlined_text_field">OutlinedTextField</string>
+    <string name="label">Label</string>
+    <string name="radio_button">RadioButton</string>
+    <string name="checkbox">Checkbox</string>
+    <string name="switch">Switch</string>
+
+    <string name="theme_colors_title">Цвета темы</string>
+    <string name="primary">Primary</string>
+    <string name="primary_variant">Primary Variant</string>
+    <string name="secondary">Secondary</string>
+    <string name="secondary_variant">Secondary Variant</string>
+    <string name="background">Background</string>
+    <string name="surface">Surface</string>
+    <string name="error">Error</string>
+
+    <string name="text_thin">Текст Thin</string>
+    <string name="text_light">Текст Light</string>
+    <string name="text_normal">Текст Normal</string>
+    <string name="text_medium">Текст Medium</string>
+    <string name="text_bold">Текст Bold</string>
+
+    <string name="about_title">О приложении</string>
+    <string name="about_used_dependencies">Используемые фреймворки, библиотеки и прочее:</string>
+    <string name="lib_kotlin">Kotlin</string>
+    <string name="lib_kotlin_coroutines">Kotlin Coroutines</string>
+    <string name="lib_compose">Compose</string>
+    <string name="lib_decompose">Decompose</string>
+    <string name="lib_mvikotlin">MVIKotlin</string>
+    <string name="lib_sqldelight">SQLDelight</string>
+    <string name="lib_rw_settings">Russell Wolf's Multiplatform Settings</string>
+    <string name="project_label">Исходный код проекта на GitHub</string>
+
+    <string name="export_title">Экспорт</string>
+    <string name="compose_tab">Compose</string>
+    <string name="android_xml_tab">Android XML</string>
+    <string name="export_theme_copied">Тема скопирована</string>
+
+    <string name="colors_showcase_components_title">Демонстрация цветов компонентов</string>
+    <string name="csc_tab_1">Таб 1</string>
+    <string name="csc_tab_2">Таб 2</string>
+    <string name="button_component">Button компонент</string>
+    <string name="show_alert">Показать алерт</string>
+    <string name="outlined_button_component">OutlinedButton компонент</string>
+    <string name="show_progress_alert">Показать Progress Alert</string>
+    <string name="show_linear_progress_bar">TextButton компонент, показать Linear Progress Bar</string>
+    <string name="show_snack_bar">IconButton компонент, показать snack bar</string>
+    <string name="text_message">Текстовое сообщение</string>
+    <string name="icon_toggle_button">IconToggleButton</string>
+    <string name="icon_toggle_button_component">IconToggleButton компонент</string>
+    <string name="alerts">Заголовок алерта</string>
+    <string name="short_some_text">Lorem ipsum text</string>
+    <string name="progress_bar_alert">Progress Bar Alert</string>
+
+    <string name="input_custom_color">Ввести произвольный цвет</string>
+
+    <string name="new_template">Новый %1$s</string>
+    <string name="previous_template">Предыдущий %1$s</string>
+    <string name="confirm_selected_color_template">Подтвердить выбранный %1$s цвет</string>
+    <string name="add_palette">Добавить палитру</string>
+    <string name="back_to_palette">Вернуться к палитре</string>
+    <string name="confirm_palette_delete_text">Вы уверены, что хотите удалить палитру?</string>
+    <string name="change_palette">Изменить палитру</string>
+    <string name="light_theme">Светлая тема</string>
+    <string name="dark_theme">Тёмная тема</string>
+</resources>
