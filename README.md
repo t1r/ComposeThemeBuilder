@@ -5,6 +5,7 @@ colors. Then you can export result as Kotlin code.
 
 ### 🛠 Roadmap
 
++ Color picker https://github.com/skydoves/colorpicker-compose
 + Fixing bugs
 + Adding Compose shape customization
 + Improving UX
