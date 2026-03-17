@@ -2,6 +2,7 @@ package dev.t1r.themebuilder
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
@@ -73,10 +74,14 @@ class MainActivity : ComponentActivity() {
     private fun setStatusBarColor(
         color: Long,
     ) {
-        window?.apply {
-            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            statusBarColor = Color(color).toArgb()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            window?.decorView?.setBackgroundColor(Color(color).toArgb())
+        } else {
+            window?.apply {
+                clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                statusBarColor = Color(color).toArgb()
+            }
         }
     }
 
