@@ -57,10 +57,12 @@ fun ColorsScreenContainerWidget(
         modifier = modifier,
         sheetState = bottomSheetState,
         sheetContent = {
-            MaterialColorsPaletteContent(
-                component = materialColorsPaletteComponent,
-                modifier = Modifier.fillMaxWidth(),
-            )
+            if (bottomSheetState.isVisible) {
+                MaterialColorsPaletteContent(
+                    component = materialColorsPaletteComponent,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
         },
         content = {
             Scaffold(
