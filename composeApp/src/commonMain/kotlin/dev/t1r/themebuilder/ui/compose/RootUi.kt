@@ -1,6 +1,7 @@
 package dev.t1r.themebuilder.ui.compose
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -35,7 +36,7 @@ fun RootContent(
         isLight = model.colors.isLight,
     ) {
         Children(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().safeDrawingPadding(),
             stack = component.childStack
         ) {
             when (val child = it.instance) {

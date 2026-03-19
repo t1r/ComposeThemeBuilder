@@ -40,21 +40,17 @@ kotlin {
         val desktopMain by getting
         
         androidMain.dependencies {
-            implementation(compose.preview)
-
-            implementation(libs.androidx.material)
-            implementation(libs.androidx.activity.compose)
             implementation(libs.sqldelight.driver.android)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
         }
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(compose.materialIconsExtended)
+            api(libs.compose.runtime)
+            api(libs.compose.ui)
+            api(libs.compose.foundation)
+            api(libs.compose.resources)
+            api(libs.compose.ui.tooling.preview)
+            api(libs.compose.material)
+            api(libs.compose.material.icons)
+            api(libs.compose.material.icons.extended)
 
             implementation(libs.coroutines)
 
@@ -94,8 +90,8 @@ android {
         applicationId = "dev.t1r.themebuilder"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 7
-        versionName = "0.6.0"
+        versionCode = 8
+        versionName = "0.7.0"
     }
     packaging {
         resources {
@@ -125,7 +121,8 @@ android {
         }
     }
     dependencies {
-        debugImplementation(compose.uiTooling)
+        debugImplementation(libs.compose.ui.tooling)
+        implementation(libs.androidx.activityCompose)
     }
 }
 
